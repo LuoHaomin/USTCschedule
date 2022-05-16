@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable-v24/lesson_label.xml" value="0.105" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic__.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic___.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic____1.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_add.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_arrow_left.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_bulletpoint.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_button_active.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_calendar.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_chat_.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_check_.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_chevron_right.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_close.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_d.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_daymode.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_deadline.xml" value="0.2075" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_down.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_filter.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_handle.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_help_circle.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_hourglass.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_importance_blank.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_importance_full.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_importance_half.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_info_circle.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_lock_off.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_mode__1_.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_mode_litter.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_monthmode.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_notification.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_rectangle.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_refresh.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_save.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_schedule.xml" value="0.2075" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_secured.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_setting.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_share.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_side.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_switch_background.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_switch_off.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_switch_on.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_tips.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_todolist.xml" value="0.2075" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_todolist__1_.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_user.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_user_circle.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_vector__2_.xml" value="0.1735" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_weekmode.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/lesson.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/lesson_label.xml" value="0.1515" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/menu_item_selected.xml" value="0.1" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/time_label.xml" value="0.12" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/font/text_font.xml" value="0.2222222222222222" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_deadline.xml" value="0.1671195652173913" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_day.xml" value="0.2" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_month.xml" value="0.2" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_week.xml" value="0.1671195652173913" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_todolist.xml" value="0.1671195652173913" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/schedule_time.xml" value="0.22826086956521738" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/todolist.xml" value="0.22826086956521738" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/top_fragment.xml" value="0.22826086956521738" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/menu/menu.xml" value="0.25885416666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
