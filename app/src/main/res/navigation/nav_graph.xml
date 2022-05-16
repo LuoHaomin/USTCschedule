@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_schedule">
+
+    <!--Fragment_schedule-->
+    <fragment
+        android:id="@+id/fragment_schedule"
+        android:name="cn.edu.ustc.ustcschedule.fragment.DayScheduleFragment"
+        android:label="@string/schedule"
+        tools:layout="@layout/fragment_schedule_day">
+        <!--Add actions-->
+        <action
+            android:id="@+id/action_schedule_to_deadline"
+            app:destination="@id/fragment_deadline"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_schedule_to_todolist"
+            app:destination="@id/fragment_todolist"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_schedule_day_to_week"
+            app:destination="@id/fragment_schedule_week"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!--Fragment_schedule_week-->
+    <fragment
+        android:id="@+id/fragment_schedule_week"
+        android:name="cn.edu.ustc.ustcschedule.fragment.WeekScheduleFragment"
+        android:label="@string/schedule_week"
+        tools:layout="@layout/fragment_schedule_week">
+        <!--Add actions-->
+        <action
+            android:id="@+id/action_schedule_week_to_month"
+            app:destination="@id/fragment_schedule_month"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!--Fragment_schedule_month-->
+    <fragment
+        android:id="@+id/fragment_schedule_month"
+        android:name="cn.edu.ustc.ustcschedule.fragment.MonthScheduleFragment"
+        android:label="@string/schedule_month"
+        tools:layout="@layout/fragment_schedule_month">
+        <!--Add actions-->
+        <action
+            android:id="@+id/action_schedule_month_to_day"
+            app:destination="@id/fragment_schedule"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!--Fragment_deadline-->
+    <fragment
+        android:id="@+id/fragment_deadline"
+        android:name="cn.edu.ustc.ustcschedule.fragment.DeadlineFragment"
+        android:label="@string/deadline"
+        tools:layout="@layout/fragment_deadline">
+        <!--Add actions-->
+        <action
+            android:id="@+id/action_deadline_to_schedule"
+            app:destination="@id/fragment_schedule"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_deadline_to_todolist"
+            app:destination="@id/fragment_todolist"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!--Fragment_todolist-->
+    <fragment
+        android:id="@+id/fragment_todolist"
+        android:name="cn.edu.ustc.ustcschedule.fragment.TodolistFragment"
+        android:label="@string/todolist"
+        tools:layout="@layout/fragment_todolist">
+        <!--Add actions-->
+        <action
+            android:id="@+id/action_todolist_to_schedule"
+            app:destination="@id/fragment_schedule"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_todolist_to_deadline"
+            app:destination="@id/fragment_deadline"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">USTC schedule</string>
+
+    <string name="schedule">日程</string>
+    <string name="schedule_day">日程-日</string>
+    <string name="schedule_week">日程-周</string>
+    <string name="schedule_month">日程-月</string>
+    <string name="deadline">计时</string>
+    <string name="todolist">任务</string>
+
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="week">星期</string>
+
+    <string name="time0">00:00</string>
+    <string name="time2">02:00</string>
+    <string name="time4">04:00</string>
+    <string name="time6">06:00</string>
+    <string name="time8">08:00</string>
+    <string name="time10">10:00</string>
+    <string name="time12">12:00</string>
+    <string name="time14">14:00</string>
+</resources>

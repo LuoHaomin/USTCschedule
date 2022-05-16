@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/fragment_schedule"
+        android:icon="@drawable/ic_schedule"
+        android:title="@string/schedule" />
+
+    <item
+        android:id="@+id/fragment_deadline"
+        android:icon="@drawable/ic_deadline"
+        android:title="@string/deadline" />
+
+    <item
+        android:id="@+id/fragment_todolist"
+        android:icon="@drawable/ic_todolist"
+        android:title="@string/todolist" />
+
+</menu>
