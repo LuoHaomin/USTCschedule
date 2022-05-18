@@ -21,13 +21,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
+        android:background="@drawable/time_label"
         android:text="@string/time0"
         android:textSize="10sp"
-        android:background="@drawable/time_label"
         app:layout_constraintBottom_toBottomOf="@id/time_line0"
         app:layout_constraintStart_toStartOf="@id/time_line0"
         app:layout_constraintTop_toTopOf="@id/time_line0"
-        tools:ignore="SmallSp" />
+        tools:ignore="SmallSp,TextContrastCheck" />
 
     <View
         android:id="@+id/time_line2"
@@ -305,7 +305,7 @@
         app:layout_constraintTop_toTopOf="@id/time_line24"
         tools:ignore="SmallSp" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_day_content"
