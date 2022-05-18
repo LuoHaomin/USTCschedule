@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
 
 public class DayScheduleFragment extends Fragment {
 
