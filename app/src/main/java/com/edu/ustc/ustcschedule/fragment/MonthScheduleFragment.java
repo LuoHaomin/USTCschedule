@@ -1,10 +1,9 @@
-package cn.edu.ustc.ustcschedule.fragment;
+package com.edu.ustc.ustcschedule.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import cn.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.R;
 
 public class MonthScheduleFragment extends Fragment {
 

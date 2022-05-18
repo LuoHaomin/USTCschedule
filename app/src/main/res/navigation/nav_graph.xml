@@ -8,7 +8,7 @@
     <!--Fragment_schedule-->
     <fragment
         android:id="@+id/fragment_schedule"
-        android:name="cn.edu.ustc.ustcschedule.fragment.DayScheduleFragment"
+        android:name="com.edu.ustc.ustcschedule.fragment.DayScheduleFragment"
         android:label="@string/schedule"
         tools:layout="@layout/fragment_schedule_day">
         <!--Add actions-->
@@ -38,7 +38,7 @@
     <!--Fragment_schedule_week-->
     <fragment
         android:id="@+id/fragment_schedule_week"
-        android:name="cn.edu.ustc.ustcschedule.fragment.WeekScheduleFragment"
+        android:name="com.edu.ustc.ustcschedule.fragment.WeekScheduleFragment"
         android:label="@string/schedule_week"
         tools:layout="@layout/fragment_schedule_week">
         <!--Add actions-->
@@ -54,7 +54,7 @@
     <!--Fragment_schedule_month-->
     <fragment
         android:id="@+id/fragment_schedule_month"
-        android:name="cn.edu.ustc.ustcschedule.fragment.MonthScheduleFragment"
+        android:name="com.edu.ustc.ustcschedule.fragment.MonthScheduleFragment"
         android:label="@string/schedule_month"
         tools:layout="@layout/fragment_schedule_month">
         <!--Add actions-->
@@ -70,7 +70,7 @@
     <!--Fragment_deadline-->
     <fragment
         android:id="@+id/fragment_deadline"
-        android:name="cn.edu.ustc.ustcschedule.fragment.DeadlineFragment"
+        android:name="com.edu.ustc.ustcschedule.fragment.DeadlineFragment"
         android:label="@string/deadline"
         tools:layout="@layout/fragment_deadline">
         <!--Add actions-->
@@ -93,7 +93,7 @@
     <!--Fragment_todolist-->
     <fragment
         android:id="@+id/fragment_todolist"
-        android:name="cn.edu.ustc.ustcschedule.fragment.TodolistFragment"
+        android:name="com.edu.ustc.ustcschedule.fragment.TodolistFragment"
         android:label="@string/todolist"
         tools:layout="@layout/fragment_todolist">
         <!--Add actions-->

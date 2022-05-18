@@ -1,4 +1,4 @@
-package cn.edu.ustc.ustcschedule;
+package com.edu.ustc.ustcschedule;
 
 import android.content.Context;
 

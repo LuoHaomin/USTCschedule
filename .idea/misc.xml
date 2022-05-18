@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1735" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable-v24/lesson_label.xml" value="0.105" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/blue_label_small.xml" value="0.192" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic__.xml" value="0.1515" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic___.xml" value="0.1735" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic____1.xml" value="0.1735" />
@@ -60,7 +61,7 @@
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/font/text_font.xml" value="0.2222222222222222" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_deadline.xml" value="0.1671195652173913" />
-        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_day.xml" value="0.2" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_day.xml" value="0.264" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_month.xml" value="0.2" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_week.xml" value="0.1671195652173913" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_todolist.xml" value="0.1671195652173913" />

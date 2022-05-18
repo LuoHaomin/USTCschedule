@@ -21,4 +21,9 @@
     <string name="time10">10:00</string>
     <string name="time12">12:00</string>
     <string name="time14">14:00</string>
+    <string name="time16">16:00</string>
+    <string name="time18">18:00</string>
+    <string name="time20">20:00</string>
+    <string name="time22">22:00</string>
+    <string name="time24">24:00</string>
 </resources>

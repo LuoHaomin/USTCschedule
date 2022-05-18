@@ -1,4 +1,4 @@
-package cn.edu.ustc.ustcschedule;
+package com.edu.ustc.ustcschedule;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;

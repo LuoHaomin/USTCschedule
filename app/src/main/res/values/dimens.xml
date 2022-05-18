@@ -12,5 +12,8 @@
 
     <dimen name="event_label_padding_top">8dp</dimen>
 
+    <dimen name="small_label_padding_horizontal">6dp</dimen>
+
+    <dimen name="small_label_padding_vertical">2dp</dimen>
 
 </resources>
