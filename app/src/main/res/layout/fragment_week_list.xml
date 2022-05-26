@@ -7,6 +7,76 @@
     android:orientation="vertical">
 
     <View
+        android:id="@+id/today_label"
+        android:layout_width="45dp"
+        android:layout_height="1228dp"
+        android:background="@color/today_bg"
+        android:layout_marginStart="225dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_label_text0"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/div_sun_mon"
+        android:layout_width="1dp"
+        android:layout_height="1228dp"
+        android:background="@color/calendar_div"
+        android:layout_marginStart="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_label_text0"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/div_mon_tue"
+        android:layout_width="1dp"
+        android:layout_height="1228dp"
+        android:background="@color/calendar_div"
+        android:layout_marginStart="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_label_text0"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/div_tue_wed"
+        android:layout_width="1dp"
+        android:layout_height="1228dp"
+        android:background="@color/calendar_div"
+        android:layout_marginStart="135dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_label_text0"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/div_wed_thu"
+        android:layout_width="1dp"
+        android:layout_height="1228dp"
+        android:background="@color/calendar_div"
+        android:layout_marginStart="180dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_label_text0"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/div_thu_fri"
+        android:layout_width="1dp"
+        android:layout_height="1228dp"
+        android:background="@color/calendar_div"
+        android:layout_marginStart="225dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_label_text0"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/div_fri_sat"
+        android:layout_width="1dp"
+        android:layout_height="1228dp"
+        android:background="@color/calendar_div"
+        android:layout_marginStart="270dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/time_label_text0"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
         android:id="@+id/time_line0"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -309,7 +379,7 @@
         android:id="@+id/day_content_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.edu.ustc.ustcschedule.fragment.DayContentFragment"
+        android:name="com.edu.ustc.ustcschedule.fragment.WeekContentFragment"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

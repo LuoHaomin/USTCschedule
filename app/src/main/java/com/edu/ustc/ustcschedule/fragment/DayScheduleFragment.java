@@ -12,15 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.edu.ustc.ustcschedule.R;
-import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
+import com.edu.ustc.ustcschedule.databinding.FragmentScheduleDayBinding;
 
 public class DayScheduleFragment extends Fragment {
+
+    private FragmentScheduleDayBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_schedule_day, container, false);
+        binding = FragmentScheduleDayBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        return root;
     }
 
     @Override

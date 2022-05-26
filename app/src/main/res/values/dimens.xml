@@ -16,4 +16,8 @@
 
     <dimen name="small_label_padding_vertical">2dp</dimen>
 
+    <dimen name="current_time_label_padding_left">2dp</dimen>
+
+    <dimen name="current_time_label_padding_right">4dp</dimen>
+
 </resources>

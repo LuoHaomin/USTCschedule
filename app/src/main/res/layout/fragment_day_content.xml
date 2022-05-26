@@ -1,244 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
 
-    <data>
+    android:layout_width="match_parent"
+    android:layout_height="1226dp"
+    android:orientation="vertical">
 
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--Blue label-->
+    <ImageView
+        android:id="@+id/lesson_label"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="100dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/blue_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!--Blue label-->
-        <ImageView
-            android:id="@+id/lesson_label"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="360dp"
-            android:background="@drawable/blue_label"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <TextView
+        android:id="@+id/lesson_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:text="数学分析(B2)"
+        android:textColor="@color/blue_label_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/lesson_label"
+        app:layout_constraintTop_toTopOf="@id/lesson_label" />
 
-        <TextView
-            android:id="@+id/lesson_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="14dp"
-            android:text="数学分析(B2)"
-            android:textColor="@color/blue_label_text"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/lesson_label"
-            app:layout_constraintTop_toTopOf="@id/lesson_label" />
+    <TextView
+        android:id="@+id/lesson_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="王建伟"
+        android:textColor="@color/normal"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/lesson_text"
+        app:layout_constraintTop_toBottomOf="@id/lesson_text" />
 
-        <TextView
-            android:id="@+id/lesson_teacher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="王建伟"
-            android:textColor="@color/normal"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@id/lesson_text"
-            app:layout_constraintTop_toBottomOf="@id/lesson_text" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/blue_label_small"
+        android:text="3C303"
+        android:textColor="@color/normal"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/lesson_label"
+        app:layout_constraintTop_toTopOf="@id/lesson_label" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/blue_label_small"
-            android:text="3C303"
-            android:textColor="@color/normal"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@id/lesson_label"
-            app:layout_constraintTop_toTopOf="@id/lesson_label" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="09:45"
+        android:textColor="@color/text_light"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/lesson_label"
+        app:layout_constraintStart_toStartOf="@id/lesson_label"
+        tools:ignore="SmallSp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="09:45"
-            android:textColor="@color/text_light"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@id/lesson_label"
-            app:layout_constraintStart_toStartOf="@id/lesson_label"
-            tools:ignore="SmallSp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:text="11:20"
+        android:textColor="@color/text_light"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/lesson_label"
+        app:layout_constraintTop_toBottomOf="@id/lesson_label"
+        tools:ignore="SmallSp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:text="11:20"
-            android:textColor="@color/text_light"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@id/lesson_label"
-            app:layout_constraintTop_toBottomOf="@id/lesson_label"
-            tools:ignore="SmallSp" />
+    <!--Green label-->
+    <ImageView
+        android:id="@+id/event_label"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="980dp"
+        android:background="@drawable/green_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageView
-            android:id="@+id/event_label"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="900dp"
-            android:background="@drawable/green_label"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <TextView
+        android:id="@+id/event_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:text="阅读"
+        android:textColor="@color/green_label_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/event_label"
+        app:layout_constraintTop_toTopOf="@id/event_label" />
 
-        <!--Green label-->
-        <TextView
-            android:id="@+id/event_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="14dp"
-            android:text="阅读"
-            android:textColor="@color/green_label_text"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/event_label"
-            app:layout_constraintTop_toTopOf="@id/event_label" />
+    <TextView
+        android:id="@+id/event_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="备注"
+        android:textColor="@color/normal"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/event_text"
+        app:layout_constraintTop_toBottomOf="@id/event_text" />
 
-        <TextView
-            android:id="@+id/event_note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="备注"
-            android:textColor="@color/normal"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@id/event_text"
-            app:layout_constraintTop_toBottomOf="@id/event_text" />
+    <TextView
+        android:id="@+id/event_importance_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/green_label_small"
+        android:text="import"
+        android:textColor="@color/green_label_bg"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/event_label"
+        app:layout_constraintTop_toTopOf="@id/event_label" />
 
-        <TextView
-            android:id="@+id/event_importance_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/green_label_small"
-            android:text="import"
-            android:textColor="@color/green_label_bg"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@id/event_label"
-            app:layout_constraintTop_toTopOf="@id/event_label" />
+    <ImageView
+        android:id="@+id/event_importance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_importance_blank"
+        android:backgroundTint="@color/green_label_text"
+        app:layout_constraintTop_toTopOf="@id/event_importance_label"
+        app:layout_constraintStart_toStartOf="@id/event_importance_label"
+        app:layout_constraintEnd_toEndOf="@id/event_importance_label"
+        app:layout_constraintBottom_toBottomOf="@id/event_importance_label" />
 
-        <ImageView
-            android:id="@+id/event_importance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_importance_blank"
-            android:backgroundTint="@color/green_label_text"
-            app:layout_constraintTop_toTopOf="@id/event_importance_label"
-            app:layout_constraintStart_toStartOf="@id/event_importance_label"
-            app:layout_constraintEnd_toEndOf="@id/event_importance_label"
-            app:layout_constraintBottom_toBottomOf="@id/event_importance_label" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="19:45"
+        android:textColor="@color/text_light"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/event_label"
+        app:layout_constraintStart_toStartOf="@id/event_label"
+        tools:ignore="SmallSp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="19:45"
-            android:textColor="@color/text_light"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@id/event_label"
-            app:layout_constraintStart_toStartOf="@id/event_label"
-            tools:ignore="SmallSp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:text="21:20"
+        android:textColor="@color/text_light"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/event_label"
+        app:layout_constraintTop_toBottomOf="@id/event_label"
+        tools:ignore="SmallSp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:text="21:20"
-            android:textColor="@color/text_light"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@id/event_label"
-            app:layout_constraintTop_toBottomOf="@id/event_label"
-            tools:ignore="SmallSp" />
+    <!--Yellow label-->
+    <ImageView
+        android:id="@+id/homework_label"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="650dp"
+        android:background="@drawable/yellow_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <!--Yellow label-->
-        <ImageView
-            android:id="@+id/homework_label"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="500dp"
-            android:background="@drawable/yellow_label"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <TextView
+        android:id="@+id/homework_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:text="作业"
+        android:textColor="@color/yellow_label_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/homework_label"
+        app:layout_constraintTop_toTopOf="@id/homework_label" />
 
-        <TextView
-            android:id="@+id/homework_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="14dp"
-            android:text="作业"
-            android:textColor="@color/yellow_label_text"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/homework_label"
-            app:layout_constraintTop_toTopOf="@id/homework_label" />
+    <TextView
+        android:id="@+id/homework_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="备注"
+        android:textColor="@color/normal"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/homework_text"
+        app:layout_constraintTop_toBottomOf="@id/homework_text" />
 
-        <TextView
-            android:id="@+id/homework_note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="备注"
-            android:textColor="@color/normal"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@id/homework_text"
-            app:layout_constraintTop_toBottomOf="@id/homework_text" />
+    <TextView
+        android:id="@+id/homework_importance_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/yellow_label_small"
+        android:text="import"
+        android:textColor="@color/yellow_label_bg"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/homework_label"
+        app:layout_constraintTop_toTopOf="@id/homework_label" />
 
-        <TextView
-            android:id="@+id/homework_importance_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/yellow_label_small"
-            android:text="import"
-            android:textColor="@color/yellow_label_bg"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@id/homework_label"
-            app:layout_constraintTop_toTopOf="@id/homework_label" />
+    <ImageView
+        android:id="@+id/homework_importance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_importance_blank"
+        android:backgroundTint="@color/yellow_label_text"
+        app:layout_constraintTop_toTopOf="@id/homework_importance_label"
+        app:layout_constraintStart_toStartOf="@id/homework_importance_label"
+        app:layout_constraintEnd_toEndOf="@id/homework_importance_label"
+        app:layout_constraintBottom_toBottomOf="@id/homework_importance_label" />
 
-        <ImageView
-            android:id="@+id/homework_importance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_importance_blank"
-            android:backgroundTint="@color/yellow_label_text"
-            app:layout_constraintTop_toTopOf="@id/homework_importance_label"
-            app:layout_constraintStart_toStartOf="@id/homework_importance_label"
-            app:layout_constraintEnd_toEndOf="@id/homework_importance_label"
-            app:layout_constraintBottom_toBottomOf="@id/homework_importance_label" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="13:20"
+        android:textColor="@color/text_light"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/homework_label"
+        app:layout_constraintStart_toStartOf="@id/homework_label"
+        tools:ignore="SmallSp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="12:45"
-            android:textColor="@color/text_light"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@id/homework_label"
-            app:layout_constraintStart_toStartOf="@id/homework_label"
-            tools:ignore="SmallSp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:text="14:20"
+        android:textColor="@color/text_light"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/homework_label"
+        app:layout_constraintTop_toBottomOf="@id/homework_label"
+        tools:ignore="SmallSp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:text="14:20"
-            android:textColor="@color/text_light"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="@id/homework_label"
-            app:layout_constraintTop_toBottomOf="@id/homework_label"
-            tools:ignore="SmallSp" />
+    <View
+        android:id="@+id/day_deadline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="760dp"
+        android:background="@color/deadline"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <TextView
+        android:id="@+id/day_deadline_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:text="15:00"
+        android:textSize="10sp"
+        android:textColor="@color/deadline_label"
+        android:background="@drawable/deadline_label"
+        app:layout_constraintBottom_toBottomOf="@id/day_deadline"
+        app:layout_constraintStart_toStartOf="@id/day_deadline"
+        app:layout_constraintTop_toTopOf="@id/day_deadline"
+        tools:ignore="SmallSp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
