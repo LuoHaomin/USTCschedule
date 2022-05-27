@@ -163,6 +163,83 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/lesson_3"
+        android:layout_width="45dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginStart="225dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/lesson3_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blue_label"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="数学分析(B2)"
+                android:textColor="@color/blue_label_text"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/lesson3_label"
+                app:layout_constraintTop_toTopOf="@id/lesson3_label"
+                app:layout_constraintEnd_toEndOf="@id/lesson3_label"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_label_small"
+                android:layout_marginBottom="12dp"
+                android:text="3C203"
+                android:textColor="@color/normal"
+                android:textSize="8sp"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@id/lesson3_label"
+                app:layout_constraintBottom_toBottomOf="@id/lesson3_label"
+                app:layout_constraintStart_toStartOf="@id/lesson3_label"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:text="09:45"
+                android:textColor="@color/text_light"
+                android:textSize="6sp"
+                app:layout_constraintTop_toTopOf="@id/lesson3_label"
+                app:layout_constraintStart_toStartOf="@id/lesson3_label"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="2dp"
+                android:text="11:20"
+                android:textColor="@color/text_light"
+                android:textSize="6sp"
+                app:layout_constraintEnd_toEndOf="@id/lesson3_label"
+                app:layout_constraintBottom_toBottomOf="@id/lesson3_label"
+                tools:ignore="SmallSp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <!--Yellow label-->
     <androidx.cardview.widget.CardView
         android:id="@+id/homework_1"

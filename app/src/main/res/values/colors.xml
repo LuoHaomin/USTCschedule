@@ -52,6 +52,7 @@
 
     <color name="green_label_bg_light">#FFF3FFFF</color>
     <color name="green_label_bg">#FFE8F8F2</color>
+    <color name="green_label_bg_deep">#FFBCEBDC</color>
     <color name="green_label_line">#3348C7C9</color>
     <color name="green_label_text">#FF00A870</color>
 </resources>

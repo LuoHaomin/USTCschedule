@@ -20,4 +20,6 @@
 
     <dimen name="current_time_label_padding_right">4dp</dimen>
 
+    <dimen name="days_label_padding">2dp</dimen>
+
 </resources>
