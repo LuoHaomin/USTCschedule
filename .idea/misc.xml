@@ -84,7 +84,13 @@
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/yellow_label_past_day.xml" value="0.164" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/font/text_font.xml" value="0.2222222222222222" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_day_content.xml" value="0.4" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_about.xml" value="0.2223731884057971" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_add_event.xml" value="0.2578125" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_add_event_courses.xml" value="0.2" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_add_event_deadline.xml" value="0.2578125" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_add_event_task.xml" value="0.2578125" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_add_event_todo.xml" value="0.264" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_day_content.xml" value="0.2" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_day_list.xml" value="0.2222222222222222" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_day_specific.xml" value="0.152" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_deadline.xml" value="0.1671195652173913" />
@@ -96,13 +102,14 @@
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_schedule_week.xml" value="0.264" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_todolist.xml" value="0.1671195652173913" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_todolist_list.xml" value="0.25885416666666666" />
-        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_week_content.xml" value="0.4" />
-        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_week_list.xml" value="0.264" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_week_content.xml" value="0.36589147286821705" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_week_list.xml" value="0.2753623188405797" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/fragment_week_weekdays.xml" value="0.25885416666666666" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/schedule_time.xml" value="0.22826086956521738" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/todolist.xml" value="0.22826086956521738" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/layout/top_fragment.xml" value="0.22826086956521738" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/menu/menu.xml" value="0.25885416666666666" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/menu/menu_add_event.xml" value="0.20466786355475763" />
       </map>
     </option>
   </component>

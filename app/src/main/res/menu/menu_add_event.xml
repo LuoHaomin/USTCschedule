@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/add_course"
+        android:title="@string/add_course" />
+
+    <item
+        android:id="@+id/add_task"
+        android:title="@string/add_task" />
+
+    <item
+        android:id="@+id/add_todo"
+        android:title="@string/add_todo" />
+
+</menu>

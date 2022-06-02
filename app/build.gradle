@@ -68,4 +68,7 @@ dependencies {
 
     // alternately - if using Java8, use the following instead of lifecycle-compiler
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    // used to add date and time picker
+    implementation 'com.github.loperSeven:DateTimePicker:0.5.8'
 }
