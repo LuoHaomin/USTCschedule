@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Main_database extends SQLiteOpenHelper {
 
+    public enum Category {
+        course,work_out,homework;
+    }
     private static final String DB_NAME="USTC_schedule";
     private static final int DB_VERSION=1;
 

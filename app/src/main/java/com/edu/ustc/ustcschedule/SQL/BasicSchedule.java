@@ -1,6 +1,7 @@
 package com.edu.ustc.ustcschedule.SQL;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -13,7 +14,7 @@ public class BasicSchedule {
     private long StartingTime;
 
     private int Importance;
-    private boolean IsRepeat;
+    private int IsRepeat;
     private int Period;
     private String Place;
     private String Description;
@@ -22,7 +23,7 @@ public class BasicSchedule {
 
 
     //日期和时间采用Java自带的时间和日期类,使用setYear等函数修改
-    public BasicSchedule(String name,long starting_time,int importance,boolean is_repeat,int period,String place,String description){
+    public BasicSchedule(String name,long starting_time,int importance,int is_repeat,int period,String place,String description){
         //No=0;
         Name=name;
         StartingTime=starting_time;
@@ -49,12 +50,42 @@ public class BasicSchedule {
         return info;
     }
 
+
+    public void setFromCursor(Cursor cursor)
+    {
+        this.setNo(cursor.getInt(cursor.getColumnIndexOrThrow("_id")));
+        this.setName(cursor.getString(cursor.getColumnIndexOrThrow("NAME")));
+        this.setStartingTime(cursor.getLong(cursor.getColumnIndexOrThrow("START_TIME")));
+        this.setImportance(cursor.getInt(cursor.getColumnIndexOrThrow("IMPORTANCE")));
+        this.setIsRepeat(cursor.getInt(cursor.getColumnIndexOrThrow("IS_REPEAT")));
+        this.setPeriod(cursor.getInt(cursor.getColumnIndexOrThrow("PERIOD")));
+        this.setPlace(cursor.getString(cursor.getColumnIndexOrThrow("PLACE")));
+        this.setDescription(cursor.getString(cursor.getColumnIndexOrThrow("DESCRIPTION")));
+        this.setCategory(cursor.getInt(cursor.getColumnIndexOrThrow("CATEGORY")));
+    }
+
     public int getNo() {
         return No;
     }
 
     public void setNo(int schNo) {
         No = schNo;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getIsRepeat() {
+        return IsRepeat;
+    }
+
+    public void setIsRepeat(int is_repeat) {
+        IsRepeat = is_repeat;
     }
 
 
@@ -90,11 +121,11 @@ public class BasicSchedule {
         Period = period;
     }
 
-    public boolean isRepeat() {
+    public int isRepeat() {
         return IsRepeat;
     }
 
-    public void setRepeat(boolean repeat) {
+    public void setRepeat(int repeat) {
         IsRepeat = repeat;
     }
 
@@ -104,5 +135,9 @@ public class BasicSchedule {
 
     public void setImportance(int importance) {
         Importance = importance;
+    }
+
+    public void setCategory(int category) {
+        Category = category;
     }
 }

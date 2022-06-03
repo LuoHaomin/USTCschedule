@@ -23,6 +23,8 @@ import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     private ActivityMainBinding binding;
     BottomNavigationView bottomNavigation;
 
