@@ -1,5 +1,7 @@
 package com.edu.ustc.ustcschedule.SQL;
 
+import android.content.ContentValues;
+
 import java.sql.Time;
 import java.util.Date;
 
@@ -14,6 +16,14 @@ public class MySchedule extends BasicSchedule{
         super(name,starting_time,importance,is_repeat,period,place,description);
         this.EndingTime = ending_time;
         this.TimeLength=EndingTime-super.getStartingTime();
+    }
+
+    public ContentValues getContentValues(){
+        ContentValues info=super.getContentValues();
+        info.put("END_TIME",EndingTime);
+        info.put("TIME_LENGTH",TimeLength);
+
+        return info;
     }
 
 

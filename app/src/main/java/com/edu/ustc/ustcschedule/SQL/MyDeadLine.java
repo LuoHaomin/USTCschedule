@@ -1,5 +1,7 @@
 package com.edu.ustc.ustcschedule.SQL;
 
+import android.content.ContentValues;
+
 import java.sql.Time;
 import java.util.Date;
 
@@ -13,6 +15,13 @@ public class MyDeadLine extends BasicSchedule{
         this.WorkLoad=work_load;
 
 
+    }
+
+    public ContentValues getContentValues(){
+        ContentValues info=super.getContentValues();
+        info.put("WORK_LOAD",WorkLoad);
+
+        return info;
     }
 
 
