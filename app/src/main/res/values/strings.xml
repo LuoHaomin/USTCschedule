@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">USTC schedule</string>
     <string name="author">制作人</string>
+    <string name="copyright">&#160;&#160;&#160;&#160;&#160;&#160;USTC-schedule</string>
 
     <string name="schedule">日程</string>
     <string name="schedule_day">日程-日</string>
@@ -70,6 +71,23 @@
     <string name="cancel">取消</string>
     <string name="quit">退出</string>
 
+    <string name="move">日程转移</string>
+    <string name="save_template">保存模板</string>
+    <string name="share">分享日程</string>
+    <string name="remind_book">借阅提醒</string>
+    <string name="setting">设置</string>
+    <string name="about">关于</string>
+    <string name="help">帮助</string>
+
+    <string name="personal_info">个人信息</string>
+    <string name="profile_check">登录同一身份认证</string>
+    <string name="check_update">检查更新</string>
+    <string name="auto_update">自动更新</string>
+    <string name="permission_manager">权限管理</string>
+    <string name="reminder_manager">通知管理</string>
+    <string name="personalization">个性化</string>
+    <string name="focus">禅</string>
+    <string name="profile_check_summary">开启后，课表将自动导入个人日程</string>
 
     <string-array name="task_type_array_name">
         <item>作业</item>

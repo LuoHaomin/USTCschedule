@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
@@ -16,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
+import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
 import com.edu.ustc.ustcschedule.databinding.FragmentScheduleDayBinding;
 import com.edu.ustc.ustcschedule.dialogs.AddCourseDialog;
@@ -31,28 +31,17 @@ public class DayScheduleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentScheduleDayBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        return root;
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton jump_fragment_schedule_week = view.findViewById(R.id.day_mode);
-        jump_fragment_schedule_week.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(getView()).navigate(R.id.action_schedule_day_to_week);
-            }
-        });
-        ImageButton add_events = view.findViewById(R.id.add_events);
-        add_events.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onAddEvent(view);
-            }
-        });
+        view.findViewById(R.id.day_mode).setOnClickListener(view1 -> Navigation.findNavController(
+                requireView()).navigate(R.id.action_schedule_day_to_week));
+        view.findViewById(R.id.add_events).setOnClickListener(this::onAddEvent);
+        view.findViewById(R.id.side_bar).setOnClickListener(view2 -> MainActivity.result.openDrawer());
     }
 
     private void onAddEvent(View view) {
@@ -66,7 +55,6 @@ public class DayScheduleFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                // The device is smaller, so show the fragment fullscreen
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 switch (item.getItemId()) {
                     case R.id.add_course:

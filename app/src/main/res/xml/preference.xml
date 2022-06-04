@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/setting" >
+
+    <PreferenceCategory
+        android:key="profile_category" >
+
+        <PreferenceScreen
+            android:title="@string/personal_info" >
+            <intent android:action="android.intent.action.VIEW"
+                android:data="http://www.android.com" />
+        </PreferenceScreen>
+
+        <SwitchPreference
+            android:key="profile_check"
+            android:title="@string/profile_check"
+            android:summary="@string/profile_check_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="manager" >
+
+        <PreferenceScreen
+            android:title="@string/check_update" >
+
+        </PreferenceScreen>
+
+        <SwitchPreference
+            android:key="auto_update"
+            android:title="@string/auto_update" />
+
+        <PreferenceScreen
+            android:title="@string/permission_manager" >
+
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="@string/reminder_manager" >
+
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="other" >
+
+        <PreferenceScreen
+            android:title="@string/personalization" >
+
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="@string/focus" >
+
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
