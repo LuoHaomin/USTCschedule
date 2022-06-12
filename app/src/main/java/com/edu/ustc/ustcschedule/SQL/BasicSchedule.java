@@ -2,9 +2,12 @@ package com.edu.ustc.ustcschedule.SQL;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BasicSchedule {
 
@@ -19,11 +22,12 @@ public class BasicSchedule {
     private String Place;
     private String Description;
     private int Category;
+    private int IsFinish;
 
 
 
     //日期和时间采用Java自带的时间和日期类,使用setYear等函数修改
-    public BasicSchedule(String name,long starting_time,int importance,int is_repeat,int period,String place,String description){
+    public BasicSchedule(String name,long starting_time,int importance,int is_repeat,int period,String place,String description,int is_finish){
         //No=0;
         Name=name;
         StartingTime=starting_time;
@@ -32,6 +36,12 @@ public class BasicSchedule {
         Period=period;
         Place=place;
         Description=description;
+        IsFinish=is_finish;
+
+
+    }
+    public BasicSchedule(Cursor cursor){
+        this.setFromCursor(cursor);
 
 
     }
@@ -46,9 +56,25 @@ public class BasicSchedule {
         info.put("PLACE",Place);
         info.put("DESCRIPTION",Description);
         info.put("CATEGORY",Category);
-
+        info.put("IS_FINISH",IsFinish);
         return info;
     }
+
+    public Map getMap() {
+        Map<String, Object> info = new HashMap<String, Object>();
+        info.put("NAME",Name);
+        info.put("START_TIME",StartingTime);
+        info.put("IMPORTANCE",Importance);
+        info.put("IS_REPEAT",IsRepeat);
+        info.put("PERIOD",Period);
+        info.put("PLACE",Place);
+        info.put("DESCRIPTION",Description);
+        info.put("CATEGORY",Category);
+        info.put("IS_FINISH",IsFinish);
+        return info;
+    }
+
+
 
 
     public void setFromCursor(Cursor cursor)
@@ -62,7 +88,10 @@ public class BasicSchedule {
         this.setPlace(cursor.getString(cursor.getColumnIndexOrThrow("PLACE")));
         this.setDescription(cursor.getString(cursor.getColumnIndexOrThrow("DESCRIPTION")));
         this.setCategory(cursor.getInt(cursor.getColumnIndexOrThrow("CATEGORY")));
+        IsFinish=cursor.getInt(cursor.getColumnIndexOrThrow("IS_FINISH"));
     }
+
+
 
     public int getNo() {
         return No;
