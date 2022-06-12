@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 
 import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.ClassTextInit;
 import com.edu.ustc.ustcschedule.databinding.FragmentScheduleWeekBinding;
 
 public class WeekScheduleFragment extends Fragment {
@@ -30,6 +31,8 @@ public class WeekScheduleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ClassTextInit textInit = new ClassTextInit();
+        textInit.initText(view);
         view.findViewById(R.id.week_mode).setOnClickListener(view1 -> Navigation.findNavController(
                 requireView()).navigate(R.id.action_schedule_week_to_month));
         view.findViewById(R.id.side_bar).setOnClickListener(view2 -> MainActivity.result.openDrawer());

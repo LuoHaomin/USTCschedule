@@ -13,6 +13,7 @@ import com.loper7.date_time_picker.dialog.CardDatePickerDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import com.edu.ustc.ustcschedule.R;
 
@@ -22,7 +23,7 @@ public class DateEditText extends androidx.appcompat.widget.AppCompatEditText {
     private Calendar c;
     private boolean datePickerEnabled = true;
     @SuppressLint("SimpleDateFormat")
-    private final SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日");
+    private final SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日", Locale.CHINA);
 
     public DateEditText(Context context) {
         super(context);

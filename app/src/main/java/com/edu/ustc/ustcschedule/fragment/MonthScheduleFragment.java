@@ -30,6 +30,7 @@ public class MonthScheduleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         view.findViewById(R.id.month_mode).setOnClickListener(view1 -> Navigation.findNavController(
                 requireView()).navigate(R.id.action_schedule_month_to_day));
         view.findViewById(R.id.side_bar).setOnClickListener(view2 -> MainActivity.result.openDrawer());

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.ClassTextInit;
 import com.edu.ustc.ustcschedule.databinding.FragmentTodolistBinding;
 
 public class TodolistFragment extends Fragment {
@@ -28,6 +29,8 @@ public class TodolistFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ClassTextInit textInit = new ClassTextInit();
+        textInit.initText(view);
         view.findViewById(R.id.side_bar).setOnClickListener(view2 -> MainActivity.result.openDrawer());
     }
 }

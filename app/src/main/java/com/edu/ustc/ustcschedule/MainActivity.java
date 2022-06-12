@@ -2,7 +2,6 @@ package com.edu.ustc.ustcschedule;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -11,16 +10,23 @@ import androidx.navigation.ui.NavigationUI;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
 import com.edu.ustc.ustcschedule.dialogs.AboutDialog;
-import com.edu.ustc.ustcschedule.dialogs.AddTodoDialog;
+import com.edu.ustc.ustcschedule.dialogs.BorrowReminderDialog;
 import com.edu.ustc.ustcschedule.dialogs.HelpDialog;
+import com.edu.ustc.ustcschedule.dialogs.MoveDialog;
+import com.edu.ustc.ustcschedule.dialogs.SaveTemplateDialog;
+import com.edu.ustc.ustcschedule.dialogs.ShareDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -103,21 +109,34 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if (drawerItem!=null) {
                         if (drawerItem.getIdentifier() == 1) {
-
+                            MoveDialog moveDialog = new MoveDialog();
+                            getSupportFragmentManager().beginTransaction()
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                    .add(android.R.id.content, moveDialog)
+                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 2) {
-
+                            SaveTemplateDialog saveTemplateDialog = new SaveTemplateDialog();
+                            getSupportFragmentManager().beginTransaction()
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                    .add(android.R.id.content, saveTemplateDialog)
+                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 3) {
-
+                            ShareDialog shareDialog =  new ShareDialog();
+                            shareDialog.show(getSupportFragmentManager(), "share");
                         } else if (drawerItem.getIdentifier() == 4) {
-
+                            BorrowReminderDialog borrowReminderDialog = new BorrowReminderDialog();
+                            getSupportFragmentManager().beginTransaction()
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                    .add(android.R.id.content, borrowReminderDialog)
+                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 5) {
                             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                             startActivity(intent);
                         } else if (drawerItem.getIdentifier() == 6) {
-                            HelpDialog helpFragment = new HelpDialog();
+                            HelpDialog helpDialog = new HelpDialog();
                             getSupportFragmentManager().beginTransaction()
                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .add(android.R.id.content, helpFragment)
+                                    .add(android.R.id.content, helpDialog)
                                     .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 7) {
                             AboutDialog aboutDialog = new AboutDialog();

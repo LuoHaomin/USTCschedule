@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 
 import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.ClassTextInit;
 import com.edu.ustc.ustcschedule.databinding.FragmentScheduleDayBinding;
 import com.edu.ustc.ustcschedule.dialogs.AddCourseDialog;
 import com.edu.ustc.ustcschedule.dialogs.AddTaskDialog;
@@ -38,6 +39,8 @@ public class DayScheduleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ClassTextInit textInit = new ClassTextInit();
+        textInit.initText(view);
         view.findViewById(R.id.day_mode).setOnClickListener(view1 -> Navigation.findNavController(
                 requireView()).navigate(R.id.action_schedule_day_to_week));
         view.findViewById(R.id.add_events).setOnClickListener(this::onAddEvent);
@@ -91,25 +94,35 @@ public class DayScheduleFragment extends Fragment {
         PopupMenu popupMenu = new PopupMenu(this.getContext(), view);
         // menu布局
         popupMenu.getMenuInflater().inflate(R.menu.menu_filter, popupMenu.getMenu());
+
         // menu的item点击事件
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                item.setChecked(!item.isChecked());
-                switch (item.getItemId()) {
-                    case R.id.filter_courses:
+        popupMenu.setOnMenuItemClickListener(item -> {
+            boolean check = item.isChecked();
+            item.setChecked(!check);
+            switch (item.getItemId()) {
+                case R.id.filter_courses:
+                    // TODO 修改显示与否
+                    break;
+                case R.id.filter_exercise:
 
-                        break;
-                    case R.id.add_task:
+                    break;
+                case R.id.filter_homework:
 
-                        break;
-                    case R.id.add_todo:
+                    break;
+                case R.id.filter_todo:
 
-                        break;
-                }
-                return false;
+                    break;
+                case R.id.filter_least:
+
+                    break;
+                case R.id.filter_imp:
+
+                    break;
+                case R.id.filter_most:
+
+                    break;
             }
+            return false;
         });
         popupMenu.show();
     }

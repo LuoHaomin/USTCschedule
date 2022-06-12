@@ -129,30 +129,17 @@
 
 
     <TextView
-        android:id="@+id/text_week"
+        android:id="@+id/text_current_week"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:lineSpacingExtra="8sp"
-        android:text="@string/week"
         android:textColor="@color/text_deep"
         android:textAlignment="textStart"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/text_current_month2"
         app:layout_constraintStart_toEndOf="@id/text_day" />
 
-
-    <TextView
-        android:id="@+id/text_current_week"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="8sp"
-        android:text="五"
-        android:textColor="@color/text_deep"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/text_current_month2"
-        app:layout_constraintStart_toEndOf="@id/text_week"/>
 
     <ImageButton
         android:id="@+id/side_bar"
