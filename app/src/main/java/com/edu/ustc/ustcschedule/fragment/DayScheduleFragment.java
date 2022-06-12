@@ -42,6 +42,7 @@ public class DayScheduleFragment extends Fragment {
                 requireView()).navigate(R.id.action_schedule_day_to_week));
         view.findViewById(R.id.add_events).setOnClickListener(this::onAddEvent);
         view.findViewById(R.id.side_bar).setOnClickListener(view2 -> MainActivity.result.openDrawer());
+        view.findViewById(R.id.filter).setOnClickListener(this::onFilter);
     }
 
     private void onAddEvent(View view) {
@@ -80,6 +81,34 @@ public class DayScheduleFragment extends Fragment {
                         break;
                 }
                 return true;
+            }
+        });
+        popupMenu.show();
+    }
+
+    private void onFilter(View view) {
+        // View当前PopupMenu显示的相对View的位置
+        PopupMenu popupMenu = new PopupMenu(this.getContext(), view);
+        // menu布局
+        popupMenu.getMenuInflater().inflate(R.menu.menu_filter, popupMenu.getMenu());
+        // menu的item点击事件
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                item.setChecked(!item.isChecked());
+                switch (item.getItemId()) {
+                    case R.id.filter_courses:
+
+                        break;
+                    case R.id.add_task:
+
+                        break;
+                    case R.id.add_todo:
+
+                        break;
+                }
+                return false;
             }
         });
         popupMenu.show();

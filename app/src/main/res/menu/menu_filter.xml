@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="all">
+        <item android:id="@+id/filter_courses"
+            android:title="@string/courses" />
+        <item android:id="@+id/filter_exercise"
+            android:title="@string/exercise" />
+        <item android:id="@+id/filter_homework"
+            android:title="@string/homework" />
+        <item android:id="@+id/filter_todo"
+            android:title="@string/todolist" />
+    </group>
+    <group android:checkableBehavior="all">
+        <item android:id="@+id/filter_least"
+            android:title="@string/least_important" />
+        <item android:id="@+id/filter_imp"
+            android:title="@string/important" />
+        <item android:id="@+id/filter_most"
+            android:title="@string/most_important" />
+
+    </group>
+
+</menu>

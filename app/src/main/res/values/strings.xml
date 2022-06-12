@@ -87,7 +87,11 @@
     <string name="reminder_manager">通知管理</string>
     <string name="personalization">个性化</string>
     <string name="focus">禅</string>
-    <string name="profile_check_summary">开启后，课表将自动导入个人日程</string>
+    <string name="profile_check_summary">开启课表可自动导入</string>
+
+    <string name="least_important">重要</string>
+    <string name="important">较重要</string>
+    <string name="most_important">很重要</string>
 
     <string-array name="task_type_array_name">
         <item>作业</item>

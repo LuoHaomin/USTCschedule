@@ -5,15 +5,15 @@
     <PreferenceCategory
         android:key="profile_category" >
 
-        <PreferenceScreen
-            android:title="@string/personal_info" >
-            <intent android:action="android.intent.action.VIEW"
-                android:data="http://www.android.com" />
-        </PreferenceScreen>
+        <Preference
+            android:title="@string/personal_info"
+            android:icon="@drawable/ic_user" >
+        </Preference>
 
         <SwitchPreference
             android:key="profile_check"
             android:title="@string/profile_check"
+            android:icon="@drawable/ic_secured"
             android:summary="@string/profile_check_summary" />
 
     </PreferenceCategory>
@@ -21,39 +21,46 @@
     <PreferenceCategory
         android:key="manager" >
 
-        <PreferenceScreen
-            android:title="@string/check_update" >
+        <Preference
+            android:title="@string/check_update"
+            android:icon="@drawable/ic_time">
 
-        </PreferenceScreen>
+        </Preference>
 
         <SwitchPreference
             android:key="auto_update"
-            android:title="@string/auto_update" />
+            android:title="@string/auto_update"
+            android:icon="@drawable/ic_refresh" />
 
-        <PreferenceScreen
-            android:title="@string/permission_manager" >
+        <Preference
+            android:title="@string/permission_manager"
+            android:icon="@drawable/ic_lock_off" >
 
-        </PreferenceScreen>
+        </Preference>
 
-        <PreferenceScreen
-            android:title="@string/reminder_manager" >
+        <Preference
+            android:title="@string/reminder_manager"
+            android:icon="@drawable/ic_notification" >
 
-        </PreferenceScreen>
+        </Preference>
 
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="other" >
 
-        <PreferenceScreen
-            android:title="@string/personalization" >
+        <Preference
+            android:title="@string/personalization"
+            android:icon="@drawable/ic_tips"
+            >
 
-        </PreferenceScreen>
+        </Preference>
 
-        <PreferenceScreen
-            android:title="@string/focus" >
+        <Preference
+            android:title="@string/focus"
+            android:icon="@drawable/ic_hourglass">
 
-        </PreferenceScreen>
+        </Preference>
 
     </PreferenceCategory>
 

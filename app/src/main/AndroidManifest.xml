@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.USTCSchedule">
         <activity
-            android:name="com.edu.ustc.ustcschedule.MainActivity"
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="type_spinner_style"  parent="@android:style/Widget.TextView.SpinnerItem">
         <item name="android:textSize">20sp</item><!--可以按照自己的情况在里面设定-->
         <item name="android:textAlignment">textEnd</item>
+    </style>
+    <style name="SwitchPreference" parent="Preference.SwitchPreferenceCompat.Material">
+        <item name="android:layout" tools:ignore="PrivateResource">@layout/preference_material</item>
+        <item name="android:widgetLayout" tools:ignore="PrivateResource">@layout/preference_widget_switch</item>
     </style>
 </resources>

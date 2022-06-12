@@ -2,15 +2,20 @@ package com.edu.ustc.ustcschedule;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
 import com.edu.ustc.ustcschedule.dialogs.AboutDialog;
+import com.edu.ustc.ustcschedule.dialogs.AddTodoDialog;
+import com.edu.ustc.ustcschedule.dialogs.HelpDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -106,16 +111,21 @@ public class MainActivity extends AppCompatActivity {
                         } else if (drawerItem.getIdentifier() == 4) {
 
                         } else if (drawerItem.getIdentifier() == 5) {
-
+                            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                            startActivity(intent);
                         } else if (drawerItem.getIdentifier() == 6) {
-
+                            HelpDialog helpFragment = new HelpDialog();
+                            getSupportFragmentManager().beginTransaction()
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                    .add(android.R.id.content, helpFragment)
+                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 7) {
                             AboutDialog aboutDialog = new AboutDialog();
                             aboutDialog.show(getSupportFragmentManager(), "about");
                         }
                     }
 
-                    return false;
+                    return true;
                 })
                 .build();
         result.getDrawerLayout().setStatusBarBackgroundColor(getResources().getColor(R.color.div_line));
