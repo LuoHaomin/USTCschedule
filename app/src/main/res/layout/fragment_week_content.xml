@@ -86,7 +86,7 @@
     <!--Blue label-->
     <androidx.cardview.widget.CardView
         android:id="@+id/lesson_1"
-        android:layout_width="50dp"
+        android:layout_width="44dp"
         android:layout_height="100dp"
         android:layout_marginTop="480dp"
         app:layout_constraintStart_toEndOf="@id/div_sun_mon"
@@ -164,7 +164,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/lesson_2"
-        android:layout_width="50dp"
+        android:layout_width="44dp"
         android:layout_height="100dp"
         android:layout_marginTop="480dp"
         app:layout_constraintStart_toEndOf="@id/div_mon_tue"
@@ -241,7 +241,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/lesson_3"
-        android:layout_width="50dp"
+        android:layout_width="44dp"
         android:layout_height="100dp"
         android:layout_marginTop="480dp"
         app:layout_constraintStart_toEndOf="@id/div_thu_fri"
@@ -319,7 +319,7 @@
     <!--Yellow label-->
     <androidx.cardview.widget.CardView
         android:id="@+id/homework_1"
-        android:layout_width="50dp"
+        android:layout_width="44dp"
         android:layout_height="80dp"
         android:layout_marginTop="650dp"
         app:layout_constraintStart_toEndOf="@id/div_sun_mon"
@@ -409,7 +409,7 @@
     <!--Green label-->
     <androidx.cardview.widget.CardView
         android:id="@+id/event_1"
-        android:layout_width="50dp"
+        android:layout_width="44dp"
         android:layout_height="80dp"
         android:layout_marginTop="980dp"
         app:layout_constraintStart_toEndOf="@id/div_sun_mon"
@@ -500,11 +500,11 @@
         android:id="@+id/mon_deadline"
         android:layout_width="45dp"
         android:layout_height="1dp"
-        android:layout_marginStart="45dp"
+
         android:layout_marginTop="760dp"
         android:background="@color/deadline"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/div_sun_mon"
+        app:layout_constraintEnd_toStartOf="@id/div_mon_tue"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -525,11 +525,10 @@
         android:id="@+id/fri_deadline"
         android:layout_width="45dp"
         android:layout_height="1dp"
-        android:layout_marginStart="225dp"
         android:layout_marginTop="760dp"
         android:background="@color/deadline"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/div_thu_fri"
+        app:layout_constraintEnd_toStartOf="@id/div_fri_sat"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
