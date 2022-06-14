@@ -2,6 +2,7 @@ package com.edu.ustc.ustcschedule.fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,10 +14,11 @@ import androidx.preference.SwitchPreference;
 import com.edu.ustc.ustcschedule.R;
 import com.edu.ustc.ustcschedule.dialogs.CheckUpdateDialog;
 import com.edu.ustc.ustcschedule.dialogs.PersonalInfoDialog;
+import com.edu.ustc.ustcschedule.dialogs.SignInDialog;
 
 import java.util.Objects;
 
-public class SettingFragment extends PreferenceFragmentCompat  {
+public class SettingFragment extends PreferenceFragmentCompat {
     private SharedPreferences sharedPreferences = null;
 
     @Override
@@ -36,17 +38,28 @@ public class SettingFragment extends PreferenceFragmentCompat  {
 
         //用于取值的SharedPreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-//        if(sharedPreferences.getString("profile_check","").equals("true")){
-//            if (personal_info!=null) {
-//                personal_info.setVisible(true);
-//            }
-//        }
+        if (sharedPreferences.getBoolean("@string/profile_check", false)) {
+            if (personal_info != null) {
+                personal_info.setVisible(true);
+            }
+        } else {
+            if (profile_check != null) {
+                profile_check.setChecked(false);
+            }
+        }
 
         Objects.requireNonNull(profile_check).setOnPreferenceChangeListener((preference, newValue) -> {
-            if(profile_check.equals(preference)){
-                boolean value = (Boolean)(newValue);
-                if(personal_info!=null) {
+            if (profile_check.equals(preference)) {
+                boolean value = (Boolean) (newValue);
+                if (value) {
+                    SignInDialog signInDialog = new SignInDialog();
+                    signInDialog.show(getParentFragmentManager(), "sign_in");
+                }
+                editor.putBoolean("@string/profile_check", value);
+                editor.apply();
+                if (personal_info != null) {
                     personal_info.setVisible(value);
                 }
             }

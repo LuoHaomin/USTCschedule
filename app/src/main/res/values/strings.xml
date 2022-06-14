@@ -100,6 +100,12 @@
     <string name="update">更新</string>
     <string name="version">最新版本</string>
 
+    <string name="delete_title">确认删除？</string>
+    <string name="delete_text">选择无法撤销,请慎重。</string>
+    <string name="delete">删除</string>
+
+    <string name="password">密码</string>
+
     <string-array name="task_type_array_name">
         <item>作业</item>
         <item>阅读</item>

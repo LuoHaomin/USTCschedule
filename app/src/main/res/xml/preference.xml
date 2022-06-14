@@ -41,14 +41,16 @@
         <Preference
             android:key="@string/permission_manager"
             android:title="@string/permission_manager"
-            android:icon="@drawable/ic_lock_off" >
+            android:icon="@drawable/ic_lock_off"
+            app:isPreferenceVisible="false" >
 
         </Preference>
 
         <Preference
             android:key="@string/reminder_manager"
             android:title="@string/reminder_manager"
-            android:icon="@drawable/ic_notification" >
+            android:icon="@drawable/ic_notification"
+            app:isPreferenceVisible="false" >
 
         </Preference>
 
@@ -61,7 +63,7 @@
             android:key="@string/personalization"
             android:title="@string/personalization"
             android:icon="@drawable/ic_tips"
-            >
+            app:isPreferenceVisible="false" >
 
         </Preference>
 
