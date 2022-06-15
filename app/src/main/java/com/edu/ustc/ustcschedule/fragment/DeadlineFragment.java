@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.edu.ustc.ustcschedule.ClassPopUpMenu;
 import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
 import com.edu.ustc.ustcschedule.ClassTextInit;
@@ -30,7 +32,11 @@ public class DeadlineFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ClassTextInit textInit = new ClassTextInit();
+        ClassPopUpMenu popUpMenu = new ClassPopUpMenu();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+
         textInit.initText(view);
         view.findViewById(R.id.side_bar).setOnClickListener(view2 -> MainActivity.result.openDrawer());
+        view.findViewById(R.id.add_events).setOnClickListener(view3 -> popUpMenu.onAddEvent(view3, fragmentManager));
     }
 }

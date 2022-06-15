@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -22,20 +21,9 @@ public class AddTaskDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout to use as dialog or embedded fragment
         View view = inflater.inflate(R.layout.fragment_add_event_task, container, false);
-        ImageButton close = view.findViewById(R.id.close_add_event_btn);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        view.findViewById(R.id.close_add_event_btn).setOnClickListener(view1 -> dismiss());
         Button save_task = view.findViewById(R.id.add_task_save_btn);
-        save_task.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        save_task.setOnClickListener(view12 -> dismiss());
         return view;
     }
 

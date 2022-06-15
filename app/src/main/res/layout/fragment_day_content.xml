@@ -29,7 +29,8 @@
                 android:background="@drawable/blue_label"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/courses" />
 
             <TextView
                 android:id="@+id/lesson_text_day"
@@ -114,7 +115,8 @@
                 android:background="@drawable/yellow_label"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/homework" />
 
             <TextView
                 android:id="@+id/homework_text_day"
@@ -161,7 +163,8 @@
                 app:layout_constraintTop_toTopOf="@id/homework_importance_label_day"
                 app:layout_constraintStart_toStartOf="@id/homework_importance_label_day"
                 app:layout_constraintEnd_toEndOf="@id/homework_importance_label_day"
-                app:layout_constraintBottom_toBottomOf="@id/homework_importance_label_day" />
+                app:layout_constraintBottom_toBottomOf="@id/homework_importance_label_day"
+                android:contentDescription="@string/importance" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -211,7 +214,8 @@
                 android:background="@drawable/green_label"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/reading" />
 
             <TextView
                 android:id="@+id/event_text_day"
@@ -258,7 +262,8 @@
                 app:layout_constraintTop_toTopOf="@id/event_importance_label_day"
                 app:layout_constraintStart_toStartOf="@id/event_importance_label_day"
                 app:layout_constraintEnd_toEndOf="@id/event_importance_label_day"
-                app:layout_constraintBottom_toBottomOf="@id/event_importance_label_day" />
+                app:layout_constraintBottom_toBottomOf="@id/event_importance_label_day"
+                android:contentDescription="@string/importance" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

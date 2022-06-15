@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -21,13 +20,7 @@ public class BorrowReminderDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout to use as dialog or embedded fragment
         View view = inflater.inflate(R.layout.fragment_borrow_reminder, container, false);
-        ImageButton close = view.findViewById(R.id.close_borrow_reminder_btn);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        view.findViewById(R.id.close_borrow_reminder_btn).setOnClickListener(view1 -> dismiss());
         return view;
     }
 

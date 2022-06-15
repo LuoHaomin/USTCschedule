@@ -71,6 +71,7 @@
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_type.xml" value="0.164" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_type_blue.xml" value="0.164" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_type_green.xml" value="0.164" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_type_yellow.xml" value="0.151" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_user.xml" value="0.1735" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_user_circle.xml" value="0.1735" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/ic_vector__2_.xml" value="0.1735" />
@@ -79,6 +80,7 @@
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/lesson.xml" value="0.1515" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/lesson_label.xml" value="0.1515" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/menu_item_selected.xml" value="0.1" />
+        <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/otherday_deadline_label.xml" value="0.151" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/switch_thumb.xml" value="0.153" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/switch_track_selector.xml" value="0.153" />
         <entry key="..\:/university/computer/ustc_schedule/app/src/main/res/drawable/time_label.xml" value="0.12" />

@@ -18,17 +18,15 @@ public class SettingActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.setting_container, new SettingFragment())
                 .commit();
-        findViewById(R.id.setting_back).setOnClickListener(view -> {
-            new Thread() {
-                public void run() {
-                    try {
-                        Instrumentation inst = new Instrumentation();
-                        inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
-                    } catch (Exception e) {
-
-                    }
+        findViewById(R.id.setting_back).setOnClickListener(view -> new Thread() {
+            public void run() {
+                try {
+                    Instrumentation inst = new Instrumentation();
+                    inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            }.start();
-        });
+            }
+        }.start());
     }
 }

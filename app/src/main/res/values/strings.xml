@@ -71,6 +71,7 @@
     <string name="cancel">取消</string>
     <string name="quit">退出登录</string>
     <string name="sign_in">登录</string>
+    <string name="back">返回</string>
 
     <string name="move">日程转移</string>
     <string name="save_template">保存模板</string>

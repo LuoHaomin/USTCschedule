@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_current_year"
+        android:id="@+id/text_current_year_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
@@ -31,7 +31,7 @@
         android:textColor="@color/text_deep"
         android:textAlignment="textStart"
         android:textSize="36sp"
-        app:layout_constraintStart_toEndOf="@id/text_current_year"
+        app:layout_constraintStart_toEndOf="@id/text_current_year_month"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
@@ -45,7 +45,7 @@
         android:textColor="@color/text_deep"
         android:textAlignment="textStart"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@id/text_current_year"
+        app:layout_constraintBottom_toBottomOf="@id/text_current_year_month"
         app:layout_constraintStart_toEndOf="@id/text_year"/>
 
     <TextView
@@ -59,7 +59,7 @@
         android:textColor="@color/text_deep"
         android:textAlignment="textStart"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@id/text_current_year"
+        app:layout_constraintBottom_toBottomOf="@id/text_current_year_month"
         app:layout_constraintStart_toEndOf="@id/text_current_month1"/>
 
     <CalendarView
@@ -69,7 +69,7 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_current_year" />
+        app:layout_constraintTop_toBottomOf="@id/text_current_year_month" />
 
 
     <TextView
@@ -84,7 +84,7 @@
         android:textAlignment="textStart"
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@id/calendar"
-        app:layout_constraintStart_toStartOf="@id/text_current_year"/>
+        app:layout_constraintStart_toStartOf="@id/text_current_year_month"/>
 
     <TextView
         android:id="@+id/text_month2"
@@ -100,7 +100,7 @@
         app:layout_constraintStart_toEndOf="@id/text_current_month2"/>
 
     <TextView
-        android:id="@+id/text_current_day"
+        android:id="@+id/text_current_day_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -125,7 +125,7 @@
         android:textAlignment="textStart"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/text_current_month2"
-        app:layout_constraintStart_toEndOf="@id/text_current_day"/>
+        app:layout_constraintStart_toEndOf="@id/text_current_day_month"/>
 
 
     <TextView

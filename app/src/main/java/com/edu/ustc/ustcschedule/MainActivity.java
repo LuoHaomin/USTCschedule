@@ -6,11 +6,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
 import com.edu.ustc.ustcschedule.dialogs.AboutDialog;
@@ -24,10 +22,6 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 
 public class MainActivity extends AppCompatActivity {
 

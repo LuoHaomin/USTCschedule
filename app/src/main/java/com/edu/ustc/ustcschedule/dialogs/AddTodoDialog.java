@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -22,13 +21,7 @@ public class AddTodoDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout to use as dialog or embedded fragment
         View view = inflater.inflate(R.layout.fragment_add_event_todo, container, false);
-        ImageButton close = view.findViewById(R.id.close_add_event_btn);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        view.findViewById(R.id.close_add_event_btn).setOnClickListener(view1 -> dismiss());
         Button save_todo = view.findViewById(R.id.add_todo_save_btn);
         save_todo.setOnClickListener(new View.OnClickListener() {
             @Override

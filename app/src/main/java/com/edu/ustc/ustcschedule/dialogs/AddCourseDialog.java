@@ -7,11 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.edu.ustc.ustcschedule.R;
 
@@ -25,12 +23,7 @@ public class AddCourseDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_add_event_courses, container, false);
         view.findViewById(R.id.close_add_event_btn).setOnClickListener(view1 -> dismiss());
         Button save_course = view.findViewById(R.id.add_course_save_btn);
-        save_course.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        save_course.setOnClickListener(view12 -> dismiss());
         return view;
     }
 

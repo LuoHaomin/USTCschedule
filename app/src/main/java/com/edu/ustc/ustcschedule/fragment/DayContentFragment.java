@@ -8,13 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
-import com.edu.ustc.ustcschedule.ClassTextInit;
-import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
 import com.edu.ustc.ustcschedule.databinding.FragmentDayContentBinding;
-import com.edu.ustc.ustcschedule.databinding.FragmentScheduleDayBinding;
 import com.edu.ustc.ustcschedule.dialogs.DeleteDialog;
 
 public class DayContentFragment extends Fragment {
