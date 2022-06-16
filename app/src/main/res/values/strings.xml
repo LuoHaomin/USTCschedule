@@ -81,10 +81,18 @@
         <item>DDL</item>
     </string-array>
 
+    <item name="Tag" type="id"></item>
+    <item name="Tag_Homework" type="id"></item>
+    <item name="Tag_Reading" type="id"></item>
+    <item name="Tag_Fitting" type="id"></item>
+    <item name="Tag_DDL" type="id"></item>
+
     <string-array name="importance_array_name">
         <item>很重要</item>
         <item>较重要</item>
         <item>重要</item>
     </string-array>
+
+
 
 </resources>
