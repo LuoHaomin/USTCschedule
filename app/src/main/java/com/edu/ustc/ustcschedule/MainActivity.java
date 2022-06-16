@@ -1,14 +1,15 @@
 package com.edu.ustc.ustcschedule;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
 
 import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
 import com.edu.ustc.ustcschedule.dialogs.AboutDialog;

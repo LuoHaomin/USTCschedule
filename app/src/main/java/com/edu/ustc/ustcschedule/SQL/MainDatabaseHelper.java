@@ -1,11 +1,14 @@
 package com.edu.ustc.ustcschedule.SQL;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.edu.ustc.ustcschedule.dialogs.AddTodoDialog;
 
-public class Main_database extends SQLiteOpenHelper {
+
+public class MainDatabaseHelper extends SQLiteOpenHelper {
 
     public enum Category {
         course,work_out,homework;
@@ -14,20 +17,22 @@ public class Main_database extends SQLiteOpenHelper {
     private static final int DB_VERSION=1;
 
 
-    Main_database(Context context)
+    public MainDatabaseHelper(Context context)
     {
         super(context,DB_NAME,null,DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE SCHEDULE (_id INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,START_TIME INTEGER,END_TIME INTEGER, TIME_LENGTH INTEGER," +
+        db.execSQL("CREATE TABLE SCHEDULE (_id INTEGER PRIMARY KEY AUTOINCREMENT,IS_FINISH INTEGER, NAME TEXT,START_TIME INTEGER,END_TIME INTEGER, TIME_LENGTH INTEGER," +
                 "IMPORTANCE INTEGER,IS_REPEAT INTEGER,PERIOD INTEGER, PLACE TEXT,DESCRIPTION TEXT,CATEGORY INTEGER);");
-        db.execSQL("CREATE TABLE DDL (_id INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,START_TIME INTEGER, WORK_LOAD INTEGER," +
+        db.execSQL("CREATE TABLE DDL (_id INTEGER PRIMARY KEY AUTOINCREMENT,IS_FINISH INTEGER,NAME TEXT,START_TIME INTEGER, WORK_LOAD INTEGER," +
                 "IMPORTANCE INTEGER,IS_REPEAT INTEGER,PERIOD INTEGER, PLACE TEXT,DESCRIPTION TEXT,CATEGORY INTEGER);");
-        db.execSQL("CREATE TABLE TODO (_id INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,START_TIME INTEGER, " +
+        db.execSQL("CREATE TABLE TODO (_id INTEGER PRIMARY KEY AUTOINCREMENT,IS_FINISH INTEGER,NAME TEXT,START_TIME INTEGER, " +
                 "IMPORTANCE INTEGER,IS_REPEAT INTEGER,PERIOD INTEGER, PLACE TEXT,DESCRIPTION TEXT,CATEGORY INTEGER);");
     }
+
+
 
 
 

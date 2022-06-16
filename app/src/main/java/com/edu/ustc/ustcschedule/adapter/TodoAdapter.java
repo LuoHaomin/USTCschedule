@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.edu.ustc.ustcschedule.R;
@@ -19,8 +20,8 @@ public class TodoAdapter extends BaseAdapter {
     //定义两个类别标志
     private static final int TYPE_HOMEWORK = 0;
     private static final int TYPE_READING= 1;
-    private static final int TYPE_FITTING= 1;
-    private static final int TYPE_READING= 1;
+    private static final int TYPE_FITTING= 2;
+    private static final int TYPE_DDL= 3;
 
 
 
@@ -52,7 +53,7 @@ public class TodoAdapter extends BaseAdapter {
     //多布局的核心，通过这个判断类别
     @Override
     public int getItemViewType(int position) {
-        return (int)mData.get(position).get("CATEGORY");
+        return (int)mData.get(position).getCategory();
     }
 
     //类别数目
@@ -74,6 +75,7 @@ public class TodoAdapter extends BaseAdapter {
             holder.todo_name = (TextView) convertView.findViewById(R.id.todo_name);
             holder.todo_type_label = (ImageView) convertView.findViewById(R.id.todo_type_label);
             holder.todo_type = (TextView) convertView.findViewById(R.id.todo_type);
+            holder.todo_checkbutton=(ImageButton)convertView.findViewById(R.id.todo_checkbutton);
             convertView.setTag(R.id.Tag,holder);
 
 
@@ -87,24 +89,33 @@ public class TodoAdapter extends BaseAdapter {
         }
 
         MyTodolist todo = mData.get(position);
+
         //设置下控件的值
         holder.todo_name.setText(todo.getName());
+        holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
+
+        holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
+        holder.todo_type.setText("作业");
+        if(todo.getIsFinish()==0)
+            holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_off);
+        else
+            holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_on);
+
         switch (type){
             case TYPE_HOMEWORK:
 
-                if(app != null){
-                    holder.todo_label.setImageResource(app.getaIcon());
 
-                    holder.todo_label.setImageResource(app.getaIcon());
-                    holder.todo_name.setText(app.getaName());
-                }
+                holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
+
+                holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
+                holder.todo_type.setText("作业");
+
                 break;
-            case TYPE_BOOK:
+            case TYPE_READING:
 
-                if(book != null){
-                    holder2.txt_bname.setText(book.getbName());
-                    holder2.txt_bauthor.setText(book.getbAuthor());
-                }
+
+                break;
+            default:
                 break;
         }
         return convertView;
@@ -117,6 +128,7 @@ public class TodoAdapter extends BaseAdapter {
         TextView todo_name;
         ImageView todo_type_label;
         TextView todo_type;
+        ImageButton todo_checkbutton;
     }
 
 }

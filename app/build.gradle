@@ -78,4 +78,19 @@ dependencies {
 
     // used for preference
     implementation "androidx.preference:preference:1.2.0"
+/*
+    implementation "com.mikepenz:materialdrawer:${lastestMaterialDrawerRelease}"
+
+//required support lib modules
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+    implementation "androidx.recyclerview:recyclerview:${versions.recyclerView}"
+    implementation "androidx.annotation:annotation:${versions.annotation}"
+    implementation "com.google.android.material:material:1.5.0-alpha05" // requires at least 1.5.0-x
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
+
+// Add for NavController support
+    implementation "com.mikepenz:materialdrawer-nav:${lastestMaterialDrawerRelease}"
+
+// Add for Android-Iconics support
+    implementation "com.mikepenz:materialdrawer-iconics:${lastestMaterialDrawerRelease}"*/
 }
