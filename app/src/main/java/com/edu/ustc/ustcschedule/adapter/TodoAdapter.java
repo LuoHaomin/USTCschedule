@@ -76,13 +76,13 @@ public class TodoAdapter extends BaseAdapter {
             holder.todo_type_label = (ImageView) convertView.findViewById(R.id.todo_type_label);
             holder.todo_type = (TextView) convertView.findViewById(R.id.todo_type);
             holder.todo_checkbutton=(ImageButton)convertView.findViewById(R.id.todo_checkbutton);
-            convertView.setTag(R.id.Tag,holder);
+            convertView.setTag(R.id.Tag_todo,holder);
 
 
 
         }else{
 
-            holder = (ViewHolder) convertView.getTag(R.id.Tag);
+            holder = (ViewHolder) convertView.getTag(R.id.Tag_todo);
 
 
 
