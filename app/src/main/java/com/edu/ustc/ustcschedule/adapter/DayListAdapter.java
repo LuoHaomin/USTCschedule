@@ -14,14 +14,14 @@ import com.edu.ustc.ustcschedule.SQL.MyTodolist;
 
 import java.util.List;
 
-public class TimetableAdapter extends BaseAdapter{
+public class DayListAdapter extends BaseAdapter{
 
 
-    //定义两个类别标志
-    private static final int TYPE_HOMEWORK = 0;
+
+    /*private static final int TYPE_HOMEWORK = 0;
     private static final int TYPE_READING= 1;
     private static final int TYPE_FITTING= 2;
-    private static final int TYPE_DDL= 3;
+    private static final int TYPE_DDL= 3;*/
 
 
 
@@ -30,7 +30,7 @@ public class TimetableAdapter extends BaseAdapter{
     private List<MyTodolist> mData = null;
 
 
-    public TimetableAdapter(Context mContext, List<MyTodolist> mData) {
+    public DayListAdapter(Context mContext, List<MyTodolist> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -102,7 +102,7 @@ public class TimetableAdapter extends BaseAdapter{
             holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_on);
 
         switch (type){
-            case TYPE_HOMEWORK:
+            case 1:
 
 
                 holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
@@ -111,7 +111,7 @@ public class TimetableAdapter extends BaseAdapter{
                 holder.todo_type.setText("作业");
 
                 break;
-            case TYPE_READING:
+            case 2:
 
 
                 break;

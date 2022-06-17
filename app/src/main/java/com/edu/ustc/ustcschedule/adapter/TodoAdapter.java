@@ -17,11 +17,11 @@ import java.util.Map;
 
 public class TodoAdapter extends BaseAdapter {
 
-    //定义两个类别标志
-    private static final int TYPE_HOMEWORK = 0;
-    private static final int TYPE_READING= 1;
-    private static final int TYPE_FITTING= 2;
-    private static final int TYPE_DDL= 3;
+
+    //private static final int TYPE_HOMEWORK = 0;
+    //private static final int TYPE_READING= 1;
+    //private static final int TYPE_FITTING= 2;
+    //private static final int TYPE_DDL= 3;
 
 
 
@@ -102,7 +102,7 @@ public class TodoAdapter extends BaseAdapter {
             holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_on);
 
         switch (type){
-            case TYPE_HOMEWORK:
+            case 1:
 
 
                 holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
@@ -111,7 +111,7 @@ public class TodoAdapter extends BaseAdapter {
                 holder.todo_type.setText("作业");
 
                 break;
-            case TYPE_READING:
+            case 2:
 
 
                 break;

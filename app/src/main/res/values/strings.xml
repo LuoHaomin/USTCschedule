@@ -56,6 +56,9 @@
     <string name="time_start">开始时间</string>
     <string name="time_end">结束时间</string>
     <string name="importance">重要性</string>
+    <string name="is_repeat">是否重复</string>
+    <string name="period">周期</string>
+    <string name="place">地点</string>
     <string name="position">教室</string>
     <string name="description">描述</string>
     <string name="repetitive">是否重复</string>
@@ -127,8 +130,20 @@
 
     <string-array name="importance_array_name">
         <item>很重要</item>
-        <item>较重要</item>
         <item>重要</item>
+        <item>一般</item>
+    </string-array>
+
+    <string-array name="yn_array_name">
+        <item>是</item>
+        <item>否</item>
+    </string-array>
+
+    <string-array name="period_array_name">
+        <item>日</item>
+        <item>周</item>
+        <item>月</item>
+        <item>年</item>
     </string-array>
 
 </resources>
