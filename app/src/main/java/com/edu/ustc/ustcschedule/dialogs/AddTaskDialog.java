@@ -71,8 +71,8 @@ public class AddTaskDialog extends DialogFragment {
         String name=edit_title.getText().toString();
 
 
-        Spinner edit_type=(Spinner)view.findViewById(R.id.edit_type);
-        int category=edit_type.getId();
+        //Spinner edit_type=(Spinner)view.findViewById(R.id.edit_type);
+        //int category=edit_type.getId();
 
 
         DateEditText date_text=(DateEditText)view.findViewById(R.id.date_day_text);

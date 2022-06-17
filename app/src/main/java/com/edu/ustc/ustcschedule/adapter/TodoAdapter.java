@@ -53,7 +53,7 @@ public class TodoAdapter extends BaseAdapter {
     //多布局的核心，通过这个判断类别
     @Override
     public int getItemViewType(int position) {
-        return (int)mData.get(position).getCategory();
+        return (int)mData.get(position).getImportance();
     }
 
     //类别数目

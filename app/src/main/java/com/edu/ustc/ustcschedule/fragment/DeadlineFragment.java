@@ -36,7 +36,7 @@ public class DeadlineFragment extends Fragment {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
 
         textInit.initText(view);
-        view.findViewById(R.id.side_bar).setOnClickListener(view2 -> MainActivity.result.openDrawer());
-        view.findViewById(R.id.add_events).setOnClickListener(view3 -> popUpMenu.onAddEvent(view3, fragmentManager));
+        view.findViewById(R.id.side_bar).setOnClickListener(view1 -> MainActivity.result.openDrawer());
+        view.findViewById(R.id.add_events).setOnClickListener(view2 -> popUpMenu.onAddEvent(view2, fragmentManager));
     }
 }

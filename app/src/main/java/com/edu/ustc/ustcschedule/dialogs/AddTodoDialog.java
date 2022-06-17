@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,13 +51,22 @@ public class AddTodoDialog extends DialogFragment {
         save_todo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name=((EditText)getView().findViewById(R.id.edit_title)).getText().toString();
+                name.replace(" ","");//去空格
 
-                try {
-                    setFromTodoDialog(getView());
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                if(name.length()!=0) {
+                    try {
+                        setFromTodoDialog(getView());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    dismiss();
                 }
-                dismiss();
+                else
+                {
+                    Toast toast =Toast.makeText(getContext(),"名称不能为空",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
         return view;
@@ -91,8 +101,8 @@ public class AddTodoDialog extends DialogFragment {
         String name=edit_title.getText().toString();
 
 
-        Spinner edit_type=(Spinner)view.findViewById(R.id.edit_type);
-        int category=edit_type.getId();
+        //Spinner edit_type=(Spinner)view.findViewById(R.id.edit_type);
+        //int category=edit_type.getId();
 
 
         DateEditText date_text=(DateEditText)view.findViewById(R.id.date_day_text);
@@ -115,7 +125,7 @@ public class AddTodoDialog extends DialogFragment {
         String place="";
         String description="";
         int is_finish=0;
-        MyTodolist todo=new MyTodolist(name,starting_time,importance,is_repeat,period,place ,description   ,category,is_finish);
+        MyTodolist todo=new MyTodolist(name,starting_time,importance,is_repeat,period,place ,description ,is_finish);
         MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
         SQLiteDatabase db=db_helper.getWritableDatabase();
         todo.toDatabase(db);

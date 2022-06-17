@@ -43,6 +43,9 @@ public class TodolistFragment extends Fragment {
         Cursor cursor=db.query("TODO",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,
                 "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION" ,"CATEGORY" } ,null,null,null,null,"START_TIME ASC");
         cursor.moveToFirst();
+
+
+
         /*List<Map<String, Object>> listitem = new ArrayList<Map<String, Object>>();
 
         while (!cursor.isLast()){
@@ -66,16 +69,18 @@ public class TodolistFragment extends Fragment {
             listitem.add(todo);
             cursor.moveToNext();
         }
-        MyTodolist todo=new MyTodolist(cursor);
+        if(cursor.getCount()!=0)
+        {
+            MyTodolist todo=new MyTodolist(cursor);
 
-
-        listitem.add(todo);
+            listitem.add(todo);
+        }
 
 
         //创建一个simpleAdapter
         //SimpleAdapter myAdapter = new SimpleAdapter(getContext(), listitem, R.layout.fragment_todolist_item, new String[]{"NAME"}, new int[]{R.id.todo_name});
         TodoAdapter myAdapter=new TodoAdapter(getContext(),listitem);
-        //myAdapter.notifyDataSetChanged();
+        myAdapter.notifyDataSetChanged();
         ListView listView = (ListView) view.findViewById(R.id.todo_ListView);
         listView.setAdapter(myAdapter);
         return view;

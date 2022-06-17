@@ -21,7 +21,7 @@ public class BasicSchedule {
     private int Period;
     private String Place;
     private String Description;
-    private int Category;
+
     private int IsFinish;//0==not finished
 
 
@@ -55,7 +55,7 @@ public class BasicSchedule {
         info.put("PERIOD",Period);
         info.put("PLACE",Place);
         info.put("DESCRIPTION",Description);
-        info.put("CATEGORY",Category);
+
         info.put("IS_FINISH",IsFinish);
         return info;
     }
@@ -69,7 +69,7 @@ public class BasicSchedule {
         info.put("PERIOD",Period);
         info.put("PLACE",Place);
         info.put("DESCRIPTION",Description);
-        info.put("CATEGORY",Category);
+
         info.put("IS_FINISH",IsFinish);
         return info;
     }
@@ -87,7 +87,7 @@ public class BasicSchedule {
         this.setPeriod(cursor.getInt(cursor.getColumnIndexOrThrow("PERIOD")));
         this.setPlace(cursor.getString(cursor.getColumnIndexOrThrow("PLACE")));
         this.setDescription(cursor.getString(cursor.getColumnIndexOrThrow("DESCRIPTION")));
-        this.setCategory(cursor.getInt(cursor.getColumnIndexOrThrow("CATEGORY")));
+
         IsFinish=cursor.getInt(cursor.getColumnIndexOrThrow("IS_FINISH"));
     }
 
@@ -166,9 +166,7 @@ public class BasicSchedule {
         Importance = importance;
     }
 
-    public void setCategory(int category) {
-        Category = category;
-    }
+
 
     public int getIsFinish() {
         return IsFinish;
@@ -178,9 +176,7 @@ public class BasicSchedule {
         IsFinish = isFinish;
     }
 
-    public int getCategory() {
-        return Category;
-    }
+
 
 
 }
