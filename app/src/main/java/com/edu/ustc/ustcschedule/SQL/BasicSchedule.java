@@ -16,7 +16,7 @@ public class BasicSchedule {
 
     private long StartingTime;
 
-    private int Importance;
+    private int Importance;//1,2,3代表重要性
     private int IsRepeat;
     private int Period;
     private String Place;

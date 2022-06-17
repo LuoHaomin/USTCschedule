@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TodoAdapter extends BaseAdapter {
+public class TodoListAdapter extends BaseAdapter {
 
 
     //private static final int TYPE_HOMEWORK = 0;
@@ -30,7 +30,7 @@ public class TodoAdapter extends BaseAdapter {
     private List<MyTodolist> mData = null;
 
 
-    public TodoAdapter(Context mContext, List<MyTodolist> mData) {
+    public TodoListAdapter(Context mContext, List<MyTodolist> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

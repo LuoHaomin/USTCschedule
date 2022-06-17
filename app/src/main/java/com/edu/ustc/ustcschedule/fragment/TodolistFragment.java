@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,14 +18,13 @@ import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
 import com.edu.ustc.ustcschedule.ClassTextInit;
 import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
-import com.edu.ustc.ustcschedule.adapter.TodoAdapter;
+import com.edu.ustc.ustcschedule.adapter.TodoListAdapter;
 import com.edu.ustc.ustcschedule.databinding.FragmentTodolistBinding;
 
 import com.edu.ustc.ustcschedule.SQL.MyTodolist;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class TodolistFragment extends Fragment {
 
@@ -79,7 +77,7 @@ public class TodolistFragment extends Fragment {
 
         //创建一个simpleAdapter
         //SimpleAdapter myAdapter = new SimpleAdapter(getContext(), listitem, R.layout.fragment_todolist_item, new String[]{"NAME"}, new int[]{R.id.todo_name});
-        TodoAdapter myAdapter=new TodoAdapter(getContext(),listitem);
+        TodoListAdapter myAdapter=new TodoListAdapter(getContext(),listitem);
         myAdapter.notifyDataSetChanged();
         ListView listView = (ListView) view.findViewById(R.id.todo_ListView);
         listView.setAdapter(myAdapter);

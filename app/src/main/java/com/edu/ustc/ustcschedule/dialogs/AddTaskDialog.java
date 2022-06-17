@@ -7,9 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -29,6 +32,9 @@ import java.util.Locale;
 public class AddTaskDialog extends DialogFragment {
     /** The system calls this to get the DialogFragment's layout, regardless
      of whether it's being displayed as a dialog or an embedded fragment. */
+    private int importance=1;
+    private int is_repeat=0;
+    private int period=7;
     private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日");
     private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm", Locale.CHINA);
 
@@ -37,18 +43,90 @@ public class AddTaskDialog extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout to use as dialog or embedded fragment
         View view = inflater.inflate(R.layout.fragment_add_event_task, container, false);
-        view.findViewById(R.id.close_add_event_btn).setOnClickListener(view1 -> dismiss());
-        Button save_task = view.findViewById(R.id.add_task_save_btn);
-        save_task.setOnClickListener(new View.OnClickListener() {
+        Spinner importance_spinner=(Spinner)view.findViewById(R.id.importance_spinner);
+        importance_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                importance=3-pos;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+
+        });
+
+        Spinner edit_is_repeat=(Spinner)view.findViewById(R.id.edit_is_repeat);
+        edit_is_repeat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                if(pos==0)
+                {
+                    is_repeat=1;
+                }
+                else
+                {
+                    is_repeat=0;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+
+        Spinner edit_period=(Spinner)view.findViewById(R.id.edit_period);
+        edit_period.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                switch(pos){
+                    case 0:
+                        period=1;
+                    case 1:
+                        period=7;
+                    case 2:
+                        period=30;//仅作为一个标记符号，不代表周期真的是30天
+                    case 3:
+                        period=365;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+
+        ImageButton close = view.findViewById(R.id.close_add_event_btn);
+        close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dismiss();
+            }
+        });
+        Button save_todo = view.findViewById(R.id.add_task_save_btn);
+        save_todo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name=((EditText)getView().findViewById(R.id.edit_title)).getText().toString();
+                name.replace(" ","");//去空格
 
-                try {
-                    setFromTaskDialog(getView());
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                if(name.length()!=0) {
+                    try {
+                        setFromTaskDialog(getView());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    dismiss();
                 }
-                dismiss();}
+                else
+                {
+                    Toast toast =Toast.makeText(getContext(),"名称不能为空",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
         });
         return view;
     }
@@ -71,31 +149,33 @@ public class AddTaskDialog extends DialogFragment {
         String name=edit_title.getText().toString();
 
 
-        //Spinner edit_type=(Spinner)view.findViewById(R.id.edit_type);
-        //int category=edit_type.getId();
-
-
         DateEditText date_text=(DateEditText)view.findViewById(R.id.date_day_text);
         String date_str=date_text.getText().toString();
 
-        TimeEditText time_text=(TimeEditText)view.findViewById(R.id.time);
-        String time_str=time_text.getText().toString();
+        TimeEditText edit_start_time=(TimeEditText)view.findViewById(R.id.start_time);
+        String start_time_str=edit_start_time.getText().toString();
+        TimeEditText edit_end_time=(TimeEditText)view.findViewById(R.id.end_time);
+        String end_time_str=edit_end_time.getText().toString();
 
         Date date=new Date();
         date=format_date.parse(date_str);
-        Date time=new Date();
-        time=format_time.parse(time_str);
-        long starting_time=date.getTime()+time.getTime();
+        Date starting_time_part=new Date();
+        starting_time_part=format_time.parse(start_time_str);
+        Date ending_time_part=new Date();
+        ending_time_part=format_time.parse(end_time_str);
+        long starting_time=date.getTime()+starting_time_part.getTime();
+        long ending_time=date.getTime()+ending_time_part.getTime();
 
-        long ending_time=0;
 
-        //String name="";
+        EditText place_edit=(EditText)view.findViewById(R.id.place_edit);
+        String place=place_edit.getText().toString();
 
-        int importance=0;
-        int is_repeat=0;
-        int period=0;
-        String place="";
-        String description="";
+        EditText teacher_edit=(EditText)view.findViewById(R.id.teacher_edit);
+        String description=teacher_edit.getText().toString();
+
+
+
+
         int is_finish=0;
         MySchedule task=new MySchedule(name,starting_time,ending_time,importance,is_repeat,period,place ,description ,is_finish);
         MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());

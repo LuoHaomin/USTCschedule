@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,10 +16,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.adapters.AdapterViewBindingAdapter;
 import androidx.fragment.app.DialogFragment;
 
 import com.edu.ustc.ustcschedule.R;
 import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
+import com.edu.ustc.ustcschedule.SQL.MyDeadLine;
 import com.edu.ustc.ustcschedule.SQL.MyTodolist;
 import com.edu.ustc.ustcschedule.editText.DateEditText;
 import com.edu.ustc.ustcschedule.editText.TimeEditText;
@@ -32,6 +35,10 @@ public class AddTodoDialog extends DialogFragment {
     /** The system calls this to get the DialogFragment's layout, regardless
      of whether it's being displayed as a dialog or an embedded fragment. */
 
+    private boolean is_DDL=true;//false则为task
+    private int importance=1;
+    private int is_repeat=0;
+    private int period=7;
     private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日");
     private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm", Locale.CHINA);
     @Override
@@ -40,6 +47,81 @@ public class AddTodoDialog extends DialogFragment {
         // Inflate the layout to use as dialog or embedded fragment
 
         View view = inflater.inflate(R.layout.fragment_add_event_todo, container, false);
+        Spinner edit_type=(Spinner)view.findViewById(R.id.edit_type);
+        edit_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                switch(pos){
+                    case 0:
+                        is_DDL=true;
+                    case 1:
+                        is_DDL=false;//task
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+
+        });
+
+        Spinner importance_spinner=(Spinner)view.findViewById(R.id.importance_spinner);
+        importance_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                importance=3-pos;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+
+        });
+
+        Spinner edit_is_repeat=(Spinner)view.findViewById(R.id.edit_is_repeat);
+        edit_is_repeat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                if(pos==0)
+                {
+                    is_repeat=1;
+                }
+                else
+                {
+                    is_repeat=0;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+
+        Spinner edit_period=(Spinner)view.findViewById(R.id.edit_period);
+        edit_period.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                switch(pos){
+                    case 0:
+                        period=1;
+                    case 1:
+                        period=7;
+                    case 2:
+                        period=30;//仅作为一个标记符号，不代表周期真的是30天
+                    case 3:
+                        period=365;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
+
         ImageButton close = view.findViewById(R.id.close_add_event_btn);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,13 +178,13 @@ public class AddTodoDialog extends DialogFragment {
         return dialog;
     }
 
-    public MyTodolist setFromTodoDialog(View view) throws ParseException {
+    public void setFromTodoDialog(View view) throws ParseException {
         EditText edit_title=(EditText)view.findViewById(R.id.edit_title);
         String name=edit_title.getText().toString();
 
 
-        //Spinner edit_type=(Spinner)view.findViewById(R.id.edit_type);
-        //int category=edit_type.getId();
+
+
 
 
         DateEditText date_text=(DateEditText)view.findViewById(R.id.date_day_text);
@@ -119,17 +201,27 @@ public class AddTodoDialog extends DialogFragment {
 
         //String name="";
 
-        int importance=0;
-        int is_repeat=0;
-        int period=0;
+
+
         String place="";
         String description="";
         int is_finish=0;
-        MyTodolist todo=new MyTodolist(name,starting_time,importance,is_repeat,period,place ,description ,is_finish);
-        MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
-        SQLiteDatabase db=db_helper.getWritableDatabase();
-        todo.toDatabase(db);
+        int workload=0;
+        if(is_DDL) {
+            MyDeadLine ddl=new MyDeadLine(name, starting_time, importance, is_repeat, period, place, description,workload, is_finish);
+            MainDatabaseHelper db_helper = new MainDatabaseHelper(getContext());
+            SQLiteDatabase db = db_helper.getWritableDatabase();
+            ddl.toDatabase(db);
+        }
+        else
+        {
 
-        return todo;
+            MyTodolist todo = new MyTodolist(name, starting_time, importance, is_repeat, period, place, description, is_finish);
+            MainDatabaseHelper db_helper = new MainDatabaseHelper(getContext());
+            SQLiteDatabase db = db_helper.getWritableDatabase();
+            todo.toDatabase(db);
+        }
+
+
     }
 }

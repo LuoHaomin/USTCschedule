@@ -134,7 +134,7 @@
         <item>一般</item>
     </string-array>
 
-    <string-array name="yn_array_name">
+    <string-array name="yes_or_no">
         <item>是</item>
         <item>否</item>
     </string-array>
@@ -144,6 +144,11 @@
         <item>周</item>
         <item>月</item>
         <item>年</item>
+    </string-array>
+
+    <string-array name="DDL_or_task">
+        <item>DDL</item>
+        <item>任务</item>
     </string-array>
 
 </resources>
