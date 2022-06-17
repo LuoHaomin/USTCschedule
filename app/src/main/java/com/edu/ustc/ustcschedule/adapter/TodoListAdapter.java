@@ -25,7 +25,7 @@ public class TodoListAdapter extends BaseAdapter {
 
 
 
-    private static final int TYPE_COUNT=2;
+    private static final int TYPE_COUNT=1;
     private Context mContext;
     private List<MyTodolist> mData = null;
 
@@ -53,7 +53,7 @@ public class TodoListAdapter extends BaseAdapter {
     //多布局的核心，通过这个判断类别
     @Override
     public int getItemViewType(int position) {
-        return (int)mData.get(position).getImportance();
+        return 0;
     }
 
     //类别数目
