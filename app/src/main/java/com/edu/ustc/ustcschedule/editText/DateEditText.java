@@ -20,10 +20,10 @@ import com.edu.ustc.ustcschedule.R;
 public class DateEditText extends androidx.appcompat.widget.AppCompatEditText {
     private final static String TAG = "EditTextWithDate";
     private final Context mContext;
-    private Calendar c;
+    private Calendar c=Calendar.getInstance();
     private boolean datePickerEnabled = true;
     @SuppressLint("SimpleDateFormat")
-    private final SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日", Locale.CHINA);
+    private final SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日");
 
     public DateEditText(Context context) {
         super(context);
@@ -45,8 +45,9 @@ public class DateEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     private void init() {
         c = Calendar.getInstance();
-        final Calendar cal = Calendar.getInstance();
-        setText(format.format(cal.getTimeInMillis()));
+        c.add(Calendar.HOUR,8);
+
+        setText(format.format(c.getTimeInMillis()));
         this.setEnabled(false);
     }
 

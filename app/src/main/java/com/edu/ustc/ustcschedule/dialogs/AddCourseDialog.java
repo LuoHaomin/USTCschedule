@@ -29,7 +29,7 @@ import java.util.Locale;
 public class AddCourseDialog extends DialogFragment {
     /** The system calls this to get the DialogFragment's layout, regardless
      of whether it's being displayed as a dialog or an embedded fragment. */
-    private int importance=3;
+    private int importance=4;//代表课程
     private int is_repeat=1;
     private int period=7;
     private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日");

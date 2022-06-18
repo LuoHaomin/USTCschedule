@@ -25,7 +25,7 @@ public class DayListAdapter extends BaseAdapter{
 
 
 
-    private static final int TYPE_COUNT=1;
+    private static final int TYPE_COUNT=2;
     private Context mContext;
     private List<MyTodolist> mData = null;
 

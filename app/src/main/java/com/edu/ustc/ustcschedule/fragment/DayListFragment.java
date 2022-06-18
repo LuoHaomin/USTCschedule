@@ -1,5 +1,8 @@
 package com.edu.ustc.ustcschedule.fragment;
 
+import android.annotation.SuppressLint;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class DayListFragment extends Fragment {
 
@@ -17,7 +25,24 @@ public class DayListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        Calendar ca=Calendar.getInstance(Locale.CHINA);
+        long day_start=(ca.getTimeInMillis()/86400/1000)*1000*86400;//清除小时和分钟
+        long day_end=day_start+86400*1000;
+        String day_start_str=Long.toString(day_start);
+        String day_end_str=Long.toString(day_end);
+        final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd", Locale.CHINA);
+
         View view= inflater.inflate(R.layout.fragment_day_list, container, false);
+
+        MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
+        SQLiteDatabase db=db_helper.getReadableDatabase();
+        Cursor cursor=db.query("SCHEDULE",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"END_TIME",
+                "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,"START_TIME>"+day_start_str+" AND END_TIME<"+day_end_str,null,null,null,"START_TIME ASC");
+
+        cursor.moveToFirst();
+
+
+
         return view;
     }
 }
