@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class BasicSchedule {
 
-    private int No;
+    private int id;//id将作为删除依据，adapter里的类必须拥有id!
     private String Name;
 
     private long StartingTime;
@@ -28,7 +28,7 @@ public class BasicSchedule {
 
     //日期和时间采用Java自带的时间和日期类,使用setYear等函数修改
     public BasicSchedule(String name,long starting_time,int importance,int is_repeat,int period,String place,String description,int is_finish){
-        //No=0;
+        id=0;
         Name=name;
         StartingTime=starting_time;
         Importance=importance;
@@ -48,6 +48,7 @@ public class BasicSchedule {
 
     public ContentValues getContentValues(){
         ContentValues info=new ContentValues();
+
         info.put("NAME",Name);
         info.put("START_TIME",StartingTime);
         info.put("IMPORTANCE",Importance);
@@ -79,7 +80,7 @@ public class BasicSchedule {
 
     public void setFromCursor(Cursor cursor)
     {
-        this.setNo(cursor.getInt(cursor.getColumnIndexOrThrow("_id")));
+        this.setId(cursor.getInt(cursor.getColumnIndexOrThrow("_id")));
         this.setName(cursor.getString(cursor.getColumnIndexOrThrow("NAME")));
         this.setStartingTime(cursor.getLong(cursor.getColumnIndexOrThrow("START_TIME")));
         this.setImportance(cursor.getInt(cursor.getColumnIndexOrThrow("IMPORTANCE")));
@@ -93,12 +94,12 @@ public class BasicSchedule {
 
 
 
-    public int getNo() {
-        return No;
+    public int getId() {
+        return id;
     }
 
-    public void setNo(int schNo) {
-        No = schNo;
+    public void setId(int schNo) {
+        id = schNo;
     }
 
     public String getName() {

@@ -39,7 +39,7 @@ public class TodolistFragment extends Fragment {
         MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
         SQLiteDatabase db=db_helper.getReadableDatabase();
         Cursor cursor=db.query("TODO",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,
-                "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION" ,"CATEGORY" } ,null,null,null,null,"START_TIME ASC");
+                "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,null,null,null,null,"START_TIME ASC");
         cursor.moveToFirst();
 
 

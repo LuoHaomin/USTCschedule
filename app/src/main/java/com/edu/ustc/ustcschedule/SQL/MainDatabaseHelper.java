@@ -10,9 +10,7 @@ import com.edu.ustc.ustcschedule.dialogs.AddTodoDialog;
 
 public class MainDatabaseHelper extends SQLiteOpenHelper {
 
-    public enum Category {
-        course,work_out,homework;
-    }
+
     private static final String DB_NAME="USTC_schedule";
     private static final int DB_VERSION=1;
 

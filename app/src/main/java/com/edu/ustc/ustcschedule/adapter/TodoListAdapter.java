@@ -65,7 +65,7 @@ public class TodoListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        int type = getItemViewType(position);
+        //int type = getItemViewType(position);
         ViewHolder holder = null;
         if(convertView == null){
 
@@ -95,24 +95,26 @@ public class TodoListAdapter extends BaseAdapter {
         holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
 
         holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
-        holder.todo_type.setText("作业");
+        holder.todo_type.setText(" ");
         if(todo.getIsFinish()==0)
             holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_off);
         else
             holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_on);
 
-        switch (type){
+        switch (todo.getImportance()){
             case 1:
 
 
-                holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
+                holder.todo_label.setBackgroundResource(R.drawable.green_label_light);
 
-                holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
-                holder.todo_type.setText("作业");
+                holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_green);
+
 
                 break;
-            case 2:
+            case 3:
+                holder.todo_label.setBackgroundResource(R.drawable.yellow_label_light);
 
+                holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_yellow);
 
                 break;
             default:
