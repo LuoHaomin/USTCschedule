@@ -95,7 +95,8 @@ public class TodoListAdapter extends BaseAdapter {
         holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
 
         holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
-        holder.todo_type.setText(" ");
+        String work_load_string=Integer.toString((int)todo.getWorkLoad())+"h";
+        holder.todo_type.setText(work_load_string);
         if(todo.getIsFinish()==0)
             holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_off);
         else

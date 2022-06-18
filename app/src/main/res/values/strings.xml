@@ -65,6 +65,7 @@
     <string name="cycle">重复周期</string>
     <string name="save">保存</string>
     <string name="teacher">老师</string>
+    <string name="workload">预计工作量（小时）</string>
     <string name="add_course">添加课程</string>
     <string name="add_task">添加事件</string>
     <string name="add_todo">添加待办</string>
@@ -135,8 +136,8 @@
     </string-array>
 
     <string-array name="yes_or_no">
-        <item>是</item>
         <item>否</item>
+        <item>是</item>
     </string-array>
 
     <string-array name="period_array_name">

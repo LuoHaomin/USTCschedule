@@ -64,11 +64,13 @@ public class AddTaskDialog extends DialogFragment {
                                        int pos, long id) {
                 if(pos==0)
                 {
-                    is_repeat=1;
+                    is_repeat=0;
+
                 }
                 else
                 {
-                    is_repeat=0;
+                    is_repeat=1;
+
                 }
             }
             @Override
@@ -85,12 +87,16 @@ public class AddTaskDialog extends DialogFragment {
                 switch(pos){
                     case 0:
                         period=1;
+                        break;
                     case 1:
                         period=7;
+                        break;
                     case 2:
                         period=30;//仅作为一个标记符号，不代表周期真的是30天
+                        break;
                     case 3:
                         period=365;
+                        break;
                 }
             }
             @Override

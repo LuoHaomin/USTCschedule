@@ -8,12 +8,12 @@ import java.util.Map;
 
 public class MyTodolist extends BasicSchedule{
 
-
+    private long WorkLoad;
 
     //默认不添加备注,重要性为1,创建时必须填写编号,时间,地点和内容
-    public MyTodolist (String name,long starting_time,int importance,int is_repeat,int period,String place,String description,int is_finish){
+    public MyTodolist (String name,long starting_time,int importance,int is_repeat,int period,String place,String description,long work_load,int is_finish){
         super(name,starting_time,importance,is_repeat,period,place,description,is_finish);
-
+        this.WorkLoad=work_load;
 
     }
     public MyTodolist(Cursor cursor){
@@ -25,12 +25,13 @@ public class MyTodolist extends BasicSchedule{
 
     public ContentValues getContentValues(){
         ContentValues info=super.getContentValues();
+        info.put("WORK_LOAD",WorkLoad);
         return info;
     }
 
     public Map getMap() {
         Map<String, Object> info = super.getMap();
-
+        info.put("WORK_LOAD",WorkLoad);
         return info;
     }
 
@@ -45,11 +46,14 @@ public class MyTodolist extends BasicSchedule{
     {
         super.setFromCursor(cursor);
 
-
+        WorkLoad=cursor.getInt(cursor.getColumnIndexOrThrow("WORK_LOAD"));
     }
 
+    public long getWorkLoad() {
+        return WorkLoad;
+    }
 
-
-
-
+    public void setWorkLoad(long workLoad) {
+        WorkLoad = workLoad;
+    }
 }

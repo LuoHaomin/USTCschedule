@@ -55,8 +55,10 @@ public class AddTodoDialog extends DialogFragment {
                 switch(pos){
                     case 0:
                         is_DDL=true;
+                        break;
                     case 1:
                         is_DDL=false;//task
+                        break;
                 }
             }
             @Override
@@ -87,11 +89,11 @@ public class AddTodoDialog extends DialogFragment {
                                        int pos, long id) {
                 if(pos==0)
                 {
-                    is_repeat=1;
+                    is_repeat=0;
                 }
                 else
                 {
-                    is_repeat=0;
+                    is_repeat=1;
                 }
             }
             @Override
@@ -108,12 +110,16 @@ public class AddTodoDialog extends DialogFragment {
                 switch(pos){
                     case 0:
                         period=1;
+                        break;
                     case 1:
                         period=7;
+                        break;
                     case 2:
                         period=30;//仅作为一个标记符号，不代表周期真的是30天
+                        break;
                     case 3:
                         period=365;
+                        break;
                 }
             }
             @Override
@@ -207,6 +213,18 @@ public class AddTodoDialog extends DialogFragment {
         String description="";
         int is_finish=0;
         int workload=0;
+
+        EditText edit_workload = (EditText)view.findViewById(R.id.edit_workload);
+        String s = edit_workload.getText().toString();
+        if (s.equals("") || s.equals("."))
+        {
+            workload=0;
+        }
+        else
+        {
+            workload= Integer.parseInt(s);
+        }
+
         if(is_DDL) {
             MyDeadLine ddl=new MyDeadLine(name, starting_time, importance, is_repeat, period, place, description,workload, is_finish);
             MainDatabaseHelper db_helper = new MainDatabaseHelper(getContext());
@@ -216,7 +234,7 @@ public class AddTodoDialog extends DialogFragment {
         else
         {
 
-            MyTodolist todo = new MyTodolist(name, starting_time, importance, is_repeat, period, place, description, is_finish);
+            MyTodolist todo = new MyTodolist(name, starting_time, importance, is_repeat, period, place, description,workload, is_finish);
             MainDatabaseHelper db_helper = new MainDatabaseHelper(getContext());
             SQLiteDatabase db = db_helper.getWritableDatabase();
             todo.toDatabase(db);
