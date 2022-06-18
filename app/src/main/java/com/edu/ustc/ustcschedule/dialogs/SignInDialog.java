@@ -19,6 +19,32 @@ import com.edu.ustc.ustcschedule.R;
 import java.util.Objects;
 
 public class SignInDialog extends DialogFragment {
+//
+//    /* The activity that creates an instance of this dialog fragment must
+//     * implement this interface in order to receive event callbacks.
+//     * Each method passes the DialogFragment in case the host needs to query it. */
+//    public interface SignInDialogListener {
+//        public void onDialogPositiveClick(DialogFragment dialog);
+//    }
+//
+//    // Use this instance of the interface to deliver action events
+//    SignInDialogListener listener;
+//
+//    // Override the Fragment.onAttach() method to instantiate the SignInDialogListener
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//        // Verify that the host activity implements the callback interface
+//        try {
+//            // Instantiate the SignInDialogListener so we can send events to the host
+//            listener = (SignInDialogListener) context;
+//        } catch (ClassCastException e) {
+//            // The activity doesn't implement the interface, throw exception
+//            throw new ClassCastException(context
+//                    + " must implement SignInDialogListener");
+//        }
+//    }
+
     @SuppressLint("InflateParams")
     @NonNull
     @Override
@@ -33,6 +59,7 @@ public class SignInDialog extends DialogFragment {
                     EditText idEditText = view.findViewById(R.id.ID);
                     EditText pwdEditText = view.findViewById(R.id.password);
                     Toast.makeText(requireContext(), "id:"+idEditText.getText()+";pwd:"+pwdEditText.getText(),Toast.LENGTH_SHORT).show();
+//                    listener.onDialogPositiveClick(SignInDialog.this);
                 })
                 .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
                     Objects.requireNonNull(SignInDialog.this.getDialog()).cancel();
