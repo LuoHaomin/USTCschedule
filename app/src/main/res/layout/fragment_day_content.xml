@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="1226dp"
     android:orientation="vertical">
-
-    <!--Blue label-->
+        <!--Blue label-->
     <androidx.cardview.widget.CardView
         android:id="@+id/lesson_card_day"
         android:layout_width="match_parent"
