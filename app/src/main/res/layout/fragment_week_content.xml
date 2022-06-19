@@ -85,7 +85,7 @@
 
     <!--Blue label-->
     <androidx.cardview.widget.CardView
-        android:id="@+id/lesson_1"
+        android:id="@+id/lesson"
         android:layout_width="44dp"
         android:layout_height="100dp"
         android:layout_marginTop="480dp"
@@ -99,7 +99,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/lesson1_label"
+                android:id="@+id/lesson_label"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/blue_label"
@@ -116,9 +116,9 @@
                 android:textColor="@color/blue_label_text"
                 android:textSize="12sp"
                 android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="@id/lesson1_label"
-                app:layout_constraintTop_toTopOf="@id/lesson1_label"
-                app:layout_constraintEnd_toEndOf="@id/lesson1_label"/>
+                app:layout_constraintStart_toStartOf="@id/lesson_label"
+                app:layout_constraintTop_toTopOf="@id/lesson_label"
+                app:layout_constraintEnd_toEndOf="@id/lesson_label"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -129,9 +129,9 @@
                 android:textColor="@color/normal"
                 android:textSize="8sp"
                 android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@id/lesson1_label"
-                app:layout_constraintBottom_toBottomOf="@id/lesson1_label"
-                app:layout_constraintStart_toStartOf="@id/lesson1_label"
+                app:layout_constraintEnd_toEndOf="@id/lesson_label"
+                app:layout_constraintBottom_toBottomOf="@id/lesson_label"
+                app:layout_constraintStart_toStartOf="@id/lesson_label"
                 tools:ignore="SmallSp" />
 
             <TextView
@@ -142,8 +142,8 @@
                 android:text="09:45"
                 android:textColor="@color/text_light"
                 android:textSize="6sp"
-                app:layout_constraintTop_toTopOf="@id/lesson1_label"
-                app:layout_constraintStart_toStartOf="@id/lesson1_label"
+                app:layout_constraintTop_toTopOf="@id/lesson_label"
+                app:layout_constraintStart_toStartOf="@id/lesson_label"
                 tools:ignore="SmallSp" />
 
             <TextView
@@ -154,8 +154,8 @@
                 android:text="11:20"
                 android:textColor="@color/text_light"
                 android:textSize="6sp"
-                app:layout_constraintEnd_toEndOf="@id/lesson1_label"
-                app:layout_constraintBottom_toBottomOf="@id/lesson1_label"
+                app:layout_constraintEnd_toEndOf="@id/lesson_label"
+                app:layout_constraintBottom_toBottomOf="@id/lesson_label"
                 tools:ignore="SmallSp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

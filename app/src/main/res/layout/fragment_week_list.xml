@@ -305,13 +305,13 @@
         app:layout_constraintTop_toTopOf="@id/time_line24"
         tools:ignore="SmallSp" />
 
-    <androidx.fragment.app.FragmentContainerView
+    <!--<androidx.fragment.app.FragmentContainerView
         android:id="@+id/day_content_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.edu.ustc.ustcschedule.fragment.WeekContentFragment"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

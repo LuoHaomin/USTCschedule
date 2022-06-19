@@ -14,12 +14,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+
 import com.edu.ustc.ustcschedule.R;
 
 public class TimeEditText extends androidx.appcompat.widget.AppCompatEditText {
     private final static String TAG = "EditTextWithDate";
     private final Context mContext;
-    private Calendar c=Calendar.getInstance();
+    private Calendar c=Calendar.getInstance(Locale.CHINA);
     private boolean datePickerEnabled = true;
     @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat format = new SimpleDateFormat("HH:mm",Locale.CHINA);
@@ -43,7 +44,7 @@ public class TimeEditText extends androidx.appcompat.widget.AppCompatEditText {
     }
 
     private void init() {
-        c = Calendar.getInstance();
+        c = Calendar.getInstance(Locale.CHINA);
         //c.add(Calendar.HOUR,8);
 
         setText(format.format(c.getTimeInMillis()));

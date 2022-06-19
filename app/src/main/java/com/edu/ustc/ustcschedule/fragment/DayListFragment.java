@@ -3,6 +3,7 @@ package com.edu.ustc.ustcschedule.fragment;
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.TimeZoneFormat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,27 +19,32 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.SQL.BasicSchedule;
 import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
+import com.edu.ustc.ustcschedule.SQL.MyDeadLine;
 import com.edu.ustc.ustcschedule.SQL.MySchedule;
 import com.edu.ustc.ustcschedule.dialogs.DeleteDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class DayListFragment extends Fragment {
 
     Calendar ca=Calendar.getInstance(Locale.CHINA);
-    long day_start=(ca.getTimeInMillis()/86400/1000)*1000*86400;//清除小时和分钟
+    long day_start=((ca.getTimeInMillis()-8*3600*1000)/86400/1000)*1000*86400;//清除小时和分钟
     long day_end=day_start+86400*1000;
+    double magnify_ratio;
     String day_start_str=Long.toString(day_start);
     String day_end_str=Long.toString(day_end);
-    final SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd", Locale.CHINA);
+    final SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
     final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        ca.setTimeZone(TimeZone.getTimeZone("GMT+8"));
 
 
         View view= inflater.inflate(R.layout.fragment_day_list, container, false);
@@ -51,7 +57,6 @@ public class DayListFragment extends Fragment {
                 "START_TIME>"+day_start_str+" AND START_TIME<"+day_end_str+" AND END_TIME<"+day_end_str+" AND END_TIME>"+day_start_str,
                 null,null,null,"START_TIME ASC");
         cursor.moveToFirst();
-
         for(int i=0;i< cursor.getCount();i++) {
             MySchedule schedule=new MySchedule(cursor);
             add_schedule(layout, schedule, inflater, container);
@@ -64,46 +69,42 @@ public class DayListFragment extends Fragment {
                 "IS_REPEAT=1",
                 null,null,null,"START_TIME ASC");
         cursor_repeat.moveToFirst();
-
-        for(int i=0;i< cursor.getCount();i++) {
+        for(int i=0;i< cursor_repeat.getCount();i++) {
             MySchedule schedule=new MySchedule(cursor_repeat);
             boolean is_today=false;
-            long starting_time=schedule.getStartingTime();
-            Calendar temp_ca=Calendar.getInstance();
-            temp_ca.setTimeInMillis(starting_time);
-            if(schedule.getPeriod()==1)
-                is_today=true;
-            if(schedule.getPeriod()==7&&(ca.get(Calendar.DAY_OF_WEEK) ==temp_ca.get(Calendar.DAY_OF_WEEK)))
-                is_today=true;
-            if(schedule.getPeriod()==30)
-            {
-                if(ca.get(Calendar.DAY_OF_MONTH) ==temp_ca.get(Calendar.DAY_OF_MONTH))
-                    is_today = true;
-                if(ca.getActualMaximum(Calendar.DAY_OF_MONTH) <temp_ca.get(Calendar.DAY_OF_MONTH))//超过一个月最大天数
-                {
-                    if(ca.getActualMaximum(Calendar.DAY_OF_MONTH)==ca.get(Calendar.DAY_OF_MONTH))
-                        is_today=true;
-                }
-            }
-            if(schedule.getPeriod()==365)
-            {
-                if((ca.get(Calendar.DAY_OF_MONTH) ==temp_ca.get(Calendar.DAY_OF_MONTH))&&
-                        (ca.get(Calendar.MONTH)==temp_ca.get(Calendar.MONTH)))
-                {
-                    is_today=true;
-                }
-                if(ca.getActualMaximum(Calendar.DAY_OF_MONTH) <temp_ca.get(Calendar.DAY_OF_MONTH)&&
-                        (ca.get(Calendar.MONTH)==temp_ca.get(Calendar.MONTH)))//2月29日
-                {
-                    is_today=true;
-                }
-            }
-
+            is_today=is_today_fun(schedule);
             if(is_today)
             {
                 add_schedule(layout, schedule, inflater, container);
             }
             cursor_repeat.moveToNext();
+        }
+
+        Cursor ddl_cursor=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
+                        "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
+                "START_TIME>"+day_start_str+" AND START_TIME<"+day_end_str,
+                null,null,null,"START_TIME ASC");
+        ddl_cursor.moveToFirst();
+        for(int i=0;i< ddl_cursor.getCount();i++) {
+            MyDeadLine ddl=new MyDeadLine(ddl_cursor);
+            add_DDL(layout, ddl, inflater, container);
+            ddl_cursor.moveToNext();
+        }
+
+        Cursor ddl_cursor_repeat=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
+                        "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
+                "IS_REPEAT=1",
+                null,null,null,"START_TIME ASC");
+        ddl_cursor_repeat.moveToFirst();
+        for(int i=0;i< ddl_cursor_repeat.getCount();i++) {
+            MyDeadLine ddl=new MyDeadLine(ddl_cursor_repeat);
+            boolean is_today=false;
+            is_today=is_today_fun(ddl);
+            if(is_today)
+            {
+                add_DDL(layout, ddl, inflater, container);
+            }
+            ddl_cursor_repeat.moveToNext();
         }
 
         return view;
@@ -112,8 +113,8 @@ public class DayListFragment extends Fragment {
     {
         View schedule_view=inflater.inflate(R.layout.fragment_day_list_item, container, false);
 
-        long starting_time=Math.max(schedule.getStartingTime(),day_start);
-        long ending_time=Math.min(schedule.getEndingTime(),day_end);
+        long starting_time=schedule.getStartingTime();
+        long ending_time=schedule.getEndingTime();
 
         double height=(Math.abs(ending_time-starting_time))/72000;
         double pos=(Math.min(starting_time,ending_time)%86400000)/72000+6.5;//6是line到layout顶部的高度
@@ -153,7 +154,7 @@ public class DayListFragment extends Fragment {
                 break;
         }
 
-        double magnify_ratio=(float)card_params.height/100.0;
+        magnify_ratio=(float)card_params.height/100.0;
         card_params.height=(int)(magnify_ratio*height);//放大倍数乘值
         card_params.topMargin=(int)(magnify_ratio*pos);
 
@@ -161,5 +162,65 @@ public class DayListFragment extends Fragment {
         layout.addView(schedule_view);
         //schedule_view.setLayoutParams(card_params);
         //return view;
+    }
+
+    public boolean is_today_fun(BasicSchedule schedule)
+    {
+        boolean is_today=false;
+        long starting_time=schedule.getStartingTime();
+        Calendar temp_ca=Calendar.getInstance(Locale.CHINA);
+        temp_ca.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        temp_ca.setTimeInMillis(starting_time);
+        if(schedule.getPeriod()==1)
+            is_today=true;
+        if(schedule.getPeriod()==7&&(ca.get(Calendar.DAY_OF_WEEK) ==temp_ca.get(Calendar.DAY_OF_WEEK)))
+            is_today=true;
+        if(schedule.getPeriod()==30)
+        {
+            if(ca.get(Calendar.DAY_OF_MONTH) ==temp_ca.get(Calendar.DAY_OF_MONTH))
+                is_today = true;
+            if(ca.getActualMaximum(Calendar.DAY_OF_MONTH) <temp_ca.get(Calendar.DAY_OF_MONTH))//超过一个月最大天数
+            {
+                if(ca.getActualMaximum(Calendar.DAY_OF_MONTH)==ca.get(Calendar.DAY_OF_MONTH))
+                    is_today=true;
+            }
+        }
+        if(schedule.getPeriod()==365)
+        {
+            if((ca.get(Calendar.DAY_OF_MONTH) ==temp_ca.get(Calendar.DAY_OF_MONTH))&&
+                    (ca.get(Calendar.MONTH)==temp_ca.get(Calendar.MONTH)))
+            {
+                is_today=true;
+            }
+            if(ca.getActualMaximum(Calendar.DAY_OF_MONTH) <temp_ca.get(Calendar.DAY_OF_MONTH)&&
+                    (ca.get(Calendar.MONTH)==temp_ca.get(Calendar.MONTH)))//2月29日
+            {
+                is_today=true;
+            }
+        }
+        return is_today;
+    }
+    public void add_DDL(ConstraintLayout layout,MyDeadLine ddl,LayoutInflater inflater, ViewGroup container) {
+        View ddl_view=inflater.inflate(R.layout.fragment_day_list_item_ddl, container, false);
+
+        long starting_time=ddl.getStartingTime();
+        double pos=(starting_time%86400000)/72000+6.5;//6是line到layout顶部的高度
+
+        ddl_view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                DeleteDialog deleteDialog = new DeleteDialog();
+                deleteDialog.show(getParentFragmentManager(), "delete");
+                return false;
+            }
+        });
+        ConstraintLayout.LayoutParams ddl_params = (ConstraintLayout.LayoutParams) ddl_view.findViewById(R.id.day_deadline).getLayoutParams();
+        //FrameLayout.LayoutParams ddl_params = (FrameLayout.LayoutParams) ddl_view.getLayoutParams();
+        ((TextView)ddl_view.findViewById(R.id.day_deadline_label)).setText(format_time.format(starting_time));
+
+        ddl_params.topMargin=(int)(magnify_ratio*pos);
+
+        //ddl_view.layout(ddl_view.getLeft(),100,ddl_view.getRight(),170);
+        layout.addView(ddl_view);
     }
 }

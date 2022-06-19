@@ -7,6 +7,7 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class ClassTextInit {
     public void initText(View view) {
@@ -16,7 +17,7 @@ public class ClassTextInit {
         @SuppressLint("SimpleDateFormat") final SimpleDateFormat formatWeek = new SimpleDateFormat("EEEE", Locale.CHINA);
 
 
-        Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance(Locale.CHINA);
         TextView textYear = view.findViewById(R.id.text_current_year);
         textYear.setText(formatYear.format(c.getTimeInMillis()));
         TextView textMonth = view.findViewById(R.id.text_current_month);

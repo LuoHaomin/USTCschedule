@@ -60,21 +60,11 @@ public class TodolistFragment extends Fragment {
 
         List<MyTodolist> listitem = new ArrayList<MyTodolist>();
 
-        while (cursor.getCount()!=0&&!cursor.isLast()){
+        for(int i=0;i<cursor.getCount();i++){
             MyTodolist todo=new MyTodolist(cursor);
-
-
             listitem.add(todo);
             cursor.moveToNext();
         }
-        if(cursor.getCount()!=0)
-        {
-            MyTodolist todo=new MyTodolist(cursor);
-
-            listitem.add(todo);
-        }
-
-
         //创建一个simpleAdapter
         //SimpleAdapter myAdapter = new SimpleAdapter(getContext(), listitem, R.layout.fragment_todolist_item, new String[]{"NAME"}, new int[]{R.id.todo_name});
         TodoListAdapter myAdapter=new TodoListAdapter(getContext(),listitem);

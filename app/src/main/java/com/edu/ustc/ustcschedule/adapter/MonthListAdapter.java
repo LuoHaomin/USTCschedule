@@ -14,7 +14,7 @@ import com.edu.ustc.ustcschedule.SQL.MyTodolist;
 
 import java.util.List;
 
-public class DayListAdapter extends BaseAdapter{
+public class MonthListAdapter extends BaseAdapter{
 
 
 
@@ -30,7 +30,7 @@ public class DayListAdapter extends BaseAdapter{
     private List<MyTodolist> mData = null;
 
 
-    public DayListAdapter(Context mContext, List<MyTodolist> mData) {
+    public MonthListAdapter(Context mContext, List<MyTodolist> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

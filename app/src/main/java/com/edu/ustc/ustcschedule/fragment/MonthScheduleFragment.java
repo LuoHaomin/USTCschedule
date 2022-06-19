@@ -22,6 +22,7 @@ import com.edu.ustc.ustcschedule.databinding.FragmentScheduleMonthBinding;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class MonthScheduleFragment extends Fragment {
 
@@ -50,7 +51,8 @@ public class MonthScheduleFragment extends Fragment {
     }
 
     private void setTextMonth(@NonNull View view) {
-        Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance(Locale.CHINA);
+        c.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         CalendarView calendarView = view.findViewById(R.id.calendar);
         TextView textYear = view.findViewById(R.id.text_current_year_month);
         TextView textMonth1 = view.findViewById(R.id.text_current_month1);

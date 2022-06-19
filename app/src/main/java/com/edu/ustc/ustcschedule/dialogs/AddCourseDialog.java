@@ -34,8 +34,8 @@ public class AddCourseDialog extends DialogFragment {
     private int importance=4;//代表课程
     private int is_repeat=1;
     private int period=7;
-    private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日");
-    private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm", Locale.CHINA);
+    private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日",Locale.CHINA);
+    private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

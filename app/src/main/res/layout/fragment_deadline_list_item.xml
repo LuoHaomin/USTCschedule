@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/left"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/left_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blue_label_light"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/left" />
+
+            <TextView
+                android:id="@+id/left_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="程设进阶测试"
+                android:textColor="@color/text_deep"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/left_label"
+                app:layout_constraintTop_toTopOf="@id/left_label"
+                app:layout_constraintBottom_toBottomOf="@id/left_label"/>
+
+            <TextView
+                android:id="@+id/left_const_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/left"
+                android:textSize="16sp"
+                android:textColor="@color/text_deep"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@id/left_leftdays_label"
+                app:layout_constraintTop_toTopOf="@id/left_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/left_leftdays_label" />
+
+            <ImageView
+                android:id="@+id/left_leftdays_label"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@drawable/blue_label_left"
+                app:layout_constraintEnd_toStartOf="@id/left_days_label"
+                app:layout_constraintTop_toTopOf="@id/left_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/left_days_label" />
+
+            <TextView
+                android:id="@+id/left_days_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textSize="14sp"
+                android:textColor="@color/text_deep"
+                app:layout_constraintTop_toTopOf="@id/left_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/left_leftdays_label"
+                app:layout_constraintStart_toStartOf="@id/left_leftdays_label"
+                app:layout_constraintEnd_toEndOf="@id/left_leftdays_label" />
+
+            <ImageView
+                android:id="@+id/left_days_label"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:background="@drawable/blue_label_left_day"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintEnd_toEndOf="@id/left_label"
+                app:layout_constraintTop_toTopOf="@id/left_label"
+                app:layout_constraintBottom_toBottomOf="@id/left_label" />
+
+            <TextView
+                android:id="@+id/left_const_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/days"
+                android:textColor="@color/normal"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/left_days_label"
+                app:layout_constraintEnd_toEndOf="@id/left_days_label"
+                app:layout_constraintTop_toTopOf="@id/left_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/left_days_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+<!--
+    <androidx.cardview.widget.CardView
+        android:id="@+id/left_2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/left_1"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/left2_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blue_label_light"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/left" />
+
+            <TextView
+                android:id="@+id/left2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="程设进阶大作业"
+                android:textColor="@color/text_deep"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/left2_label"
+                app:layout_constraintTop_toTopOf="@id/left2_label"
+                app:layout_constraintBottom_toBottomOf="@id/left2_label"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/left"
+                android:textSize="16sp"
+                android:textColor="@color/text_deep"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@id/left2_leftdays_label"
+                app:layout_constraintTop_toTopOf="@id/left2_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/left2_leftdays_label" />
+
+            <View
+                android:id="@+id/left2_leftdays_label"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@drawable/blue_label_left"
+                app:layout_constraintEnd_toStartOf="@id/left2_days_label"
+                app:layout_constraintTop_toTopOf="@id/left2_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/left2_days_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="28"
+                android:textSize="14sp"
+                android:textColor="@color/text_deep"
+                app:layout_constraintTop_toTopOf="@id/left2_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/left2_leftdays_label"
+                app:layout_constraintStart_toStartOf="@id/left2_leftdays_label"
+                app:layout_constraintEnd_toEndOf="@id/left2_leftdays_label" />
+
+            <View
+                android:id="@+id/left2_days_label"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:background="@drawable/blue_label_left_day"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintEnd_toEndOf="@id/left2_label"
+                app:layout_constraintTop_toTopOf="@id/left2_label"
+                app:layout_constraintBottom_toBottomOf="@id/left2_label" />
+
+            <TextView
+                android:id="@+id/left2_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/days"
+                android:textColor="@color/normal"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/left2_days_label"
+                app:layout_constraintEnd_toEndOf="@id/left2_days_label"
+                app:layout_constraintTop_toTopOf="@id/left2_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/left2_days_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/past_1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/left_2"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/past1_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/yellow_label_light"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/past" />
+
+            <TextView
+                android:id="@+id/past1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="今年"
+                android:textColor="@color/text_deep"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/past1_label"
+                app:layout_constraintTop_toTopOf="@id/past1_label"
+                app:layout_constraintBottom_toBottomOf="@id/past1_label"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/past"
+                android:textSize="16sp"
+                android:textColor="@color/text_deep"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@id/past1_leftdays_label"
+                app:layout_constraintTop_toTopOf="@id/past1_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/past1_leftdays_label" />
+
+            <View
+                android:id="@+id/past1_leftdays_label"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@drawable/yellow_label_past"
+                app:layout_constraintEnd_toStartOf="@id/past1_days_label"
+                app:layout_constraintTop_toTopOf="@id/past1_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/past1_days_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="147"
+                android:textSize="14sp"
+                android:textColor="@color/text_deep"
+                app:layout_constraintTop_toTopOf="@id/past1_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/past1_leftdays_label"
+                app:layout_constraintStart_toStartOf="@id/past1_leftdays_label"
+                app:layout_constraintEnd_toEndOf="@id/past1_leftdays_label" />
+
+            <View
+                android:id="@+id/past1_days_label"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:background="@drawable/yellow_label_past_day"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintEnd_toEndOf="@id/past1_label"
+                app:layout_constraintTop_toTopOf="@id/past1_label"
+                app:layout_constraintBottom_toBottomOf="@id/past1_label" />
+
+            <TextView
+                android:id="@+id/past1_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/days"
+                android:textColor="@color/normal"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/past1_days_label"
+                app:layout_constraintEnd_toEndOf="@id/past1_days_label"
+                app:layout_constraintTop_toTopOf="@id/past1_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/past1_days_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/past_2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/past_1"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/past2_label"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/yellow_label_light"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/past" />
+
+            <TextView
+                android:id="@+id/past2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="入学"
+                android:textColor="@color/text_deep"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/past2_label"
+                app:layout_constraintTop_toTopOf="@id/past2_label"
+                app:layout_constraintBottom_toBottomOf="@id/past2_label"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/past"
+                android:textSize="16sp"
+                android:textColor="@color/text_deep"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@id/past2_leftdays_label"
+                app:layout_constraintTop_toTopOf="@id/past2_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/past2_leftdays_label" />
+
+            <View
+                android:id="@+id/past2_leftdays_label"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@drawable/yellow_label_past"
+                app:layout_constraintEnd_toStartOf="@id/past2_days_label"
+                app:layout_constraintTop_toTopOf="@id/past2_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/past2_days_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="272"
+                android:textSize="14sp"
+                android:textColor="@color/text_deep"
+                app:layout_constraintTop_toTopOf="@id/past2_leftdays_label"
+                app:layout_constraintBottom_toBottomOf="@id/past2_leftdays_label"
+                app:layout_constraintStart_toStartOf="@id/past2_leftdays_label"
+                app:layout_constraintEnd_toEndOf="@id/past2_leftdays_label" />
+
+            <View
+                android:id="@+id/past2_days_label"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:background="@drawable/yellow_label_past_day"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintEnd_toEndOf="@id/past2_label"
+                app:layout_constraintTop_toTopOf="@id/past2_label"
+                app:layout_constraintBottom_toBottomOf="@id/past2_label" />
+
+            <TextView
+                android:id="@+id/past2_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/days"
+                android:textColor="@color/normal"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="@id/past2_days_label"
+                app:layout_constraintEnd_toEndOf="@id/past2_days_label"
+                app:layout_constraintTop_toTopOf="@id/past2_days_label"
+                app:layout_constraintBottom_toBottomOf="@id/past2_days_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
