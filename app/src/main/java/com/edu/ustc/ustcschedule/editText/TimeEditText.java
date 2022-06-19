@@ -22,7 +22,7 @@ public class TimeEditText extends androidx.appcompat.widget.AppCompatEditText {
     private Calendar c=Calendar.getInstance();
     private boolean datePickerEnabled = true;
     @SuppressLint("SimpleDateFormat")
-    private final SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+    private final SimpleDateFormat format = new SimpleDateFormat("HH:mm",Locale.CHINA);
 
     public TimeEditText(Context context) {
         super(context);
@@ -44,7 +44,7 @@ public class TimeEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     private void init() {
         c = Calendar.getInstance();
-        c.add(Calendar.HOUR,8);
+        //c.add(Calendar.HOUR,8);
 
         setText(format.format(c.getTimeInMillis()));
         this.setEnabled(false);

@@ -23,7 +23,7 @@ public class DateEditText extends androidx.appcompat.widget.AppCompatEditText {
     private Calendar c=Calendar.getInstance();
     private boolean datePickerEnabled = true;
     @SuppressLint("SimpleDateFormat")
-    private final SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日");
+    private final SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日",Locale.CHINA);
 
     public DateEditText(Context context) {
         super(context);
@@ -45,7 +45,7 @@ public class DateEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     private void init() {
         c = Calendar.getInstance();
-        c.add(Calendar.HOUR,8);
+        //c.add(Calendar.HOUR,8);
 
         setText(format.format(c.getTimeInMillis()));
         this.setEnabled(false);

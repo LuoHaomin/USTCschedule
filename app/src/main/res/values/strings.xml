@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">USTC schedule</string>
     <string name="author">制作人</string>
+    <string name="author_name">制作人:汤皓宇、罗浩铭、胡璟凡、何昕、孙宇萱、曹政泽</string>
     <string name="copyright">&#160;&#160;&#160;&#160;&#160;&#160;USTC-schedule</string>
 
     <string name="schedule">日程</string>
@@ -50,6 +51,7 @@
 
     <string name="add_event">加入事件</string>
     <string name="title">事件名称</string>
+    <string name="title_hint">事件名称（不超过15个字）</string>
     <string name="type">类型</string>
     <string name="date">日期</string>
     <string name="time">时间</string>
@@ -59,13 +61,18 @@
     <string name="is_repeat">是否重复</string>
     <string name="period">周期</string>
     <string name="place">地点</string>
+    <string name="place_hint">地点（不超过10个字）</string>
     <string name="position">教室</string>
+    <string name="position_hint">教室（不超过10个字）</string>
     <string name="description">描述</string>
+    <string name="description_hint">描述（不超过100个字）</string>
     <string name="repetitive">是否重复</string>
     <string name="cycle">重复周期</string>
     <string name="save">保存</string>
     <string name="teacher">老师</string>
+    <string name="teacher_hint">老师（不超过100个字）</string>
     <string name="workload">预计工作量（小时）</string>
+    <string name="workload_hint">预计工作量（小于1000小时）</string>
     <string name="add_course">添加课程</string>
     <string name="add_task">添加事件</string>
     <string name="add_todo">添加待办</string>

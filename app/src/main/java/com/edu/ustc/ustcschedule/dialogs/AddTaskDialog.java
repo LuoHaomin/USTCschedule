@@ -35,7 +35,7 @@ public class AddTaskDialog extends DialogFragment {
     private int importance=1;
     private int is_repeat=0;
     private int period=7;
-    private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日");
+    private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日",Locale.CHINA);
     private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm", Locale.CHINA);
 
     @Override
@@ -119,18 +119,31 @@ public class AddTaskDialog extends DialogFragment {
                 String name=((EditText)getView().findViewById(R.id.edit_title)).getText().toString();
                 name.replace(" ","");//去空格
 
-                if(name.length()!=0) {
-                    try {
-                        setFromTaskDialog(getView());
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    dismiss();
+                if(name.length()==0) {
+                    Toast toast =Toast.makeText(getContext(),"名称不能为空",Toast.LENGTH_SHORT);
+                    toast.show();
                 }
                 else
                 {
-                    Toast toast =Toast.makeText(getContext(),"名称不能为空",Toast.LENGTH_SHORT);
-                    toast.show();
+                    TimeEditText edit_start_time=(TimeEditText)getView().findViewById(R.id.start_time);
+                    String start_time_str=edit_start_time.getText().toString();
+                    TimeEditText edit_end_time=(TimeEditText)getView().findViewById(R.id.end_time);
+                    String end_time_str=edit_end_time.getText().toString();
+                    if(start_time_str.compareTo(end_time_str)>0)
+                    {
+                        Toast toast =Toast.makeText(getContext(),"开始时间不能晚于结束时间",Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    else
+                    {
+                        try {
+                            setFromTaskDialog(getView());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        dismiss();
+                    }
+
                 }
             }
         });
