@@ -24,6 +24,7 @@ public class TimeEditText extends androidx.appcompat.widget.AppCompatEditText {
     private boolean datePickerEnabled = true;
     @SuppressLint("SimpleDateFormat")
     private final SimpleDateFormat format = new SimpleDateFormat("HH:mm",Locale.CHINA);
+    public Long chosenTime=c.getTimeInMillis();
 
     public TimeEditText(Context context) {
         super(context);
@@ -75,6 +76,7 @@ public class TimeEditText extends androidx.appcompat.widget.AppCompatEditText {
                             .setTouchHideable(true)
                             .setOnChoose("确定", aLong -> {
                                 setText(format.format(aLong));
+                                chosenTime = aLong;
                                 return null;
                             })
                             .build().show();
@@ -93,5 +95,9 @@ public class TimeEditText extends androidx.appcompat.widget.AppCompatEditText {
         if (!datePickerEnabled) {
             setText("");
         }
+    }
+
+    public  Long getChosenTime() {
+        return chosenTime;
     }
 }
