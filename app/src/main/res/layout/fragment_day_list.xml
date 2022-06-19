@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/day_list_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="1226dp"
     android:orientation="vertical">
 
     <View
@@ -306,13 +306,13 @@
         app:layout_constraintTop_toTopOf="@id/time_line24"
         tools:ignore="SmallSp" />
 
-    <androidx.fragment.app.FragmentContainerView
+   <!-- <androidx.fragment.app.FragmentContainerView
         android:id="@+id/day_content_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.edu.ustc.ustcschedule.fragment.DayContentFragment"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
