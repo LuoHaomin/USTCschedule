@@ -1,5 +1,6 @@
 package com.edu.ustc.ustcschedule.fragment;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,7 +10,10 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
 
+import com.edu.ustc.ustcschedule.FocusActivity;
+import com.edu.ustc.ustcschedule.MainActivity;
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.SettingActivity;
 import com.edu.ustc.ustcschedule.dialogs.CheckUpdateDialog;
 import com.edu.ustc.ustcschedule.dialogs.PersonalInfoDialog;
 import com.edu.ustc.ustcschedule.dialogs.SignInDialog;
@@ -97,7 +101,8 @@ public class SettingFragment extends PreferenceFragmentCompat {
         });
 
         Objects.requireNonNull(focus).setOnPreferenceClickListener(preference -> {
-            // TODO 禅
+            Intent intent = new Intent(getActivity(), FocusActivity.class);
+            startActivity(intent);
             return false;
         });
     }
