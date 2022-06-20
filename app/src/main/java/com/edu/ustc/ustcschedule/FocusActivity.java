@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class FocusActivity extends AppCompatActivity {
     private int seconds;
     private int seconds_origin;
     private boolean running;
+    public volatile boolean flag = true;
     private boolean wasRunning;
 
 
@@ -34,14 +36,22 @@ public class FocusActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findViewById(R.id.input_time_hour).setVisibility(View.GONE);
-                findViewById(R.id.input_time_minute).setVisibility(View.GONE);
-                findViewById(R.id.yes_button).setVisibility(View.INVISIBLE);
-                findViewById(R.id.time_view).setVisibility(View.VISIBLE);
-                findViewById(R.id.start_button).setVisibility(View.VISIBLE);
-                findViewById(R.id.stop_button).setVisibility(View.VISIBLE);
-                running = true;
-                runTimer();
+                EditText time_hour = (EditText) findViewById( R.id.input_time_hour );
+                EditText time_minute = (EditText)findViewById(R.id.input_time_minute);
+                if(time_hour.getText().toString().length() == 0||time_minute.getText().toString().length() == 0){
+                    Toast.makeText(FocusActivity.this,"有空输入！",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    findViewById(R.id.input_time_hour).setVisibility(View.GONE);
+                    findViewById(R.id.input_time_minute).setVisibility(View.GONE);
+                    findViewById(R.id.yes_button).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.time_view).setVisibility(View.VISIBLE);
+                    findViewById(R.id.start_button).setVisibility(View.VISIBLE);
+                    findViewById(R.id.stop_button).setVisibility(View.VISIBLE);
+                    flag = true;
+                    running = false;
+                    runTimer();
+                }
             }
         });
 
@@ -74,15 +84,33 @@ public class FocusActivity extends AppCompatActivity {
 
     public void onClickStart(View view){
         running = true;
+        findViewById(R.id.start_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.exit_button).setVisibility(View.VISIBLE);
     }
     public void onClickStop(View view){
+        running = false;
+        findViewById(R.id.stop_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.cont_button).setVisibility(View.VISIBLE);
+    }
+    public void onClickExit(View view){
+        running = false;
+        flag = false;
+        findViewById(R.id.input_time_hour).setVisibility(View.VISIBLE);
+        findViewById(R.id.input_time_minute).setVisibility(View.VISIBLE);
+        findViewById(R.id.yes_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.time_view).setVisibility(View.INVISIBLE);
+        findViewById(R.id.start_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.stop_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.exit_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.cont_button).setVisibility(View.INVISIBLE);
 
-        running = false;
     }
-    public void onClickReset(View view){
-        running = false;
-        seconds = seconds_origin;
+    public void onClickCont(View view){
+        running = true;
+        findViewById(R.id.stop_button).setVisibility(View.VISIBLE);
+        findViewById(R.id.cont_button).setVisibility(View.INVISIBLE);
     }
+
 
     private void runTimer(){
         final TextView timeView = (TextView) findViewById(R.id.time_view);
@@ -91,8 +119,10 @@ public class FocusActivity extends AppCompatActivity {
         EditText input_time_hour = (EditText) findViewById( R.id.input_time_hour );
         EditText input_time_minute = (EditText)findViewById(R.id.input_time_minute);
 
-        int hour = Integer.parseInt(String.valueOf(input_time_hour.getText()));
-        int minute = Integer.parseInt(String.valueOf(input_time_minute.getText()));
+        String temp1 = String.valueOf(input_time_hour.getText());
+        String temp2 = String.valueOf(input_time_minute.getText());
+        int hour = Integer.parseInt(temp1);
+        int minute = Integer.parseInt(temp2);
         seconds_origin = 3600* hour + 60* minute;
         seconds = seconds_origin;
 
@@ -111,10 +141,14 @@ public class FocusActivity extends AppCompatActivity {
                 if(seconds <= 0){
                     running = false;
                 }
+                if (flag == false){
+                    return;
+                }
 
                 handler.postDelayed(this,1000);
             }
         });
     }
+
 
 }
