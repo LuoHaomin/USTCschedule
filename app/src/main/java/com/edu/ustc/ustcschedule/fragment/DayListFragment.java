@@ -27,13 +27,15 @@ import com.edu.ustc.ustcschedule.dialogs.DeleteDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
 public class DayListFragment extends Fragment {
 
+    Date date=new Date();
     Calendar ca=Calendar.getInstance(Locale.CHINA);
-    long day_start=((ca.getTimeInMillis()-8*3600*1000)/86400/1000)*1000*86400;//清除小时和分钟
+    long day_start=date.getTime();//清除小时和分钟
     long day_end=day_start+86400*1000;
     double magnify_ratio;
     String day_start_str=Long.toString(day_start);
@@ -117,7 +119,7 @@ public class DayListFragment extends Fragment {
         long ending_time=schedule.getEndingTime();
 
         double height=(Math.abs(ending_time-starting_time))/72000;
-        double pos=(Math.min(starting_time,ending_time)%86400000)/72000+6.5;//6是line到layout顶部的高度
+        double pos=(Math.min(starting_time,ending_time)-day_start)/72000+6.5;//6是line到layout顶部的高度
 
         CardView card=(CardView)schedule_view.findViewById(R.id.lesson_card_day);
         card.setOnLongClickListener(new View.OnLongClickListener() {
@@ -204,7 +206,7 @@ public class DayListFragment extends Fragment {
         View ddl_view=inflater.inflate(R.layout.fragment_day_list_item_ddl, container, false);
 
         long starting_time=ddl.getStartingTime();
-        double pos=(starting_time%86400000)/72000+6.5;//6是line到layout顶部的高度
+        double pos=(starting_time-day_start)/72000+6.5;//6是line到layout顶部的高度
 
         ddl_view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

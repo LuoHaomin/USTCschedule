@@ -203,7 +203,7 @@ public class AddTodoDialog extends DialogFragment {
         date=format_date.parse(date_str);
         Date time=new Date();
         time=format_time.parse(time_str);
-        long starting_time=date.getTime()+time.getTime();
+        long starting_time=date.getTime()+time.getTime()+8*3600*1000;
 
         //String name="";
 

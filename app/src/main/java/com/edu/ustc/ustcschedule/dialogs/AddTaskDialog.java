@@ -182,8 +182,8 @@ public class AddTaskDialog extends DialogFragment {
         starting_time_part=format_time.parse(start_time_str);
         Date ending_time_part=new Date();
         ending_time_part=format_time.parse(end_time_str);
-        long starting_time=date.getTime()+starting_time_part.getTime();
-        long ending_time=date.getTime()+ending_time_part.getTime();
+        long starting_time=date.getTime()+starting_time_part.getTime()+8*3600*1000;
+        long ending_time=date.getTime()+ending_time_part.getTime()+8*3600*1000;
 
 
         EditText place_edit=(EditText)view.findViewById(R.id.place_edit);
