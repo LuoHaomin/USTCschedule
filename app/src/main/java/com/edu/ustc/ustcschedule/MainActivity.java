@@ -18,6 +18,7 @@ import com.edu.ustc.ustcschedule.dialogs.HelpDialog;
 import com.edu.ustc.ustcschedule.dialogs.MoveDialog;
 import com.edu.ustc.ustcschedule.dialogs.SaveTemplateDialog;
 import com.edu.ustc.ustcschedule.dialogs.ShareDialog;
+import com.edu.ustc.ustcschedule.share.utils.ShareBuilder;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -116,8 +117,9 @@ public class MainActivity extends AppCompatActivity {
                                     .add(android.R.id.content, saveTemplateDialog)
                                     .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 3) {
-                            ShareDialog shareDialog =  new ShareDialog();
-                            shareDialog.show(getSupportFragmentManager(), "share");
+                            new ShareBuilder().setText("This is Share Content!\nThis is the content").setChooserTitle("分享").setShareType(ShareBuilder.SHARE_TEXT).build().share(this);
+//                            ShareDialog shareDialog =  new ShareDialog();
+//                            shareDialog.show(getSupportFragmentManager(), "share");
                         } else if (drawerItem.getIdentifier() == 4) {
                             BorrowReminderDialog borrowReminderDialog = new BorrowReminderDialog();
                             getSupportFragmentManager().beginTransaction()
