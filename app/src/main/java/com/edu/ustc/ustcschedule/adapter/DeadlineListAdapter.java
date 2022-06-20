@@ -17,6 +17,7 @@ import com.edu.ustc.ustcschedule.SQL.MyTodolist;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -66,7 +67,8 @@ public class DeadlineListAdapter extends BaseAdapter {
         //int type = getItemViewType(position);
         Calendar ca=Calendar.getInstance(Locale.CHINA);
         ca.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-        long day_start=((ca.getTimeInMillis()-8*3600*1000)/86400/1000)*1000*86400;//清除小时和分钟
+        Date date=new Date();
+        long day_start=date.getTime();//清除小时和分钟
         long day_end=day_start+86400*1000;
         final SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
         final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);

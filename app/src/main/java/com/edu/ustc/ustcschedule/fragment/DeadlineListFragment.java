@@ -21,6 +21,7 @@ import com.edu.ustc.ustcschedule.adapter.TodoListAdapter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -34,7 +35,8 @@ public class DeadlineListFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_deadline_list, container, false);
         Calendar ca=Calendar.getInstance(Locale.CHINA);
         ca.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-        long day_start=((ca.getTimeInMillis()-8*3600*1000)/86400/1000)*1000*86400;//清除小时和分钟
+        Date date=new Date();
+        long day_start=date.getTime();;//清除小时和分钟
         String day_start_str=Long.toString(day_start);
 
         MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
