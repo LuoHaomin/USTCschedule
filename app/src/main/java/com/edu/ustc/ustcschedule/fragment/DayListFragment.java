@@ -33,20 +33,23 @@ import java.util.TimeZone;
 
 public class DayListFragment extends Fragment {
 
+    final SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
+    final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
     Date date=new Date();
+
     Calendar ca=Calendar.getInstance(Locale.CHINA);
-    long day_start=date.getTime();//清除小时和分钟
+    long day_start=((date.getTime()+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;//清除小时和分钟
     long day_end=day_start+86400*1000;
     double magnify_ratio;
     String day_start_str=Long.toString(day_start);
     String day_end_str=Long.toString(day_end);
-    final SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
-    final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         ca.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+
 
 
         View view= inflater.inflate(R.layout.fragment_day_list, container, false);
