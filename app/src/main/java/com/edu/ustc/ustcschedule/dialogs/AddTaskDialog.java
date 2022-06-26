@@ -35,8 +35,9 @@ public class AddTaskDialog extends DialogFragment {
     private int importance=1;
     private int is_repeat=0;
     private int period=7;
-    private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日",Locale.CHINA);
-    private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
+    //private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日",Locale.CHINA);
+    //private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
+    private final SimpleDateFormat format_full = new SimpleDateFormat("yyyy年MM月dd日HH:mm",Locale.CHINA);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -176,14 +177,12 @@ public class AddTaskDialog extends DialogFragment {
         TimeEditText edit_end_time=(TimeEditText)view.findViewById(R.id.end_time);
         String end_time_str=edit_end_time.getText().toString();
 
-        Date date=new Date();
-        date=format_date.parse(date_str);
-        Date starting_time_part=new Date();
-        starting_time_part=format_time.parse(start_time_str);
-        Date ending_time_part=new Date();
-        ending_time_part=format_time.parse(end_time_str);
-        long starting_time=date.getTime()+starting_time_part.getTime()+8*3600*1000;
-        long ending_time=date.getTime()+ending_time_part.getTime()+8*3600*1000;
+        Date date1=new Date();
+        date1=format_full.parse(date_str+start_time_str);
+        Date date2=new Date();
+        date2=format_full.parse(date_str+end_time_str);
+        long starting_time=date1.getTime();
+        long ending_time=date2.getTime();
 
 
         EditText place_edit=(EditText)view.findViewById(R.id.place_edit);
