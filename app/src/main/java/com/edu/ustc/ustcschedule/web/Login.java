@@ -7,6 +7,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.Map;
 public class Login {
     public static String LOGIN_URL = "https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fjw.ustc.edu.cn%2Fucas-sso%2Flogin";
     public static String USER_AGENT = "User-Agent";
-    public static String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0";
+    public static String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50";
 
     /*
     public static void main(String[] args) throws Exception {
@@ -36,7 +38,15 @@ public class Login {
 
         Connection con = Jsoup.connect(LOGIN_URL);  // 获取connection
         con.header(USER_AGENT, USER_AGENT_VALUE);
+        con.header("Connection","keep-alive");
         con.header("Content-Type","application/x-www-form-urlencoded;charset=utf-8");// 配置模拟浏览器
+        con.header("sec-ch-ua","\"Chromium\";v=\"94\", \"Microsoft Edge\";v=\"94\", \";Not A Brand\";v=\"99\"");
+        con.header("sec-ch-ua-mobile","?0");
+        con.header("Pragma","no-cache");
+        con.header("Cache-Control","no-cache");
+        con.header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        con.header("Referer","https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fyoung.ustc.edu.cn%2Flogin%2Fsc-wisdom-group-learning%2F");
+        //con.header("Host","www.ustc.edu.cn");
         Response rs = con.execute();                // 获取响应
         Document d1 = Jsoup.parse(rs.body());       // 通过Jsoup将返回信息转换为Dom树
         List<Element> eleList = d1.select("form");  // 获取提交form表单，可以通过查看页面源码代码得知
@@ -85,14 +95,16 @@ public class Login {
         int a3 = IDS.toString().indexOf("var studentId = ");
         String stuId = IDS.toString().substring(a3+16,a3+22);
         //System.out.println(stuId);
-        int a4= IDS.toString().indexOf(semester);
+        /*int a4= IDS.toString().indexOf(semester);
         String semeId = new String();
         if(a4 != -1){
             semeId = IDS.toString().substring(a4-5,a4-2);
         } else {
             ans.add(new Mycourse( "学期输入错误" ));
             return ans;
-        }
+        }*/
+        //stuId="var studentId = 030838;";
+        String semeId = new String("1");
         //System.out.println(semeId);
         //System.out.println(IDSrs.body());
 
