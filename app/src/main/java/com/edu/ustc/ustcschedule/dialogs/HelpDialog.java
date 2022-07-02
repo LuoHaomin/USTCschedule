@@ -70,7 +70,7 @@ public class HelpDialog extends DialogFragment {
             // TODO
             // 在这里进行 http request.网络请求相关操作
             try {
-                ArrayList<Mycourse> ans= Login.simulateLogin("PB21030838","Mzfslhm2003","1");
+                ArrayList<Mycourse> ans= Login.simulateLogin("  ","  ");
             } catch (Exception e) {
                 e.printStackTrace();
             }

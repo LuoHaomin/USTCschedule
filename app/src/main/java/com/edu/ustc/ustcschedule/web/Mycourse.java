@@ -8,6 +8,7 @@ public class Mycourse {
     int startUnit;
     int endUnit;
     String room;
+    String teachers;
 
 
     public Mycourse()
@@ -56,5 +57,13 @@ public class Mycourse {
 
     public void setWeekday(int weekday) {
         this.weekday = weekday;
+    }
+
+    public String getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(String teachers) {
+        this.teachers = teachers;
     }
 }
