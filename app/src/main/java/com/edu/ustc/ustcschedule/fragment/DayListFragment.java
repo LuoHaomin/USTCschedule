@@ -69,7 +69,7 @@ public class DayListFragment extends Fragment {
         }
 
 
-        Cursor cursor_repeat=db.query("SCHEDULE",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"END_TIME","TIME_LENGTH",
+        /*Cursor cursor_repeat=db.query("SCHEDULE",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"END_TIME","TIME_LENGTH",
                         "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
                 "IS_REPEAT=1",
                 null,null,null,"START_TIME ASC");
@@ -83,7 +83,7 @@ public class DayListFragment extends Fragment {
                 add_schedule(layout, schedule, inflater, container);
             }
             cursor_repeat.moveToNext();
-        }
+        }*/
 
         Cursor ddl_cursor=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
                         "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
@@ -96,7 +96,7 @@ public class DayListFragment extends Fragment {
             ddl_cursor.moveToNext();
         }
 
-        Cursor ddl_cursor_repeat=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
+        /*Cursor ddl_cursor_repeat=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
                         "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
                 "IS_REPEAT=1",
                 null,null,null,"START_TIME ASC");
@@ -110,7 +110,7 @@ public class DayListFragment extends Fragment {
                 add_DDL(layout, ddl, inflater, container);
             }
             ddl_cursor_repeat.moveToNext();
-        }
+        }*/
 
         return view;
     }
@@ -163,48 +163,14 @@ public class DayListFragment extends Fragment {
         card_params.height=(int)(magnify_ratio*height);//放大倍数乘值
         card_params.topMargin=(int)(magnify_ratio*pos);
 
+        card.setLayoutParams(card_params);
         //schedule_view.layout(0,100,schedule_view.getRight()-schedule_view.getLeft(),170);
         layout.addView(schedule_view);
         //schedule_view.setLayoutParams(card_params);
         //return view;
     }
 
-    public boolean is_today_fun(BasicSchedule schedule)
-    {
-        boolean is_today=false;
-        long starting_time=schedule.getStartingTime();
-        Calendar temp_ca=Calendar.getInstance(Locale.CHINA);
-        temp_ca.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-        temp_ca.setTimeInMillis(starting_time);
-        if(schedule.getPeriod()==1)
-            is_today=true;
-        if(schedule.getPeriod()==7&&(ca.get(Calendar.DAY_OF_WEEK) ==temp_ca.get(Calendar.DAY_OF_WEEK)))
-            is_today=true;
-        if(schedule.getPeriod()==30)
-        {
-            if(ca.get(Calendar.DAY_OF_MONTH) ==temp_ca.get(Calendar.DAY_OF_MONTH))
-                is_today = true;
-            if(ca.getActualMaximum(Calendar.DAY_OF_MONTH) <temp_ca.get(Calendar.DAY_OF_MONTH))//超过一个月最大天数
-            {
-                if(ca.getActualMaximum(Calendar.DAY_OF_MONTH)==ca.get(Calendar.DAY_OF_MONTH))
-                    is_today=true;
-            }
-        }
-        if(schedule.getPeriod()==365)
-        {
-            if((ca.get(Calendar.DAY_OF_MONTH) ==temp_ca.get(Calendar.DAY_OF_MONTH))&&
-                    (ca.get(Calendar.MONTH)==temp_ca.get(Calendar.MONTH)))
-            {
-                is_today=true;
-            }
-            if(ca.getActualMaximum(Calendar.DAY_OF_MONTH) <temp_ca.get(Calendar.DAY_OF_MONTH)&&
-                    (ca.get(Calendar.MONTH)==temp_ca.get(Calendar.MONTH)))//2月29日
-            {
-                is_today=true;
-            }
-        }
-        return is_today;
-    }
+
     public void add_DDL(ConstraintLayout layout,MyDeadLine ddl,LayoutInflater inflater, ViewGroup container) {
         View ddl_view=inflater.inflate(R.layout.fragment_day_list_item_ddl, container, false);
 
@@ -224,7 +190,7 @@ public class DayListFragment extends Fragment {
         ((TextView)ddl_view.findViewById(R.id.day_deadline_label)).setText(format_time.format(starting_time));
 
         ddl_params.topMargin=(int)(magnify_ratio*pos);
-
+        ddl_view.findViewById(R.id.day_deadline).setLayoutParams(ddl_params);
         //ddl_view.layout(ddl_view.getLeft(),100,ddl_view.getRight(),170);
         layout.addView(ddl_view);
     }

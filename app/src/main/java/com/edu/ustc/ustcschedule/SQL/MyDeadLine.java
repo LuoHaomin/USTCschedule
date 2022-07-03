@@ -48,6 +48,14 @@ public class MyDeadLine extends BasicSchedule{
 
     }
 
+    public void updateDatabase(SQLiteDatabase db,long new_starting_time)
+    {
+        this.setStartingTime(new_starting_time);
+        ContentValues info=this.getContentValues();
+
+        db.update("DDL",info,"_id = ?",new String[] {Integer.toString(this.getId())});
+    }
+
     public void setFromCursor(Cursor cursor)
     {
         super.setFromCursor(cursor);
