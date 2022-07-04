@@ -14,13 +14,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_add"
         android:backgroundTint="@color/button"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@id/deadline_scroll"
+        app:layout_constraintBottom_toTopOf="@id/week_list_container"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="@string/add_event" />
 
-    <ScrollView
+    <!--<ScrollView
         android:id="@+id/deadline_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,14 +33,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent">-->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/week_list_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:name="com.edu.ustc.ustcschedule.fragment.DeadlineListFragment" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/week_list_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.edu.ustc.ustcschedule.fragment.DeadlineListFragment" />
-
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

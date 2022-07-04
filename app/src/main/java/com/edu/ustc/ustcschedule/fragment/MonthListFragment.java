@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,13 @@ import com.edu.ustc.ustcschedule.SQL.BasicSchedule;
 import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
 import com.edu.ustc.ustcschedule.SQL.MyDeadLine;
 import com.edu.ustc.ustcschedule.SQL.MySchedule;
+import com.edu.ustc.ustcschedule.SQL.MyTodolist;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -34,9 +40,25 @@ public class MonthListFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_month_list, container, false);
         ListView layout=(ListView) view.findViewById(R.id.month_ListView);
 
+        CalendarView calendarView = view.findViewById(R.id.calendar);
+
+
+        SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
+        SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
+        Date date=new Date();
+        Calendar ca=Calendar.getInstance(Locale.CHINA);
+        long day_start=((calendarView.getDate()+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;//清除小时和分钟
+        long day_end=day_start+86400*1000;
+        double magnify_ratio;
+        String day_start_str=Long.toString(day_start);
+        String day_end_str=Long.toString(day_end);
+
+
+
+        List<BasicSchedule> listitem = new ArrayList<BasicSchedule>();
         MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
         SQLiteDatabase db=db_helper.getReadableDatabase();
-/*
+
         Cursor cursor=db.query("SCHEDULE",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"END_TIME","TIME_LENGTH",
                         "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
                 "START_TIME>"+day_start_str+" AND START_TIME<"+day_end_str+" AND END_TIME<"+day_end_str+" AND END_TIME>"+day_start_str,
@@ -44,7 +66,7 @@ public class MonthListFragment extends Fragment {
         cursor.moveToFirst();
         for(int i=0;i< cursor.getCount();i++) {
             MySchedule schedule=new MySchedule(cursor);
-            add_schedule(layout, schedule, inflater, container);
+            listitem.add(schedule);
             cursor.moveToNext();
         }
 
@@ -60,7 +82,7 @@ public class MonthListFragment extends Fragment {
             is_today=is_today_fun(schedule);
             if(is_today)
             {
-                add_schedule(layout, schedule, inflater, container);
+                listitem.add(schedule);
             }
             cursor_repeat.moveToNext();
         }
@@ -72,7 +94,7 @@ public class MonthListFragment extends Fragment {
         ddl_cursor.moveToFirst();
         for(int i=0;i< ddl_cursor.getCount();i++) {
             MyDeadLine ddl=new MyDeadLine(ddl_cursor);
-            add_DDL(layout, ddl, inflater, container);
+            listitem.add(ddl);
             ddl_cursor.moveToNext();
         }
 
@@ -87,11 +109,11 @@ public class MonthListFragment extends Fragment {
             is_today=is_today_fun(ddl);
             if(is_today)
             {
-                add_DDL(layout, ddl, inflater, container);
+                listitem.add(ddl);
             }
             ddl_cursor_repeat.moveToNext();
         }
-        */
+
 
         return view;
     }

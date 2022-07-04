@@ -171,7 +171,7 @@
         android:backgroundTint="@color/button"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@id/month_scroll"
+        app:layout_constraintBottom_toTopOf="@id/month_list_container"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
@@ -185,8 +185,8 @@
         app:layout_constraintBottom_toBottomOf="@id/add_events"
         app:layout_constraintEnd_toStartOf="@id/add_events" />
 
-    <ScrollView
-        android:id="@+id/month_scroll"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/month_list_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="24dp"
@@ -198,14 +198,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:name="com.edu.ustc.ustcschedule.fragment.MonthListFragment"/>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/week_list_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="com.edu.ustc.ustcschedule.fragment.MonthListFragment" />
-
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

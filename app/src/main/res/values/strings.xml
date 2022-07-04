@@ -137,7 +137,7 @@
     </string-array>
 
     <item name="Tag_todo" type="id" />
-
+    <item name="Tag_month_list" type="id" />
 
     <item name="Tag_Homework" type="id" />
     <item name="Tag_Reading" type="id" />

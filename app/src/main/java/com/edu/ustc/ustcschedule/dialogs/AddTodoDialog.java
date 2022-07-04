@@ -41,6 +41,7 @@ public class AddTodoDialog extends DialogFragment {
     private int period=7;
     private final SimpleDateFormat format_date = new SimpleDateFormat("yyyy年MM月dd日",Locale.CHINA);
     private final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
+    private final SimpleDateFormat format_full = new SimpleDateFormat("yyyy年MM月dd日HH:mm",Locale.CHINA);
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -200,10 +201,8 @@ public class AddTodoDialog extends DialogFragment {
         String time_str=time_text.getText().toString();
 
         Date date=new Date();
-        date=format_date.parse(date_str);
-        Date time=new Date();
-        time=format_time.parse(time_str);
-        long starting_time=date.getTime()+time.getTime()+8*3600*1000;
+        date=format_full.parse(date_str+time_str);
+        long starting_time=date.getTime();
 
         //String name="";
 

@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.edu.ustc.ustcschedule.R;
-import com.edu.ustc.ustcschedule.SQL.MyTodolist;
+import com.edu.ustc.ustcschedule.SQL.BasicSchedule;
+import com.edu.ustc.ustcschedule.SQL.MyDeadLine;
+import com.edu.ustc.ustcschedule.SQL.MySchedule;
 
 import java.util.List;
 
@@ -25,12 +27,12 @@ public class MonthListAdapter extends BaseAdapter{
 
 
 
-    private static final int TYPE_COUNT=2;
+    private static final int TYPE_COUNT=1;
     private Context mContext;
-    private List<MyTodolist> mData = null;
+    private List<BasicSchedule> mData = null;
 
 
-    public MonthListAdapter(Context mContext, List<MyTodolist> mData) {
+    public MonthListAdapter(Context mContext, List<BasicSchedule> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -66,48 +68,44 @@ public class MonthListAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //int type = getItemViewType(position);
+        MySchedule ExampleSchedule=new MySchedule();
+        MyDeadLine ExampleDDL=new MyDeadLine();
+
         ViewHolder holder = null;
         if(convertView == null){
 
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.fragment_todolist_item, parent, false);
-            holder.todo_label = (ImageView) convertView.findViewById(R.id.todo_label);
-            holder.todo_name = (TextView) convertView.findViewById(R.id.todo_name);
-            holder.todo_type_label = (ImageView) convertView.findViewById(R.id.todo_type_label);
-            holder.todo_type = (TextView) convertView.findViewById(R.id.todo_type);
-            holder.todo_checkbutton=(ImageButton)convertView.findViewById(R.id.todo_checkbutton);
-            convertView.setTag(R.id.Tag_todo,holder);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.fragment_month_list_item, parent, false);
+            holder.lesson_label = (ImageView) convertView.findViewById(R.id.lesson_label);
+            holder.lesson_text = (TextView) convertView.findViewById(R.id.lesson_text);
+            holder.lesson_room = (TextView) convertView.findViewById(R.id.lesson_room);
+            holder.lesson_teacher = (TextView) convertView.findViewById(R.id.lesson_teacher);
+            holder.lesson_time =(TextView) convertView.findViewById(R.id.lesson_time);
+            convertView.setTag(R.id.Tag_month_list,holder);
 
 
 
         }else{
 
-            holder = (ViewHolder) convertView.getTag(R.id.Tag_todo);
-
-
-
+            holder = (ViewHolder) convertView.getTag(R.id.Tag_month_list);
         }
 
-        MyTodolist todo = mData.get(position);
+        BasicSchedule schedule = mData.get(position);
 
         //设置下控件的值
-        holder.todo_name.setText(todo.getName());
-        holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
+        holder.lesson_text.setText(schedule.getName());
+        holder.lesson_label.setBackgroundResource(R.drawable.blue_label);
+        holder.lesson_room.setText(schedule.getPlace());
+        holder.lesson_teacher.setText(schedule.getDescription());
 
-        holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
-        holder.todo_type.setText(" ");
-        if(todo.getIsFinish()==0)
-            holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_off);
-        else
-            holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_on);
+        if(schedule.getClass().equals(ExampleDDL))
+        {
+            holder.lesson_label.setBackgroundResource(R.drawable.yellow_label);
+        }
 
-        switch (todo.getImportance()){
+
+        switch (schedule.getImportance()){
             case 1:
-
-
-                holder.todo_label.setBackgroundResource(R.drawable.blue_label_light);
-
-                holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
 
 
                 break;
@@ -124,11 +122,11 @@ public class MonthListAdapter extends BaseAdapter{
 
     //ViewHolder
     private static class ViewHolder{
-        ImageView todo_label;
-        TextView todo_name;
-        ImageView todo_type_label;
-        TextView todo_type;
-        ImageButton todo_checkbutton;
+        ImageView lesson_label;
+        TextView lesson_text;
+        TextView lesson_teacher;
+        TextView lesson_room;
+        TextView lesson_time;
     }
 
 }

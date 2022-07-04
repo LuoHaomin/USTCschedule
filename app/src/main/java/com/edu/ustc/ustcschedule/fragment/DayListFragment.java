@@ -163,12 +163,37 @@ public class DayListFragment extends Fragment {
         card_params.height=(int)(magnify_ratio*height);//放大倍数乘值
         card_params.topMargin=(int)(magnify_ratio*pos);
 
+        card.setLayoutParams(card_params);
         //schedule_view.layout(0,100,schedule_view.getRight()-schedule_view.getLeft(),170);
         layout.addView(schedule_view);
         //schedule_view.setLayoutParams(card_params);
         //return view;
     }
 
+
+    public void add_DDL(ConstraintLayout layout,MyDeadLine ddl,LayoutInflater inflater, ViewGroup container) {
+        View ddl_view=inflater.inflate(R.layout.fragment_day_list_item_ddl, container, false);
+
+        long starting_time=ddl.getStartingTime();
+        double pos=(starting_time-day_start)/72000+6.5;//6是line到layout顶部的高度
+
+        ddl_view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                DeleteDialog deleteDialog = new DeleteDialog();
+                deleteDialog.show(getParentFragmentManager(), "delete");
+                return false;
+            }
+        });
+        ConstraintLayout.LayoutParams ddl_params = (ConstraintLayout.LayoutParams) ddl_view.findViewById(R.id.day_deadline).getLayoutParams();
+        //FrameLayout.LayoutParams ddl_params = (FrameLayout.LayoutParams) ddl_view.getLayoutParams();
+        ((TextView)ddl_view.findViewById(R.id.day_deadline_label)).setText(format_time.format(starting_time));
+
+        ddl_params.topMargin=(int)(magnify_ratio*pos);
+        ddl_view.findViewById(R.id.day_deadline).setLayoutParams(ddl_params);
+        //ddl_view.layout(ddl_view.getLeft(),100,ddl_view.getRight(),170);
+        layout.addView(ddl_view);
+    }
     public boolean is_today_fun(BasicSchedule schedule)
     {
         boolean is_today=false;
@@ -204,28 +229,5 @@ public class DayListFragment extends Fragment {
             }
         }
         return is_today;
-    }
-    public void add_DDL(ConstraintLayout layout,MyDeadLine ddl,LayoutInflater inflater, ViewGroup container) {
-        View ddl_view=inflater.inflate(R.layout.fragment_day_list_item_ddl, container, false);
-
-        long starting_time=ddl.getStartingTime();
-        double pos=(starting_time-day_start)/72000+6.5;//6是line到layout顶部的高度
-
-        ddl_view.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                DeleteDialog deleteDialog = new DeleteDialog();
-                deleteDialog.show(getParentFragmentManager(), "delete");
-                return false;
-            }
-        });
-        ConstraintLayout.LayoutParams ddl_params = (ConstraintLayout.LayoutParams) ddl_view.findViewById(R.id.day_deadline).getLayoutParams();
-        //FrameLayout.LayoutParams ddl_params = (FrameLayout.LayoutParams) ddl_view.getLayoutParams();
-        ((TextView)ddl_view.findViewById(R.id.day_deadline_label)).setText(format_time.format(starting_time));
-
-        ddl_params.topMargin=(int)(magnify_ratio*pos);
-
-        //ddl_view.layout(ddl_view.getLeft(),100,ddl_view.getRight(),170);
-        layout.addView(ddl_view);
     }
 }

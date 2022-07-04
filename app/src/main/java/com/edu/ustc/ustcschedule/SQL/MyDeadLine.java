@@ -13,19 +13,20 @@ public class MyDeadLine extends BasicSchedule{
 
     private long WorkLoad;
 
+    public MyDeadLine()
+    {
+
+    }
+
     //默认不添加备注,创建时必须填写编号,时间和内容
     public MyDeadLine (String name,long starting_time,int importance,int is_repeat,int period,String place,String description,long work_load,int is_finish){
         super(name,starting_time,importance,is_repeat,period,place,description,is_finish);
         this.WorkLoad=work_load;
-
-
     }
 
     public MyDeadLine(Cursor cursor){
         super(cursor);
         this.setFromCursor(cursor);
-
-
     }
 
     public ContentValues getContentValues(){
@@ -46,6 +47,14 @@ public class MyDeadLine extends BasicSchedule{
         ContentValues info=this.getContentValues();
         db.insert("DDL",null,info);
 
+    }
+
+    public void updateDatabase(SQLiteDatabase db,long new_starting_time)
+    {
+        this.setStartingTime(new_starting_time);
+        ContentValues info=this.getContentValues();
+
+        db.update("DDL",info,"_id = ?",new String[] {Integer.toString(this.getId())});
     }
 
     public void setFromCursor(Cursor cursor)
