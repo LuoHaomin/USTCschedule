@@ -19,6 +19,8 @@ import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
 import com.edu.ustc.ustcschedule.SQL.MyDeadLine;
 import com.edu.ustc.ustcschedule.SQL.MySchedule;
 import com.edu.ustc.ustcschedule.SQL.MyTodolist;
+import com.edu.ustc.ustcschedule.adapter.MonthListAdapter;
+import com.edu.ustc.ustcschedule.adapter.TodoListAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class MonthListFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_month_list, container, false);
         ListView layout=(ListView) view.findViewById(R.id.month_ListView);
 
-        CalendarView calendarView = view.findViewById(R.id.calendar);
+        CalendarView calendarView = ((View)container.getParent()).findViewById(R.id.calendar);
 
 
         SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
@@ -114,6 +116,10 @@ public class MonthListFragment extends Fragment {
             ddl_cursor_repeat.moveToNext();
         }
 
+        MonthListAdapter myAdapter=new MonthListAdapter(getContext(),listitem);
+        myAdapter.notifyDataSetChanged();
+        //ListView listView = (ListView) view.findViewById(R.id.month_ListView);
+        layout.setAdapter(myAdapter);
 
         return view;
     }

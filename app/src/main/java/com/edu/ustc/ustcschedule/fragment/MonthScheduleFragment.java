@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import com.edu.ustc.ustcschedule.ClassPopUpMenu;
@@ -87,6 +88,12 @@ public class MonthScheduleFragment extends Fragment {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, day);
             calendarView1.setDate(calendar.getTimeInMillis());
+            FragmentTransaction ft= getParentFragmentManager().beginTransaction().setReorderingAllowed(true);
+            ft.replace(R.id.month_list_container,new MonthListFragment());
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+            ft.commit();
+            //this.getView().findViewById(R.id.)
         });
     }
 }
