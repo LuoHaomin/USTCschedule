@@ -64,5 +64,9 @@ public class MyDeadLine extends BasicSchedule{
         WorkLoad=cursor.getInt(cursor.getColumnIndexOrThrow("WORK_LOAD"));
     }
 
-
+    public String getWorkloadStringDeadLine() {
+        String stringworkload;
+        stringworkload=Long.toString(WorkLoad)+"h";
+        return stringworkload;
+    }
 }

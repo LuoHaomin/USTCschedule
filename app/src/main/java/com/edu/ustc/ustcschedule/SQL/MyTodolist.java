@@ -64,4 +64,10 @@ public class MyTodolist extends BasicSchedule{
     public void setWorkLoad(long workLoad) {
         WorkLoad = workLoad;
     }
+
+    public String getWorkloadStringTodo() {
+        String stringworkload;
+        stringworkload=Long.toString(WorkLoad)+"h";
+        return stringworkload;
+    }
 }

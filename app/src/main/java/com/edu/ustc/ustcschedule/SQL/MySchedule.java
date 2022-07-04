@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -82,5 +83,18 @@ public class MySchedule extends BasicSchedule{
 
     public void setTimeLength(long timeLength) {
         TimeLength = timeLength;
+    }
+
+    public String getTimelengthStringMyschedule() {
+        int a,b;
+        String stringtimelength;
+        stringtimelength=Long.toString(TimeLength);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        String stringendingtime = format.format(EndingTime);
+        int time=Integer.parseInt(stringtimelength);
+        a=time/1000/3600;
+        b=(time-3600000*a)/60000;
+        String result="--"+stringendingtime+"  "+a+"时"+b+"分"+" ";
+        return result;
     }
 }

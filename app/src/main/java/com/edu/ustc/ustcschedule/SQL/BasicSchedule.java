@@ -1,11 +1,13 @@
 package com.edu.ustc.ustcschedule.SQL;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -178,7 +180,121 @@ public class BasicSchedule {
         IsFinish = isFinish;
     }
 
+    public String getStringTodo() {
+        String stringshare;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String timeText = format.format(StartingTime);
+        stringshare = Name + "  " + timeText + "  ";
+        if (Importance == 1) {
+            stringshare += "一般" + "  ";
+        }
+        if (Importance == 2) {
+            stringshare += "重要" + "  ";
+        }
+        if (Importance == 3) {
+            stringshare += "很重要" + "  ";
+        }
+        if (IsRepeat == 1) {
+            stringshare += "重复" + "  ";
+        }
+        if (IsRepeat == 0) {
+            stringshare += "不重复" + "  ";
+        }
+        if (Period == 1) {
+            stringshare += "每天" + "  ";
+        }
+        if (Period == 7) {
+            stringshare += "每周" + "  ";
+        }
+        if (Period == 30) {
+            stringshare += "每月" + "  ";
+        }
+        if (Period == 365) {
+            stringshare += "每年" + "  ";
+        }
+        return stringshare;
+    }
 
+    public String getStringDeadline() {
+        String stringshare;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String timeText = format.format(StartingTime);
+        stringshare = Name + "  " + timeText + "  ";
+        if (Importance == 1) {
+            stringshare += "一般" + "  ";
+        }
+        if (Importance == 2) {
+            stringshare += "重要" + "  ";
+        }
+        if (Importance == 3) {
+            stringshare += "很重要" + "  ";
+        }
+        if (IsRepeat == 1) {
+            stringshare += "重复" + "  ";
+        }
+        if (IsRepeat == 0) {
+            stringshare += "不重复" + "  ";
+        }
+        if (Period == 1) {
+            stringshare += "每天" + "  ";
+        }
+        if (Period == 7) {
+            stringshare += "每周" + "  ";
+        }
+        if (Period == 30) {
+            stringshare += "每月" + "  ";
+        }
+        if (Period == 365) {
+            stringshare += "每年" + "  ";
+        }
+        return stringshare;
+    }
 
+    public String getStringMyschedule() {
+        String stringshare;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String timeText = format.format(StartingTime);
+        stringshare = Name + "  " + timeText;
+        return stringshare;
+    }
 
+    public String getStringMyschedule2() {
+        String stringshare = "";
+        if (Importance == 1) {
+            stringshare += "一般" + "  ";
+        }
+        if (Importance == 2) {
+            stringshare += "重要" + "  ";
+        }
+        if (Importance == 3) {
+            stringshare += "很重要" + "  ";
+        }
+        if (Importance == 4) {
+            stringshare += "课程" + "  ";
+        }
+        if (IsRepeat == 1) {
+            stringshare += "重复" + "  ";
+        }
+        if (IsRepeat == 0) {
+            stringshare += "不重复" + "  ";
+        }
+        if (Period == 1) {
+            stringshare += "每天" + "  ";
+        }
+        if (Period == 7) {
+            stringshare += "每周" + "  ";
+        }
+        if (Period == 30) {
+            stringshare += "每月" + "  ";
+        }
+        if (Period == 365) {
+            stringshare += "每年" + "  ";
+        }
+        if (Importance == 4) {
+            stringshare += Place + "  " + "老师:" + Description;
+        } else {
+            stringshare += Place + "  " + Description;
+        }
+        return stringshare;
+    }
 }
