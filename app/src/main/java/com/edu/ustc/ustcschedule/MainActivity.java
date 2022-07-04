@@ -21,6 +21,7 @@ import com.edu.ustc.ustcschedule.SQL.MyTodolist;
 import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
 import com.edu.ustc.ustcschedule.dialogs.AboutDialog;
 import com.edu.ustc.ustcschedule.dialogs.BorrowReminderDialog;
+import com.edu.ustc.ustcschedule.dialogs.BusDialog;
 import com.edu.ustc.ustcschedule.dialogs.HelpDialog;
 import com.edu.ustc.ustcschedule.dialogs.MoveDialog;
 import com.edu.ustc.ustcschedule.dialogs.SaveTemplateDialog;
@@ -90,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
                                 .withSelectable(false))
                 .addDrawerItems(
                         new PrimaryDrawerItem()
+                                .withName(R.string.school_bus)
+                                .withIdentifier(8)
+                                .withIcon(getResources().getDrawable(R.drawable.ic_flag))
+                                .withSelectable(false)
+                )
+                .addDrawerItems(
+                        new PrimaryDrawerItem()
                                 .withName(R.string.remind_book)
                                 .withIdentifier(4)
                                 .withIcon(getResources().getDrawable(R.drawable.ic_chat))
@@ -123,16 +131,18 @@ public class MainActivity extends AppCompatActivity {
                     if (drawerItem!=null) {
                         if (drawerItem.getIdentifier() == 1) {
                             MoveDialog moveDialog = new MoveDialog();
-                            getSupportFragmentManager().beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .add(android.R.id.content, moveDialog)
-                                    .addToBackStack(null).commit();
+                            moveDialog.show(getSupportFragmentManager(), "move");
+//                            getSupportFragmentManager().beginTransaction()
+//                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                                    .add(android.R.id.content, moveDialog)
+//                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 2) {
                             SaveTemplateDialog saveTemplateDialog = new SaveTemplateDialog();
-                            getSupportFragmentManager().beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .add(android.R.id.content, saveTemplateDialog)
-                                    .addToBackStack(null).commit();
+                            saveTemplateDialog.show(getSupportFragmentManager(), "save_template");
+//                            getSupportFragmentManager().beginTransaction()
+//                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                                    .add(android.R.id.content, saveTemplateDialog)
+//                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 3) {
                             new ShareBuilder().setText("This is Share Content!\nThis is the content").setChooserTitle("分享").setShareType(ShareBuilder.SHARE_TEXT).build().share(this);
 //                            ShareDialog shareDialog =  new ShareDialog();
@@ -155,6 +165,12 @@ public class MainActivity extends AppCompatActivity {
                         } else if (drawerItem.getIdentifier() == 7) {
                             AboutDialog aboutDialog = new AboutDialog();
                             aboutDialog.show(getSupportFragmentManager(), "about");
+                        } else if (drawerItem.getIdentifier() == 8) {
+                            BusDialog busDialog = new BusDialog();
+                            getSupportFragmentManager().beginTransaction()
+                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                    .add(android.R.id.content, busDialog)
+                                    .addToBackStack(null).commit();
                         }
                     }
 

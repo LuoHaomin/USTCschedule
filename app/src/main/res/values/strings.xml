@@ -88,6 +88,7 @@
     <string name="save_template">保存模板</string>
     <string name="share">分享日程</string>
     <string name="remind_book">借阅提醒</string>
+    <string name="school_bus">校车时刻</string>
     <string name="setting">设置</string>
     <string name="about">关于</string>
     <string name="help">帮助</string>
@@ -125,6 +126,11 @@
     <string name="yes">确定</string>
     <string name="cont"> 继续</string>
     <string name="focus_content">专注，是一种值得钦佩的品质。</string>
+
+    <string name="for_next_version">待更新,敬请期待。</string>
+
+    <string name="campus_text">本部校车</string>
+    <string name="high_tech_text">高新区校车</string>
 
     <string-array name="task_type_array_name">
         <item>作业</item>
