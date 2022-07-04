@@ -14,6 +14,7 @@ public class MySchedule extends BasicSchedule{
     private long EndingTime;
     private long TimeLength;
 
+    public MySchedule(){}
     //默认不添加备注,重要性为1,创建时必须填写编号,起止时间,地点和内容
     public MySchedule (String name,long starting_time,long ending_time,int importance,int is_repeat,int period,String place,String description,int is_finish){
         super(name,starting_time,importance,is_repeat,period,place,description,is_finish);

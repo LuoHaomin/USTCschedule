@@ -83,6 +83,10 @@ public class MonthScheduleFragment extends Fragment {
                 dayString = String.valueOf(day);
             }
             textDay.setText(dayString);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, day);
+            calendarView1.setDate(calendar.getTimeInMillis());
         });
     }
 }

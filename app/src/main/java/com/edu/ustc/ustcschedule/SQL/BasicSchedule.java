@@ -25,7 +25,8 @@ public class BasicSchedule {
     private int IsFinish;//0==not finished
 
 
-
+    public BasicSchedule()
+    {}
     //日期和时间采用Java自带的时间和日期类,使用setYear等函数修改
     public BasicSchedule(String name,long starting_time,int importance,int is_repeat,int period,String place,String description,int is_finish){
         id=0;
