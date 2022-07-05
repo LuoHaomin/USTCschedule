@@ -6,22 +6,22 @@
     android:layout_height="1226dp"
     android:orientation="vertical">
     <androidx.fragment.app.FragmentContainerView
-        android:layout_marginTop="0dp"
         android:id="@+id/week_list_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.edu.ustc.ustcschedule.fragment.WeekListFragmentBackground"
-        tools:ignore="MissingConstraints" />
-    <LinearLayout
-
+        app:layout_constraintTop_toTopOf="parent"/>
+    <GridLayout
         android:id="@+id/fragment_week_content_layout"
         android:layout_width="match_parent"
         android:layout_height="1226dp"
-        android:orientation="horizontal"
         android:divider="@color/calendar_div"
+        android:columnCount="7"
+        android:rowCount="1"
         android:showDividers="middle"
         android:dividerPadding="3dp"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
 
         <!--<androidx.fragment.app.FragmentContainerView
@@ -37,5 +37,5 @@
 
 
 
-    </LinearLayout>
+    </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

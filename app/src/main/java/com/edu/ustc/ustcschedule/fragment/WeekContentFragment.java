@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,8 +39,8 @@ public class WeekContentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_week_content, container, false);
-        LinearLayout linearLayout=view.findViewById(R.id.fragment_week_content_layout);
-        linearLayout.removeAllViews();
+        GridLayout gridLayout=view.findViewById(R.id.fragment_week_content_layout);
+        gridLayout.removeAllViews();
         for(int day_of_week=1;day_of_week<=7;day_of_week++)
         {
             Calendar ca=Calendar.getInstance(Locale.CHINA);
@@ -107,7 +108,12 @@ public class WeekContentFragment extends Fragment {
                 }
                 ddl_cursor_repeat.moveToNext();
             }
-            linearLayout.addView(layout);
+            GridLayout.LayoutParams params=new GridLayout.LayoutParams();
+            params.columnSpec=GridLayout.spec(day_of_week-1);
+            params.rowSpec=GridLayout.spec(0);
+
+
+            gridLayout.addView(layout,params);
 
         }
 
@@ -120,7 +126,7 @@ public class WeekContentFragment extends Fragment {
     }
     public void add_schedule(ConstraintLayout layout,MySchedule schedule,LayoutInflater inflater, ViewGroup container)
     {
-        View schedule_view=inflater.inflate(R.layout.fragment_day_list_item, container, false);
+        View schedule_view=inflater.inflate(R.layout.fragment_week_list_item, container, false);
 
         long starting_time=schedule.getStartingTime();
         long ending_time=schedule.getEndingTime();
@@ -140,7 +146,7 @@ public class WeekContentFragment extends Fragment {
         });
         ConstraintLayout.LayoutParams card_params = (ConstraintLayout.LayoutParams) card.getLayoutParams();
         ((TextView)card.findViewById(R.id.lesson_text_day)).setText(schedule.getName());
-        ((TextView)card.findViewById(R.id.lesson_teacher)).setText(schedule.getDescription());
+        //((TextView)card.findViewById(R.id.lesson_teacher)).setText(schedule.getDescription());
         ((TextView)card.findViewById(R.id.lesson_place)).setText(schedule.getPlace());
         //String starting_time_str=format_time.format(starting_time);
         //String ending_time_str=format_time.format(ending_time);
