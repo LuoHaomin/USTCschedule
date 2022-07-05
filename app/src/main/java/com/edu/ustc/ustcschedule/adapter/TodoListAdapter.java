@@ -89,6 +89,7 @@ public class TodoListAdapter extends BaseAdapter {
         }
 
         MyTodolist todo = mData.get(position);
+        convertView.setTag(R.id.Tag_id,todo.getId());
 
         //设置下控件的值
         holder.todo_name.setText(todo.getName());
@@ -97,6 +98,7 @@ public class TodoListAdapter extends BaseAdapter {
         holder.todo_type_label.setBackgroundResource(R.drawable.ic_type_blue);
         String work_load_string=Integer.toString((int)todo.getWorkLoad())+"h";
         holder.todo_type.setText(work_load_string);
+        holder.todo_checkbutton.setFocusable(false);
         if(todo.getIsFinish()==0)
             holder.todo_checkbutton.setBackgroundResource(R.drawable.ic_checkbutton_off);
         else

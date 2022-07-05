@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.edu.ustc.ustcschedule.R;
 
-public class WeekListFragment extends Fragment {
+public class WeekListFragmentBackground extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_week_list, container, false);
+        return inflater.inflate(R.layout.fragment_week_list_background, container, false);
     }
 }

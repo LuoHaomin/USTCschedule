@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import com.edu.ustc.ustcschedule.R;
 import com.edu.ustc.ustcschedule.SQL.MyDeadLine;
 import com.edu.ustc.ustcschedule.SQL.MyTodolist;
+import com.edu.ustc.ustcschedule.dialogs.DeleteDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -73,6 +74,7 @@ public class DeadlineListAdapter extends BaseAdapter {
         final SimpleDateFormat format_day = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
         final SimpleDateFormat format_time = new SimpleDateFormat("HH:mm",Locale.CHINA);
 
+        MyDeadLine ddl = mData.get(position);
 
         DeadlineListAdapter.ViewHolder holder = null;
         if(convertView == null){
@@ -80,19 +82,22 @@ public class DeadlineListAdapter extends BaseAdapter {
             holder = new DeadlineListAdapter.ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.fragment_deadline_list_item, parent, false);
             holder.left_card = (CardView)  convertView.findViewById(R.id.left);
+            holder.left_card.setTag(R.id.Tag_id,ddl.getId());
             convertView.setTag(R.id.Tag_DDL,holder);
+
 
         }else{
             holder = (DeadlineListAdapter.ViewHolder) convertView.getTag(R.id.Tag_DDL);
 
         }
 
-        MyDeadLine ddl = mData.get(position);
+
         long left_days=(ddl.getStartingTime()-ca.getTimeInMillis())/(86400*1000);
 
         //设置下控件的值
         ((TextView)holder.left_card.findViewById(R.id.left_text)).setText(ddl.getName());
         ((TextView)holder.left_card.findViewById(R.id.left_days_text)).setText(Long.toString(left_days));
+
 
 
         /*switch (ddl.getImportance()){

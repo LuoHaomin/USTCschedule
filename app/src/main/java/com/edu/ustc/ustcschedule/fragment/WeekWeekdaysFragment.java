@@ -25,8 +25,12 @@ public class WeekWeekdaysFragment extends Fragment {
         Calendar ca=Calendar.getInstance(Locale.CHINA);
         View view=inflater.inflate(R.layout.fragment_week_weekdays, container, false);
         TextView textView=(TextView) view.findViewById(R.id.text_mon);
-        switch (ca.get(Calendar.DAY_OF_WEEK))
+        switch (ca.get(Calendar.DAY_OF_WEEK)-1)
         {
+
+            case 0:
+                textView=(TextView) view.findViewById(R.id.text_sun);
+                break;
             case 1:
                 textView=(TextView) view.findViewById(R.id.text_mon);
                 break;
@@ -45,12 +49,12 @@ public class WeekWeekdaysFragment extends Fragment {
             case 6:
                 textView=(TextView) view.findViewById(R.id.text_sat);
                 break;
-            case 7:
-                textView=(TextView) view.findViewById(R.id.text_sun);
-                break;
+
+
 
         }
         textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        textView.setTextColor(getResources().getColor(R.color.black));
         return view;
     }
 }

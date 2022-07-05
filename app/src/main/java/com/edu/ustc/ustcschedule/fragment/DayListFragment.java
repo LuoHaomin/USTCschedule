@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.edu.ustc.ustcschedule.R;
@@ -126,13 +127,20 @@ public class DayListFragment extends Fragment {
         double pos=(Math.min(starting_time,ending_time)-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
         CardView card=(CardView)schedule_view.findViewById(R.id.lesson_card_day);
-        card.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                DeleteDialog deleteDialog = new DeleteDialog();
-                deleteDialog.show(getParentFragmentManager(), "delete");
+        card.setOnLongClickListener(new View.OnLongClickListener()
+            {
+                final int event_id= schedule.getId();
+                final String table_name="SCHEDULE";
+
+                @Override
+                public boolean onLongClick(View v) {
+                    DeleteDialog deleteDialog = new DeleteDialog();
+                    deleteDialog.setEvent_id(event_id);
+                    deleteDialog.setTable_name(table_name);
+                    deleteDialog.show(getActivity().getSupportFragmentManager(), "delete");
                 return false;
             }
+
         });
         ConstraintLayout.LayoutParams card_params = (ConstraintLayout.LayoutParams) card.getLayoutParams();
         ((TextView)card.findViewById(R.id.lesson_text_day)).setText(schedule.getName());
@@ -166,6 +174,8 @@ public class DayListFragment extends Fragment {
 
         card.setLayoutParams(card_params);
         //schedule_view.layout(0,100,schedule_view.getRight()-schedule_view.getLeft(),170);
+        schedule_view.setTag(R.id.Tag_id,schedule.getId());
+
         layout.addView(schedule_view);
         //schedule_view.setLayoutParams(card_params);
         //return view;
@@ -179,17 +189,27 @@ public class DayListFragment extends Fragment {
         long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
         double pos=(starting_time-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
-        ddl_view.setOnLongClickListener(new View.OnLongClickListener() {
+
+        ConstraintLayout.LayoutParams ddl_params = (ConstraintLayout.LayoutParams) ddl_view.findViewById(R.id.day_deadline).getLayoutParams();
+        //FrameLayout.LayoutParams ddl_params = (FrameLayout.LayoutParams) ddl_view.getLayoutParams();
+        TextView ddl_text=((TextView)ddl_view.findViewById(R.id.day_deadline_label));
+        ddl_text.setText(format_time.format(starting_time));
+        ddl_text.setOnLongClickListener(new View.OnLongClickListener()
+        {
+            final int event_id= ddl.getId();
+            final String table_name="DDL";
+
             @Override
             public boolean onLongClick(View v) {
                 DeleteDialog deleteDialog = new DeleteDialog();
-                deleteDialog.show(getParentFragmentManager(), "delete");
+                deleteDialog.setEvent_id(event_id);
+                deleteDialog.setTable_name(table_name);
+                deleteDialog.show(getActivity().getSupportFragmentManager(), "delete");
+
+
                 return false;
             }
         });
-        ConstraintLayout.LayoutParams ddl_params = (ConstraintLayout.LayoutParams) ddl_view.findViewById(R.id.day_deadline).getLayoutParams();
-        //FrameLayout.LayoutParams ddl_params = (FrameLayout.LayoutParams) ddl_view.getLayoutParams();
-        ((TextView)ddl_view.findViewById(R.id.day_deadline_label)).setText(format_time.format(starting_time));
 
         ddl_params.topMargin=(int)(magnify_ratio*pos);
         ddl_view.findViewById(R.id.day_deadline).setLayoutParams(ddl_params);
