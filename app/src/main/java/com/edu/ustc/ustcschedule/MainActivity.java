@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
         result = onCrateDrawer();
 
 
-
     }
 
     public Drawer onCrateDrawer() {
@@ -260,8 +259,8 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
         return temp_ca.getTimeInMillis();
     }
 
-    public String getSharedStringTodo(){
-        StringBuilder temp= new StringBuilder();
+    public String getSharedStringTodo() {
+        StringBuilder temp = new StringBuilder();
         MainDatabaseHelper db_helper = new MainDatabaseHelper(this);
         SQLiteDatabase db = db_helper.getReadableDatabase();
         Cursor cursor = db.query("TODO", new String[]{"_id", "IS_FINISH", "NAME", "START_TIME", "WORK_LOAD",
@@ -270,8 +269,7 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
 
         for (int i = 0; i < cursor.getCount(); i++) {
             MyTodolist todo = new MyTodolist(cursor);
-            if(todo.getStringTodo()!=null&&i==0)
-            {
+            if (todo.getStringTodo() != null && i == 0) {
                 temp = new StringBuilder("***Todolist\n");
             }
             temp.append(todo.getStringTodo()).append(todo.getWorkloadStringTodo()).append("\n").append("\n");
@@ -280,19 +278,18 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
         return temp.toString();
     }
 
-    public String getSharedStringDeadline(){
-        StringBuilder temp= new StringBuilder();
-        MainDatabaseHelper db_helper=new MainDatabaseHelper(this);
-        SQLiteDatabase db=db_helper.getReadableDatabase();
-        Cursor cursor=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
-                "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,null,null,null,null,"START_TIME ASC");
+    public String getSharedStringDeadline() {
+        StringBuilder temp = new StringBuilder();
+        MainDatabaseHelper db_helper = new MainDatabaseHelper(this);
+        SQLiteDatabase db = db_helper.getReadableDatabase();
+        Cursor cursor = db.query("DDL", new String[]{"_id", "IS_FINISH", "NAME", "START_TIME", "WORK_LOAD",
+                "IMPORTANCE", "IS_REPEAT", "PERIOD", "PLACE", "DESCRIPTION"}, null, null, null, null, "START_TIME ASC");
         cursor.moveToFirst();
 
 
-        for(int i=0;i<cursor.getCount();i++){
-            MyDeadLine deadLine=new MyDeadLine(cursor);
-            if(deadLine.getStringDeadline()!=null&&i==0)
-            {
+        for (int i = 0; i < cursor.getCount(); i++) {
+            MyDeadLine deadLine = new MyDeadLine(cursor);
+            if (deadLine.getStringDeadline() != null && i == 0) {
                 temp = new StringBuilder("***DDL\n");
             }
             temp.append(deadLine.getStringDeadline()).append(deadLine.getWorkloadStringDeadLine()).append("\n").append("\n");
@@ -300,10 +297,11 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
         }
         return temp.toString();
     }
-    public String getSharedStringMyschedule(){
-        StringBuilder temp= new StringBuilder();
-        MainDatabaseHelper db_helper=new MainDatabaseHelper(this);
-        SQLiteDatabase db=db_helper.getReadableDatabase();
+
+    public String getSharedStringMyschedule() {
+        StringBuilder temp = new StringBuilder();
+        MainDatabaseHelper db_helper = new MainDatabaseHelper(this);
+        SQLiteDatabase db = db_helper.getReadableDatabase();
         Cursor cursor = db.query("SCHEDULE", new String[]{"_id", "IS_FINISH", "NAME", "START_TIME", "END_TIME", "TIME_LENGTH",
                         "IMPORTANCE", "IS_REPEAT", "PERIOD", "PLACE", "DESCRIPTION"},
                 null,
@@ -311,8 +309,7 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
             MySchedule schedule = new MySchedule(cursor);
-            if(schedule.getStringMyschedule()!=null&&i==0)
-            {
+            if (schedule.getStringMyschedule() != null && i == 0) {
                 temp = new StringBuilder("***My Schedule\n");
             }
             temp.append(schedule.getStringMyschedule()).append("  ").append(schedule.getTimelengthStringMyschedule()).append(schedule.getStringMyschedule2()).append("\n").append("\n");
@@ -320,14 +317,15 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
         }
         return temp.toString();
     }
+
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-        int id=((DeleteDialog)dialog).getEvent_id();
-        String id_str=Integer.toString(id);
-        String table_name=((DeleteDialog)dialog).getTable_name();
-        MainDatabaseHelper db_helper=new MainDatabaseHelper(this);
-        SQLiteDatabase db=db_helper.getWritableDatabase();
-        db.delete(table_name,"_id=?",new String[]{id_str});
+        int id = ((DeleteDialog) dialog).getEvent_id();
+        String id_str = Integer.toString(id);
+        String table_name = ((DeleteDialog) dialog).getTable_name();
+        MainDatabaseHelper db_helper = new MainDatabaseHelper(this);
+        SQLiteDatabase db = db_helper.getWritableDatabase();
+        db.delete(table_name, "_id=?", new String[]{id_str});
     }
 
     @Override
