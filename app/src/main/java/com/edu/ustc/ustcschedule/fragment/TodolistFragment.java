@@ -77,8 +77,7 @@ public class TodolistFragment extends Fragment {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                CardView left_card = (CardView)  view.findViewById(R.id.left);
-                int event_id= (int)left_card.getTag(R.id.Tag_id);
+                int event_id= (int)view.getTag(R.id.Tag_id);
                 String table_name="TODO";
                 DeleteDialog deleteDialog = new DeleteDialog();
                 deleteDialog.setEvent_id(event_id);
