@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -20,6 +21,7 @@ public class ImportDialog extends DialogFragment {
                 .setMessage(R.string.import_courses_text)
                 .setPositiveButton(R.string.OK, (dialog, id) -> {
 //                    TODO: 导入课程
+                    Toast.makeText(getContext(), "课表已导入!", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
 
