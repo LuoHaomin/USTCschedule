@@ -89,6 +89,7 @@ public class TodoListAdapter extends BaseAdapter {
         }
 
         MyTodolist todo = mData.get(position);
+        convertView.setTag(R.id.Tag_id,todo.getId());
 
         //设置下控件的值
         holder.todo_name.setText(todo.getName());

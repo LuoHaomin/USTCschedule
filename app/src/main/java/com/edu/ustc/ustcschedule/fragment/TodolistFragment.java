@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -22,6 +24,7 @@ import com.edu.ustc.ustcschedule.adapter.TodoListAdapter;
 import com.edu.ustc.ustcschedule.databinding.FragmentTodolistBinding;
 
 import com.edu.ustc.ustcschedule.SQL.MyTodolist;
+import com.edu.ustc.ustcschedule.dialogs.DeleteDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +74,19 @@ public class TodolistFragment extends Fragment {
         myAdapter.notifyDataSetChanged();
         ListView listView = (ListView) view.findViewById(R.id.todo_ListView);
         listView.setAdapter(myAdapter);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                CardView left_card = (CardView)  view.findViewById(R.id.left);
+                int event_id= (int)left_card.getTag(R.id.Tag_id);
+                String table_name="TODO";
+                DeleteDialog deleteDialog = new DeleteDialog();
+                deleteDialog.setEvent_id(event_id);
+                deleteDialog.setTable_name(table_name);
+                deleteDialog.show(getActivity().getSupportFragmentManager(), "delete");
+                return false;
+            }
+        });
         return view;
     }
 

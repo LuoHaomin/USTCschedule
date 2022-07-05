@@ -82,7 +82,7 @@ public class DeadlineListAdapter extends BaseAdapter {
             holder = new DeadlineListAdapter.ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.fragment_deadline_list_item, parent, false);
             holder.left_card = (CardView)  convertView.findViewById(R.id.left);
-            convertView.setTag(R.id.Tag_id,ddl.getId());
+            holder.left_card.setTag(R.id.Tag_id,ddl.getId());
             convertView.setTag(R.id.Tag_DDL,holder);
 
 

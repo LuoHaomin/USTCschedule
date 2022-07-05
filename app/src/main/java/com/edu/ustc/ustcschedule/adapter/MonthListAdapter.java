@@ -75,6 +75,8 @@ public class MonthListAdapter extends BaseAdapter{
         MyDeadLine ExampleDDL=new MyDeadLine();
 
         ViewHolder holder = null;
+        BasicSchedule schedule = mData.get(position);
+
         if(convertView == null){
 
             holder = new ViewHolder();
@@ -85,6 +87,7 @@ public class MonthListAdapter extends BaseAdapter{
             holder.lesson_teacher = (TextView) convertView.findViewById(R.id.lesson_teacher);
             holder.lesson_time =(TextView) convertView.findViewById(R.id.lesson_time);
             convertView.setTag(R.id.Tag_month_list,holder);
+            convertView.setTag(R.id.Tag_id,schedule.getId());
 
 
 
@@ -92,8 +95,6 @@ public class MonthListAdapter extends BaseAdapter{
 
             holder = (ViewHolder) convertView.getTag(R.id.Tag_month_list);
         }
-
-        BasicSchedule schedule = mData.get(position);
 
         //设置下控件的值
         holder.lesson_text.setText(schedule.getName());
@@ -108,6 +109,7 @@ public class MonthListAdapter extends BaseAdapter{
 
         if(schedule.getClass().isInstance(ExampleSchedule))
         {
+            convertView.setTag(R.id.Tag_table_name,"SCHEDULE");
             Date date_end=new Date();
             date_end.setTime(((MySchedule)schedule).getEndingTime());
             holder.lesson_time.setText(format.format(date_start)+"-"+format.format(date_end));
@@ -118,6 +120,7 @@ public class MonthListAdapter extends BaseAdapter{
 
         if(schedule.getClass().isInstance(ExampleDDL))
         {
+            convertView.setTag(R.id.Tag_table_name,"DDL");
             holder.lesson_time.setText("DDL: "+format.format(date_start));
             holder.lesson_room.setBackgroundResource(R.drawable.yellow_label_small);
             holder.lesson_text.setTextColor(mContext.getResources().getColor(R.color.yellow_label_text));
