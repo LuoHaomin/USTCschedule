@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        update_repeat();//更新重复事件的时间
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate((getLayoutInflater()));
         setContentView(binding.getRoot());
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigation, navController);
         result = onCrateDrawer();
 
-        update_repeat();//更新重复事件的时间
+
 
     }
 

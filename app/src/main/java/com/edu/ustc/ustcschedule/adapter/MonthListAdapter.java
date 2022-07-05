@@ -14,7 +14,10 @@ import com.edu.ustc.ustcschedule.SQL.BasicSchedule;
 import com.edu.ustc.ustcschedule.SQL.MyDeadLine;
 import com.edu.ustc.ustcschedule.SQL.MySchedule;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MonthListAdapter extends BaseAdapter{
 
@@ -98,8 +101,15 @@ public class MonthListAdapter extends BaseAdapter{
         holder.lesson_room.setText(schedule.getPlace());
         holder.lesson_teacher.setText(schedule.getDescription());
 
-        if(schedule.getClass().equals(ExampleDDL))
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm", Locale.CHINA);
+        Date date_start=new Date();
+        date_start.setTime(schedule.getStartingTime());
+        holder.lesson_time.setText(format.format(date_start));
+
+        if(schedule.getClass().isInstance(ExampleDDL))
         {
+            holder.lesson_room.setBackgroundResource(R.drawable.yellow_label_small);
+            holder.lesson_text.setTextColor(mContext.getResources().getColor(R.color.yellow_label_text));
             holder.lesson_label.setBackgroundResource(R.drawable.yellow_label);
         }
 

@@ -122,7 +122,8 @@ public class DayListFragment extends Fragment {
         long ending_time=schedule.getEndingTime();
 
         double height=(Math.abs(ending_time-starting_time))/72000;
-        double pos=(Math.min(starting_time,ending_time)-day_start)/72000+6.5;//6是line到layout顶部的高度
+        long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
+        double pos=(Math.min(starting_time,ending_time)-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
         CardView card=(CardView)schedule_view.findViewById(R.id.lesson_card_day);
         card.setOnLongClickListener(new View.OnLongClickListener() {
@@ -175,7 +176,8 @@ public class DayListFragment extends Fragment {
         View ddl_view=inflater.inflate(R.layout.fragment_day_list_item_ddl, container, false);
 
         long starting_time=ddl.getStartingTime();
-        double pos=(starting_time-day_start)/72000+6.5;//6是line到layout顶部的高度
+        long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
+        double pos=(starting_time-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
         ddl_view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
