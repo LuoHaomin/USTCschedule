@@ -69,10 +69,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/week_list_container"
+            android:id="@+id/week_content_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.edu.ustc.ustcschedule.fragment.WeekListFragment" />
+            android:name="com.edu.ustc.ustcschedule.fragment.WeekContentFragment" />
 
     </ScrollView>
 

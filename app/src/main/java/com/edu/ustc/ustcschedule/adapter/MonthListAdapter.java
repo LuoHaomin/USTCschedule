@@ -106,8 +106,19 @@ public class MonthListAdapter extends BaseAdapter{
         date_start.setTime(schedule.getStartingTime());
         holder.lesson_time.setText(format.format(date_start));
 
+        if(schedule.getClass().isInstance(ExampleSchedule))
+        {
+            Date date_end=new Date();
+            date_end.setTime(((MySchedule)schedule).getEndingTime());
+            holder.lesson_time.setText(format.format(date_start)+"-"+format.format(date_end));
+            holder.lesson_text.setTextColor(mContext.getResources().getColor(R.color.blue_label_text));
+            holder.lesson_room.setBackgroundResource(R.drawable.blue_label_small);
+            holder.lesson_label.setBackgroundResource(R.drawable.blue_label);
+        }
+
         if(schedule.getClass().isInstance(ExampleDDL))
         {
+            holder.lesson_time.setText("DDL: "+format.format(date_start));
             holder.lesson_room.setBackgroundResource(R.drawable.yellow_label_small);
             holder.lesson_text.setTextColor(mContext.getResources().getColor(R.color.yellow_label_text));
             holder.lesson_label.setBackgroundResource(R.drawable.yellow_label);
