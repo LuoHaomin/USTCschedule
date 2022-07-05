@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 //                                    .add(android.R.id.content, saveTemplateDialog)
 //                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 3) {
-                            new ShareBuilder().setText("我今日的日程:\n" + "\n" + getSharedStringMyschedule() + getSharedStringTodo() + getSharedStringDeadline()).setChooserTitle("分享").setShareType(ShareBuilder.SHARE_TEXT).build().share(this);
+                            new ShareBuilder().setText("当前日程:\n" + "\n" + getSharedStringMyschedule() + getSharedStringTodo() + getSharedStringDeadline()).setChooserTitle("分享").setShareType(ShareBuilder.SHARE_TEXT).build().share(this);
 //                            ShareDialog shareDialog =  new ShareDialog();
 //                            shareDialog.show(getSupportFragmentManager(), "share");
                         } else if (drawerItem.getIdentifier() == 4) {
@@ -257,8 +257,8 @@ public class MainActivity extends AppCompatActivity {
         return temp_ca.getTimeInMillis();
     }
 
-    public String getSharedStringTodo() {
-        StringBuilder temp = new StringBuilder("***Todolist\n");
+    public String getSharedStringTodo(){
+        StringBuilder temp= new StringBuilder();
         MainDatabaseHelper db_helper = new MainDatabaseHelper(this);
         SQLiteDatabase db = db_helper.getReadableDatabase();
         Cursor cursor = db.query("TODO", new String[]{"_id", "IS_FINISH", "NAME", "START_TIME", "WORK_LOAD",
@@ -267,33 +267,40 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < cursor.getCount(); i++) {
             MyTodolist todo = new MyTodolist(cursor);
+            if(todo.getStringTodo()!=null&&i==0)
+            {
+                temp = new StringBuilder("***Todolist\n");
+            }
             temp.append(todo.getStringTodo()).append(todo.getWorkloadStringTodo()).append("\n").append("\n");
             cursor.moveToNext();
         }
         return temp.toString();
     }
 
-    public String getSharedStringDeadline() {
-        StringBuilder temp = new StringBuilder("***DDL\n");
-        MainDatabaseHelper db_helper = new MainDatabaseHelper(this);
-        SQLiteDatabase db = db_helper.getReadableDatabase();
-        Cursor cursor = db.query("DDL", new String[]{"_id", "IS_FINISH", "NAME", "START_TIME", "WORK_LOAD",
-                "IMPORTANCE", "IS_REPEAT", "PERIOD", "PLACE", "DESCRIPTION"}, null, null, null, null, "START_TIME ASC");
+    public String getSharedStringDeadline(){
+        StringBuilder temp= new StringBuilder();
+        MainDatabaseHelper db_helper=new MainDatabaseHelper(this);
+        SQLiteDatabase db=db_helper.getReadableDatabase();
+        Cursor cursor=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
+                "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,null,null,null,null,"START_TIME ASC");
         cursor.moveToFirst();
 
 
-        for (int i = 0; i < cursor.getCount(); i++) {
-            MyDeadLine deadLine = new MyDeadLine(cursor);
+        for(int i=0;i<cursor.getCount();i++){
+            MyDeadLine deadLine=new MyDeadLine(cursor);
+            if(deadLine.getStringDeadline()!=null&&i==0)
+            {
+                temp = new StringBuilder("***DDL\n");
+            }
             temp.append(deadLine.getStringDeadline()).append(deadLine.getWorkloadStringDeadLine()).append("\n").append("\n");
             cursor.moveToNext();
         }
         return temp.toString();
     }
-
-    public String getSharedStringMyschedule() {
-        StringBuilder temp = new StringBuilder("***My Schedule\n");
-        MainDatabaseHelper db_helper = new MainDatabaseHelper(this);
-        SQLiteDatabase db = db_helper.getReadableDatabase();
+    public String getSharedStringMyschedule(){
+        StringBuilder temp= new StringBuilder();
+        MainDatabaseHelper db_helper=new MainDatabaseHelper(this);
+        SQLiteDatabase db=db_helper.getReadableDatabase();
         Cursor cursor = db.query("SCHEDULE", new String[]{"_id", "IS_FINISH", "NAME", "START_TIME", "END_TIME", "TIME_LENGTH",
                         "IMPORTANCE", "IS_REPEAT", "PERIOD", "PLACE", "DESCRIPTION"},
                 null,
@@ -301,6 +308,10 @@ public class MainActivity extends AppCompatActivity {
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
             MySchedule schedule = new MySchedule(cursor);
+            if(schedule.getStringMyschedule()!=null&&i==0)
+            {
+                temp = new StringBuilder("***My Schedule\n");
+            }
             temp.append(schedule.getStringMyschedule()).append("  ").append(schedule.getTimelengthStringMyschedule()).append(schedule.getStringMyschedule2()).append("\n").append("\n");
             cursor.moveToNext();
         }
