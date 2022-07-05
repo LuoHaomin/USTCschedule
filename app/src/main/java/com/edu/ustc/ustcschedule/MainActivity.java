@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,6 +23,7 @@ import com.edu.ustc.ustcschedule.databinding.ActivityMainBinding;
 import com.edu.ustc.ustcschedule.dialogs.AboutDialog;
 import com.edu.ustc.ustcschedule.dialogs.BorrowReminderDialog;
 import com.edu.ustc.ustcschedule.dialogs.BusDialog;
+import com.edu.ustc.ustcschedule.dialogs.DeleteDialog;
 import com.edu.ustc.ustcschedule.dialogs.HelpDialog;
 import com.edu.ustc.ustcschedule.dialogs.MoveDialog;
 import com.edu.ustc.ustcschedule.dialogs.SaveTemplateDialog;
@@ -39,7 +41,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DeleteDialog.DeleteDialogListener {
 
     private ActivityMainBinding binding;
     BottomNavigationView bottomNavigation;
@@ -306,6 +308,20 @@ public class MainActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
         return temp.toString();
+    }
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        int id=((DeleteDialog)dialog).getEvent_id();
+        String id_str=Integer.toString(id);
+        String table_name=((DeleteDialog)dialog).getTable_name();
+        MainDatabaseHelper db_helper=new MainDatabaseHelper(this);
+        SQLiteDatabase db=db_helper.getWritableDatabase();
+        db.delete(table_name,"_id=?",new String[]{id_str});
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        dialog.dismiss();
     }
 
 }

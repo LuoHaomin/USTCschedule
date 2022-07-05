@@ -84,20 +84,7 @@ public class DeadlineListAdapter extends BaseAdapter {
             holder.left_card = (CardView)  convertView.findViewById(R.id.left);
             convertView.setTag(R.id.Tag_id,ddl.getId());
             convertView.setTag(R.id.Tag_DDL,holder);
-            convertView.setOnLongClickListener(new View.OnLongClickListener() {
-                final int event_id= ddl.getId();
 
-                @Override
-                   public boolean onLongClick(View v) {
-                       DeleteDialog deleteDialog = new DeleteDialog();
-                       deleteDialog.setEvent_id(event_id);
-                       deleteDialog.show(deleteDialog.getChildFragmentManager(), "delete");
-
-                       return false;
-                   }
-               }
-
-            );
 
         }else{
             holder = (DeadlineListAdapter.ViewHolder) convertView.getTag(R.id.Tag_DDL);

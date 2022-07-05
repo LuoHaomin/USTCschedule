@@ -6,8 +6,12 @@ import android.content.Context;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.edu.ustc.ustcschedule.R;
@@ -44,23 +48,17 @@ public class DeleteDialog extends DialogFragment {
 
 
     // Use this instance of the interface to deliver action events
-    DeleteDialogListener listener=new DeleteDialogListener() {
-        @Override
-        public void onDialogPositiveClick(DialogFragment dialog) {
-            int id=((DeleteDialog)dialog).getEvent_id();
-            String id_str=Integer.toString(id);
-            String table_name=((DeleteDialog)dialog).getTable_name();
-            MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
-            SQLiteDatabase db=db_helper.getWritableDatabase();
-            db.delete(table_name,"_id=?",new String[]{"id_str"});
+    DeleteDialogListener listener;
 
-        }
+    public void setListener(DeleteDialogListener listener) {
+        this.listener = listener;
+    }
 
-        @Override
-        public void onDialogNegativeClick(DialogFragment dialog) {
-            //dismiss();
-        }
-    };
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
