@@ -18,9 +18,8 @@
         android:divider="@color/calendar_div"
         android:columnCount="7"
         android:rowCount="1"
-        android:showDividers="middle"
-        android:dividerPadding="3dp"
         app:layout_constraintTop_toTopOf="parent"
+
         >
 
 

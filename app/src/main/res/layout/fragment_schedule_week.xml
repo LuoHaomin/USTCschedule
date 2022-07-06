@@ -72,7 +72,9 @@
             android:id="@+id/week_content_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.edu.ustc.ustcschedule.fragment.WeekContentFragment" />
+            android:name="com.edu.ustc.ustcschedule.fragment.WeekContentFragment"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="0dp"/>
 
     </ScrollView>
 

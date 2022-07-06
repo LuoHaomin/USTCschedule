@@ -24,7 +24,6 @@
         android:id="@+id/day_deadline_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
         android:text="15:00"
         android:textSize="10sp"
         android:textColor="@color/deadline_label"
@@ -32,6 +31,7 @@
         app:layout_constraintBottom_toBottomOf="@id/day_deadline"
         app:layout_constraintStart_toStartOf="@id/day_deadline"
         app:layout_constraintTop_toTopOf="@id/day_deadline"
+        app:layout_constraintEnd_toEndOf="@id/day_deadline"
         tools:ignore="SmallSp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

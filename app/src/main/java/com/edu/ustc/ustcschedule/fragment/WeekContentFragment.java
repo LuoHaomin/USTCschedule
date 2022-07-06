@@ -109,8 +109,12 @@ public class WeekContentFragment extends Fragment {
                 ddl_cursor_repeat.moveToNext();
             }
             GridLayout.LayoutParams params=new GridLayout.LayoutParams();
-            params.columnSpec=GridLayout.spec(day_of_week-1);
-            params.rowSpec=GridLayout.spec(0);
+            params.columnSpec=GridLayout.spec(GridLayout.UNDEFINED,1,1f);
+            params.rowSpec=GridLayout.spec(GridLayout.UNDEFINED,1,1f);
+            params.height=0;//match_parent
+            params.width=0;
+
+
 
 
             gridLayout.addView(layout,params);
@@ -137,10 +141,15 @@ public class WeekContentFragment extends Fragment {
 
         CardView card=(CardView)schedule_view.findViewById(R.id.lesson_card_day);
         card.setOnLongClickListener(new View.OnLongClickListener() {
+            final int event_id= schedule.getId();
+            final String table_name="SCHEDULE";
+
             @Override
             public boolean onLongClick(View v) {
                 DeleteDialog deleteDialog = new DeleteDialog();
-                deleteDialog.show(getParentFragmentManager(), "delete");
+                deleteDialog.setEvent_id(event_id);
+                deleteDialog.setTable_name(table_name);
+                deleteDialog.show(getActivity().getSupportFragmentManager(), "delete");
                 return false;
             }
         });
@@ -183,23 +192,31 @@ public class WeekContentFragment extends Fragment {
 
 
     public void add_DDL(ConstraintLayout layout,MyDeadLine ddl,LayoutInflater inflater, ViewGroup container) {
-        View ddl_view=inflater.inflate(R.layout.fragment_day_list_item_ddl, container, false);
+        View ddl_view=inflater.inflate(R.layout.fragment_week_list_item_ddl, container, false);
+        TextView ddl_text=((TextView)ddl_view.findViewById(R.id.day_deadline_label));
 
         long starting_time=ddl.getStartingTime();
         long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
         double pos=(starting_time-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
-        ddl_view.setOnLongClickListener(new View.OnLongClickListener() {
+        ddl_text.setOnLongClickListener(new View.OnLongClickListener() {
+            final int event_id= ddl.getId();
+            final String table_name="DDL";
+
             @Override
             public boolean onLongClick(View v) {
                 DeleteDialog deleteDialog = new DeleteDialog();
-                deleteDialog.show(getParentFragmentManager(), "delete");
+                deleteDialog.setEvent_id(event_id);
+                deleteDialog.setTable_name(table_name);
+                deleteDialog.show(getActivity().getSupportFragmentManager(), "delete");
+
+
                 return false;
             }
         });
         ConstraintLayout.LayoutParams ddl_params = (ConstraintLayout.LayoutParams) ddl_view.findViewById(R.id.day_deadline).getLayoutParams();
         //FrameLayout.LayoutParams ddl_params = (FrameLayout.LayoutParams) ddl_view.getLayoutParams();
-        ((TextView)ddl_view.findViewById(R.id.day_deadline_label)).setText(format_time.format(starting_time));
+        ddl_text.setText(format_time.format(starting_time));
 
         ddl_params.topMargin=(int)(magnify_ratio*pos);
         ddl_view.findViewById(R.id.day_deadline).setLayoutParams(ddl_params);
