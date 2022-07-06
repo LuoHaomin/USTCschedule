@@ -3,6 +3,7 @@ package com.edu.ustc.ustcschedule.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 import androidx.annotation.Nullable;
@@ -83,7 +84,14 @@ public class SettingFragment extends PreferenceFragmentCompat {
         });
 
         Objects.requireNonNull(auto_update).setOnPreferenceChangeListener((preference, newValue) -> {
-            // TODO 自动更新设置
+            if (auto_update.equals(preference)) {
+                boolean value = (Boolean) (newValue);
+                if (value) {
+                    Toast.makeText(requireContext(), "已开启自动更新",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(requireContext(), "已关闭自动更新",Toast.LENGTH_SHORT).show();
+                }
+            }
             return true;
         });
 

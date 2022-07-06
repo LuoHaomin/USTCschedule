@@ -1,9 +1,14 @@
 package com.edu.ustc.ustcschedule.web;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.JsonReader;
 import android.util.JsonToken;
+import android.widget.Toast;
+
+import androidx.preference.PreferenceManager;
 
 import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
 import com.edu.ustc.ustcschedule.SQL.MySchedule;
@@ -179,6 +184,13 @@ public class Login {
                 {
                     while (jsonReader.hasNext()&&jsonReader.peek()!= JsonToken.NAME) {
                         jsonReader.skipValue();
+                        name = jsonReader.nextName();
+                        if(name.equals("name")) {
+                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                            @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("name", jsonReader.nextString());
+                            editor.apply();
+                        }
                     }
                     if (!jsonReader.hasNext()) break;
                     name=jsonReader.nextName();
