@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.Toast;
+
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
@@ -12,6 +14,7 @@ import androidx.preference.PreferenceManager;
 import com.edu.ustc.ustcschedule.dialogs.AddCourseDialog;
 import com.edu.ustc.ustcschedule.dialogs.AddTaskDialog;
 import com.edu.ustc.ustcschedule.dialogs.AddTodoDialog;
+import com.edu.ustc.ustcschedule.dialogs.ImportDialog;
 import com.edu.ustc.ustcschedule.share.utils.Share;
 
 public class ClassPopUpMenu {
@@ -50,6 +53,14 @@ public class ClassPopUpMenu {
                     transaction.add(android.R.id.content, todoFragment)
                             .addToBackStack(null).commit();
                     break;
+                case R.id.import_courses:
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+                    if (sharedPreferences.getBoolean("@string/profile_check", false)) {
+                        ImportDialog importDialog = new ImportDialog();
+                        importDialog.show(fragmentManager, "import");
+                    } else {
+                        Toast.makeText(view.getContext(), "未登录统一身份认证，请重试",Toast.LENGTH_SHORT).show();
+                    }
             }
             return true;
         });

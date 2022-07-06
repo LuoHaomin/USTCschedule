@@ -77,6 +77,7 @@
     <string name="add_course">添加课程</string>
     <string name="add_task">添加事件</string>
     <string name="add_todo">添加待办</string>
+    <string name="import_courses">导入课程</string>
 
     <string name="OK">确定</string>
     <string name="commit">提交</string>
@@ -132,6 +133,8 @@
 
     <string name="campus_text">本部校车</string>
     <string name="high_tech_text">高新区校车</string>
+
+    <string name="import_courses_text">确定导入课程吗？</string>
 
     <string-array name="task_type_array_name">
         <item>作业</item>

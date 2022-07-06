@@ -13,4 +13,7 @@
         android:id="@+id/add_todo"
         android:title="@string/add_todo" />
 
+    <item
+        android:id="@+id/import_courses"
+        android:title="@string/import_courses" />
 </menu>
