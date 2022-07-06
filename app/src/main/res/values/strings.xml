@@ -96,7 +96,7 @@
     <string name="help">帮助</string>
 
     <string name="personal_info">个人信息</string>
-    <string name="profile_check">登录同一身份认证</string>
+    <string name="profile_check">登录统一身份认证</string>
     <string name="check_update">检查更新</string>
     <string name="auto_update">自动更新</string>
     <string name="permission_manager">权限管理</string>

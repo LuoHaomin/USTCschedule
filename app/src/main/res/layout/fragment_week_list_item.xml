@@ -36,7 +36,7 @@
                 android:textAlignment="center"
                 android:text="数学分析(B2)"
                 android:textColor="@color/blue_label_text"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 app:layout_constraintStart_toStartOf="@id/lesson_label_day"
                 app:layout_constraintTop_toTopOf="@id/lesson_label_day"
                 app:layout_constraintEnd_toEndOf="@id/lesson_label_day"

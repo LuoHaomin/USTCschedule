@@ -84,7 +84,7 @@ public class ImportDialog extends DialogFragment {
             try {
 
                 final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
-                String id= sharedPreferences.getString("id","");
+                String id= sharedPreferences.getString("id_no","");
                 String pwd=sharedPreferences.getString("pwd","");
                 byte[] id_byte=id.getBytes();
                 byte[] pwd_byte=pwd.getBytes();
@@ -117,8 +117,8 @@ public class ImportDialog extends DialogFragment {
                     pwd_byte[i]=(byte)(pwd_byte[i]^(byte)50);
                 }
                 String a1=new String(id_byte);
-                ArrayList<Mycourse> ans= Login.simulateLogin(new String(id_byte),new String(pwd_byte),mContext);
-
+                ArrayList<Mycourse> ans= Login.simulateLogin(new String(id_byte).substring(0,10),new String(pwd_byte),mContext);
+                //Toast.makeText(mContext, "课表已导入!", Toast.LENGTH_LONG).show();
 
             }
             catch (Exception e) {
@@ -139,7 +139,7 @@ public class ImportDialog extends DialogFragment {
                 .setPositiveButton(R.string.OK, (dialog, id) -> {
 
                     new Thread(networkTask).start();
-                    Toast.makeText(getContext(), "课表已导入!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "课表正在导入!", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
 
