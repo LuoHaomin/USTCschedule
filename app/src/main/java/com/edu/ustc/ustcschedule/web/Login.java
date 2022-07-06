@@ -1,7 +1,12 @@
 package com.edu.ustc.ustcschedule.web;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.JsonReader;
 import android.util.JsonToken;
+
+import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
+import com.edu.ustc.ustcschedule.SQL.MySchedule;
 
 import org.jsoup.Connection;
 import org.jsoup.Connection.Method;
@@ -43,7 +48,7 @@ public class Login {
      * @param pwd 密码
      * @throws Exception
      */
-    public static ArrayList<Mycourse> simulateLogin(String userName, String pwd) throws Exception {
+    public static ArrayList<Mycourse> simulateLogin(String userName, String pwd, Context context) throws Exception {
 
         ArrayList<Mycourse> ans = new ArrayList<Mycourse>();
 
@@ -344,6 +349,14 @@ public class Login {
             counts++;
             ans.add(course1);
         }*/
+
+        MainDatabaseHelper db_helper = new MainDatabaseHelper(context);
+        SQLiteDatabase db = db_helper.getWritableDatabase();
+        db.delete("SCHEDULE", "IMPORTANCE=?", new String[]{"4"});
+        for(int i=0;i< ans.size();i++) {
+            MySchedule schedule=ans.get(i).to_schedule();
+            schedule.toDatabase(db);
+        }
 
         return ans;
     }

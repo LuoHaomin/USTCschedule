@@ -2,6 +2,7 @@ package com.edu.ustc.ustcschedule.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,6 +38,8 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class ImportDialog extends DialogFragment {
+
+    Context mContext;
     public class Encrypted
     {
         int enc_len;
@@ -58,80 +61,84 @@ public class ImportDialog extends DialogFragment {
             this.encrypted = encrypted;
         }
     }
+    Handler handler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle data = msg.getData();
+            String val = data.getString("value");
+            Log.i("mylog", "请求结果为-->" + val);
+            // TODO
+            // UI界面的更新等相关操作
+        }
+    };
+    /**
+     * 网络操作相关的子线程
+     */
+    Runnable networkTask = new Runnable() {
+        @Override
+        public void run() {
+            // TODO
+            // 在这里进行 http request.网络请求相关操作
+            try {
+
+                final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
+                String id= sharedPreferences.getString("id","");
+                String pwd=sharedPreferences.getString("pwd","");
+                byte[] id_byte=id.getBytes();
+                byte[] pwd_byte=pwd.getBytes();
+                int id_len=sharedPreferences.getInt("id_len",0);
+                int pwd_len=sharedPreferences.getInt("pwd_len",0);
+                /*try {
+                    id_byte=DES_decode(id_byte,id_len,"20220707".getBytes(StandardCharsets.US_ASCII),"32212254".getBytes(StandardCharsets.US_ASCII));
+                    pwd_byte=DES_decode(pwd_byte,pwd_len,"20220707".getBytes(StandardCharsets.US_ASCII),"32212254".getBytes(StandardCharsets.US_ASCII));
+                } catch (NoSuchPaddingException e) {
+                    e.printStackTrace();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                } catch (InvalidAlgorithmParameterException e) {
+                    e.printStackTrace();
+                } catch (InvalidKeyException e) {
+                    e.printStackTrace();
+                } catch (ShortBufferException e) {
+                    e.printStackTrace();
+                } catch (IllegalBlockSizeException e) {
+                    e.printStackTrace();
+                } catch (BadPaddingException e) {
+                    e.printStackTrace();
+                }*/
+                for(int i=0;i<id_byte.length;i++)
+                {
+                    id_byte[i]=(byte)(id_byte[i]^(byte)50);
+                }
+                for(int i=0;i<pwd_byte.length;i++)
+                {
+                    pwd_byte[i]=(byte)(pwd_byte[i]^(byte)50);
+                }
+                String a1=new String(id_byte);
+                ArrayList<Mycourse> ans= Login.simulateLogin(new String(id_byte),new String(pwd_byte),mContext);
+
+
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            handler.sendMessage(new Message());
+        }
+    };
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
-        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
+
+        mContext=getContext();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.import_courses)
                 .setMessage(R.string.import_courses_text)
                 .setPositiveButton(R.string.OK, (dialog, id) -> {
-                    Handler handler = new Handler()
-                    {
-                        @Override
-                        public void handleMessage(Message msg) {
-                            super.handleMessage(msg);
-                            Bundle data = msg.getData();
-                            String val = data.getString("value");
-                            Log.i("mylog", "请求结果为-->" + val);
-                            // TODO
-                            // UI界面的更新等相关操作
-                        }
-                    };
 
-                    /**
-                     * 网络操作相关的子线程
-                     */
-                    Runnable networkTask = new Runnable() {
-
-
-                        @Override
-                        public void run() {
-                            // TODO
-                            // 在这里进行 http request.网络请求相关操作
-                            try {
-
-                                String id= sharedPreferences.getString("id","");
-                                String pwd=sharedPreferences.getString("pwd","");
-                                byte[] id_byte=id.getBytes();
-                                byte[] pwd_byte=pwd.getBytes();
-                                int id_len=sharedPreferences.getInt("id_len",0);
-                                int pwd_len=sharedPreferences.getInt("pwd_len",0);
-                                try {
-                                    id_byte=DES_decode(id_byte,id_len,"20220707".getBytes(StandardCharsets.US_ASCII),"3221225477".getBytes(StandardCharsets.US_ASCII));
-                                    pwd_byte=DES_decode(pwd_byte,pwd_len,"20220707".getBytes(StandardCharsets.US_ASCII),"3221225477".getBytes(StandardCharsets.US_ASCII));
-                                } catch (NoSuchPaddingException e) {
-                                    e.printStackTrace();
-                                } catch (NoSuchAlgorithmException e) {
-                                    e.printStackTrace();
-                                } catch (InvalidAlgorithmParameterException e) {
-                                    e.printStackTrace();
-                                } catch (InvalidKeyException e) {
-                                    e.printStackTrace();
-                                } catch (ShortBufferException e) {
-                                    e.printStackTrace();
-                                } catch (IllegalBlockSizeException e) {
-                                    e.printStackTrace();
-                                } catch (BadPaddingException e) {
-                                    e.printStackTrace();
-                                }
-                                ArrayList<Mycourse> ans= Login.simulateLogin(new String(id_byte,"UTF-8"),new String(pwd_byte,"UTF-8"));
-                                MainDatabaseHelper db_helper = new MainDatabaseHelper(getContext());
-                                SQLiteDatabase db = db_helper.getWritableDatabase();
-                                db.delete("SCHEDULE", "IMPORTANCE=?", new String[]{"4"});
-                                for(int i=0;i< ans.size();i++) {
-                                    MySchedule schedule=ans.get(i).to_schedule();
-                                    schedule.toDatabase(db);
-                                }
-
-                            }
-                            catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            handler.sendMessage(new Message());
-                        }
-                    };
+                    new Thread(networkTask).start();
                     Toast.makeText(getContext(), "课表已导入!", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {

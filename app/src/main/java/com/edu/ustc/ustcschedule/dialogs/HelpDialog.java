@@ -31,7 +31,6 @@ public class HelpDialog extends DialogFragment {
 
         View view = inflater.inflate(R.layout.fragment_help, container, false);
         view.findViewById(R.id.close_help_btn).setOnClickListener(view1 -> dismiss());
-        new Thread(networkTask).start();
         return view;
     }
 
@@ -48,33 +47,5 @@ public class HelpDialog extends DialogFragment {
         return dialog;
     }
 
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            Bundle data = msg.getData();
-            String val = data.getString("value");
-            Log.i("mylog", "请求结果为-->" + val);
-            // TODO
-            // UI界面的更新等相关操作
-        }
-    };
 
-    /**
-     * 网络操作相关的子线程
-     */
-    Runnable networkTask = new Runnable() {
-
-        @Override
-        public void run() {
-            // TODO
-            // 在这里进行 http request.网络请求相关操作
-            try {
-                ArrayList<Mycourse> ans= Login.simulateLogin("  ","  ");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            handler.sendMessage(new Message());
-        }
-    };
 }

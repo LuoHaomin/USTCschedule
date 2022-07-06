@@ -19,6 +19,7 @@ import androidx.preference.PreferenceManager;
 
 import com.edu.ustc.ustcschedule.R;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
@@ -65,16 +66,25 @@ public class SignInDialog extends DialogFragment {
                 .setPositiveButton(R.string.sign_in, (dialog, id) -> {
                     EditText idEditText = view.findViewById(R.id.ID);
                     EditText pwdEditText = view.findViewById(R.id.password);
-                    byte[] id_byte = idEditText.getText().toString().getBytes(StandardCharsets.UTF_8);
-                    byte[] pwd_byte = pwdEditText.getText().toString().getBytes(StandardCharsets.UTF_8);
+                    byte[] id_byte = idEditText.getText().toString().getBytes();
+                    byte[] pwd_byte = pwdEditText.getText().toString().getBytes();
                     int id_len=0;
                     int pwd_len=0;
+                    for(int i=0;i<id_byte.length;i++)
+                    {
+                        id_byte[i]=(byte)(id_byte[i]^(byte)50);
+                    }
+                    for(int i=0;i<pwd_byte.length;i++)
+                    {
+                        pwd_byte[i]=(byte)(pwd_byte[i]^(byte)50);
+                    }
 
+                    /*
                     try {
-                        Encrypted id_enc=DES_encode(id_byte,"20220707".getBytes(StandardCharsets.US_ASCII),"3221225477".getBytes(StandardCharsets.US_ASCII));
+                        Encrypted id_enc=DES_encode(id_byte,"20220707".getBytes(StandardCharsets.US_ASCII),"32212254".getBytes(StandardCharsets.US_ASCII));
                         id_byte=id_enc.getEncrypted();
                         id_len=id_enc.getEnc_len();
-                        Encrypted pwd_enc=DES_encode(pwd_byte,"20220707".getBytes(StandardCharsets.US_ASCII),"3221225477".getBytes(StandardCharsets.US_ASCII));
+                        Encrypted pwd_enc=DES_encode(pwd_byte,"20220707".getBytes(StandardCharsets.US_ASCII),"32212254".getBytes(StandardCharsets.US_ASCII));
                         pwd_byte=pwd_enc.getEncrypted();
                         pwd_len=pwd_enc.getEnc_len();
                     } catch (NoSuchPaddingException e) {
@@ -91,10 +101,11 @@ public class SignInDialog extends DialogFragment {
                         e.printStackTrace();
                     } catch (BadPaddingException e) {
                         e.printStackTrace();
-                    }
-                    editor.putString("id", String.valueOf(id_byte));
+                    }*/
+
+                    editor.putString("id", new String(id_byte));
+                    editor.putString("pwd", new String(pwd_byte));
                     editor.putInt("id_len",id_len);
-                    editor.putString("pwd", String.valueOf(pwd_byte));
                     editor.putInt("pwd_len",pwd_len);
                     editor.apply();
                 })
