@@ -66,7 +66,7 @@ public class MonthListFragment extends Fragment {
 
         Cursor cursor=db.query("SCHEDULE",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"END_TIME","TIME_LENGTH",
                         "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
-                "START_TIME>"+day_start_str+" AND START_TIME<"+day_end_str+" AND END_TIME<"+day_end_str+" AND END_TIME>"+day_start_str,
+                "IS_REPEAT=0 AND START_TIME>"+day_start_str+" AND START_TIME<"+day_end_str+" AND END_TIME<"+day_end_str+" AND END_TIME>"+day_start_str,
                 null,null,null,"START_TIME ASC");
         cursor.moveToFirst();
         for(int i=0;i< cursor.getCount();i++) {
@@ -94,7 +94,7 @@ public class MonthListFragment extends Fragment {
 
         Cursor ddl_cursor=db.query("DDL",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"WORK_LOAD",
                         "IMPORTANCE" ,"IS_REPEAT" ,"PERIOD" , "PLACE" ,"DESCRIPTION"  } ,
-                "START_TIME>"+day_start_str+" AND START_TIME<"+day_end_str,
+                "IS_REPEAT=0 AND START_TIME>"+day_start_str+" AND START_TIME<"+day_end_str,
                 null,null,null,"START_TIME ASC");
         ddl_cursor.moveToFirst();
         for(int i=0;i< ddl_cursor.getCount();i++) {

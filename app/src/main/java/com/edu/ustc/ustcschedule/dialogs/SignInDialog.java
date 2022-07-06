@@ -103,14 +103,14 @@ public class SignInDialog extends DialogFragment {
                         e.printStackTrace();
                     }*/
 
-                    editor.putString("id", new String(id_byte));
+                    editor.putString("id_no", new String(id_byte));
                     editor.putString("pwd", new String(pwd_byte));
                     editor.putInt("id_len",id_len);
                     editor.putInt("pwd_len",pwd_len);
                     editor.apply();
                 })
                 .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
-                    editor.putString("id", "");
+                    editor.putString("id_no", "");
                     editor.putString("pwd", "");
                     editor.apply();
                     Objects.requireNonNull(SignInDialog.this.getDialog()).cancel();

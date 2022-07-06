@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.JsonReader;
 import android.util.JsonToken;
+import android.widget.Toast;
 
 import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
 import com.edu.ustc.ustcschedule.SQL.MySchedule;
@@ -357,6 +358,7 @@ public class Login {
             MySchedule schedule=ans.get(i).to_schedule();
             schedule.toDatabase(db);
         }
+        //Toast.makeText(context.getApplicationContext(), "课表已导入!", Toast.LENGTH_LONG).show();
 
         return ans;
     }

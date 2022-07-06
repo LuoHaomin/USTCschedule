@@ -37,10 +37,11 @@ public class Mycourse {
         Calendar ca2=Calendar.getInstance(Locale.CHINA);
         Calendar ca3=Calendar.getInstance(Locale.CHINA);
         ca3.setTimeInMillis(ca3.getTimeInMillis()-ca3.getTimeInMillis()%(3600*1000));
-        ca3.set(Calendar.HOUR,0);
+
         ca3.set(Calendar.DAY_OF_WEEK,new_weekday);
-        ca1.setTimeInMillis(ca3.getTimeInMillis()+date1.getTime());
-        ca2.setTimeInMillis(ca3.getTimeInMillis()+date2.getTime());
+        ca3.set(Calendar.HOUR_OF_DAY,0);
+        ca1.setTimeInMillis(ca3.getTimeInMillis()+date1.getTime()+8*3600*1000);
+        ca2.setTimeInMillis(ca3.getTimeInMillis()+date2.getTime()+8*3600*1000);
         MySchedule schedule=new MySchedule(courseName,ca1.getTimeInMillis(), ca2.getTimeInMillis(), 4,1,7, room, teachers,0);
         return schedule;
     }
