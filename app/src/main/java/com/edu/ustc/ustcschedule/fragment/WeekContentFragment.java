@@ -52,6 +52,7 @@ public class WeekContentFragment extends Fragment {
             String day_end_str=Long.toString(day_end);
 
             ConstraintLayout layout=(ConstraintLayout)inflater.inflate(R.layout.fragment_week_content_day, container, false);
+            magnify_ratio=(float)(layout.findViewById(R.id.day_list_container).getLayoutParams()).height/1226.0;
             MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
             SQLiteDatabase db=db_helper.getReadableDatabase();
             Cursor cursor=db.query("SCHEDULE",new String[]{"_id","IS_FINISH","NAME" ,"START_TIME" ,"END_TIME","TIME_LENGTH",
@@ -135,9 +136,9 @@ public class WeekContentFragment extends Fragment {
         long starting_time=schedule.getStartingTime();
         long ending_time=schedule.getEndingTime();
 
-        double height=(Math.abs(ending_time-starting_time))/72000;
+        double height=1.01*(Math.abs(ending_time-starting_time))/72000;
         long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
-        double pos=(Math.min(starting_time,ending_time)-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
+        double pos=1.01*(Math.min(starting_time,ending_time)-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
         CardView card=(CardView)schedule_view.findViewById(R.id.lesson_card_day);
         card.setOnLongClickListener(new View.OnLongClickListener() {
@@ -179,7 +180,7 @@ public class WeekContentFragment extends Fragment {
                 break;
         }
 
-        magnify_ratio=(float)card_params.height/100.0;
+        //magnify_ratio=(float)card_params.height/100.0;
         card_params.height=(int)(magnify_ratio*height);//放大倍数乘值
         card_params.topMargin=(int)(magnify_ratio*pos);
 
@@ -197,7 +198,7 @@ public class WeekContentFragment extends Fragment {
 
         long starting_time=ddl.getStartingTime();
         long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
-        double pos=(starting_time-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
+        double pos=1.01*(starting_time-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
         ddl_text.setOnLongClickListener(new View.OnLongClickListener() {
             final int event_id= ddl.getId();

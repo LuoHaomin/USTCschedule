@@ -41,7 +41,7 @@ public class DayListFragment extends Fragment {
     Calendar ca=Calendar.getInstance(Locale.CHINA);
     long day_start=((date.getTime()+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;//清除小时和分钟
     long day_end=day_start+86400*1000;
-    double magnify_ratio;
+    double magnify_ratio=2.63;//default
     String day_start_str=Long.toString(day_start);
     String day_end_str=Long.toString(day_end);
 
@@ -55,6 +55,7 @@ public class DayListFragment extends Fragment {
 
         View view= inflater.inflate(R.layout.fragment_day_list, container, false);
         ConstraintLayout layout=(ConstraintLayout)view.findViewById(R.id.day_list_layout);
+        magnify_ratio=(float)(layout.getLayoutParams()).height/1226.0;
 
         MainDatabaseHelper db_helper=new MainDatabaseHelper(getContext());
         SQLiteDatabase db=db_helper.getReadableDatabase();
@@ -122,9 +123,9 @@ public class DayListFragment extends Fragment {
         long starting_time=schedule.getStartingTime();
         long ending_time=schedule.getEndingTime();
 
-        double height=(Math.abs(ending_time-starting_time))/72000;
+        double height=1.01*(Math.abs(ending_time-starting_time))/72000;
         long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
-        double pos=(Math.min(starting_time,ending_time)-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
+        double pos=1.01*(Math.min(starting_time,ending_time)-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
         CardView card=(CardView)schedule_view.findViewById(R.id.lesson_card_day);
         card.setOnLongClickListener(new View.OnLongClickListener()
@@ -168,7 +169,7 @@ public class DayListFragment extends Fragment {
                 break;
         }
 
-        magnify_ratio=(float)card_params.height/100.0;
+        //magnify_ratio=(float)card_params.height/100.0;
         card_params.height=(int)(magnify_ratio*height);//放大倍数乘值
         card_params.topMargin=(int)(magnify_ratio*pos);
 
@@ -187,7 +188,7 @@ public class DayListFragment extends Fragment {
 
         long starting_time=ddl.getStartingTime();
         long day_start_temp=((starting_time+8*3600*1000)/(86400*1000))*(86400*1000)-8*3600*1000;
-        double pos=(starting_time-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
+        double pos=1.01*(starting_time-day_start_temp)/72000+6.5;//6是line到layout顶部的高度
 
 
         ConstraintLayout.LayoutParams ddl_params = (ConstraintLayout.LayoutParams) ddl_view.findViewById(R.id.day_deadline).getLayoutParams();
