@@ -45,13 +45,15 @@ public class SettingFragment extends PreferenceFragmentCompat {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if (sharedPreferences.getBoolean("@string/profile_check", false)) {
-            if (personal_info != null) {
-                personal_info.setVisible(true);
+        if (sharedPreferences.getString("pwd", "").equals("")) {
+            if (personal_info != null && profile_check != null) {
+                personal_info.setVisible(false);
+                profile_check.setChecked(false);
             }
         } else {
-            if (profile_check != null) {
-                profile_check.setChecked(false);
+            if (profile_check != null && personal_info != null) {
+                profile_check.setChecked(true);
+                personal_info.setVisible(true);
             }
         }
 
@@ -115,5 +117,17 @@ public class SettingFragment extends PreferenceFragmentCompat {
             startActivity(intent);
             return false;
         });
+    }
+
+    public void onCancelLogIn() {
+
+        Preference personal_info = findPreference(getString(R.string.personal_info));
+        SwitchPreference profile_check = findPreference(getString(R.string.profile_check));
+        if (personal_info != null) {
+            personal_info.setVisible(false);
+        }
+        if (profile_check != null) {
+            profile_check.setChecked(false);
+        }
     }
 }

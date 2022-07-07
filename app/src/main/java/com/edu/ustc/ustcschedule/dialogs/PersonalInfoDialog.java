@@ -20,7 +20,7 @@ public class PersonalInfoDialog extends DialogFragment {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
-        String id = sharedPreferences.getString("id", "");
+        String id = sharedPreferences.getString("id_no", "");
         byte[] id_byte = id.getBytes();
         int id_len = sharedPreferences.getInt("id_len", 0);
         for (int i = 0; i < id_byte.length; i++) {
