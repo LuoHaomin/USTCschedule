@@ -136,6 +136,8 @@
 
     <string name="import_courses_text">确定导入课程吗？</string>
 
+    <string name="help_text">\t1.USTC schedule主要有三个视图，分别为“日程”、“计时”和“任务”，其中“日程”又分为每日、每周、每月个小视图，使用页面上方的加字母小框切换。\n\t2.加入日程使用加号按钮，课程和事件会显示在“日程”页面；待办中的DDL会在“日程”页面以红线形式显示，且会出现在“计时”页面；待办中的任务会显示在“任务”页面。\n\t3.每页上方的三横可以打开菜单。</string>
+
     <string-array name="task_type_array_name">
         <item>作业</item>
         <item>阅读</item>

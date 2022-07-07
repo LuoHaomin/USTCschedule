@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceScreen;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -13,11 +14,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
 
 import com.edu.ustc.ustcschedule.R;
+import com.edu.ustc.ustcschedule.fragment.SettingFragment;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
@@ -61,6 +67,7 @@ public class SignInDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_sign_in, null);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
+        SettingFragment settingFragment = (SettingFragment) getParentFragment();
         builder.setTitle(R.string.sign_in)
                 .setView(view)
                 .setPositiveButton(R.string.sign_in, (dialog, id) -> {
@@ -102,17 +109,21 @@ public class SignInDialog extends DialogFragment {
                     } catch (BadPaddingException e) {
                         e.printStackTrace();
                     }*/
-
                     editor.putString("id_no", new String(id_byte));
                     editor.putString("pwd", new String(pwd_byte));
                     editor.putInt("id_len",id_len);
                     editor.putInt("pwd_len",pwd_len);
+                    editor.putString("name", "未知");
                     editor.apply();
                 })
                 .setNegativeButton(R.string.cancel, (dialogInterface, i) -> {
                     editor.putString("id_no", "");
                     editor.putString("pwd", "");
                     editor.apply();
+                    if(settingFragment != null) {
+                        settingFragment.onCancelLogIn();
+                    }
+
                     Objects.requireNonNull(SignInDialog.this.getDialog()).cancel();
                 });
         // Create the AlertDialog object and return it

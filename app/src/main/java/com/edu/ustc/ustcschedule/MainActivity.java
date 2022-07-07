@@ -151,10 +151,11 @@ public class MainActivity extends AppCompatActivity implements DeleteDialog.Dele
 //                            shareDialog.show(getSupportFragmentManager(), "share");
                         } else if (drawerItem.getIdentifier() == 4) {
                             BorrowReminderDialog borrowReminderDialog = new BorrowReminderDialog();
-                            getSupportFragmentManager().beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .add(android.R.id.content, borrowReminderDialog)
-                                    .addToBackStack(null).commit();
+                            borrowReminderDialog.show(getSupportFragmentManager(), "borrow_reminder");
+//                            getSupportFragmentManager().beginTransaction()
+//                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                                    .add(android.R.id.content, borrowReminderDialog)
+//                                    .addToBackStack(null).commit();
                         } else if (drawerItem.getIdentifier() == 5) {
                             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                             startActivity(intent);

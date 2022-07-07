@@ -1,10 +1,13 @@
 package com.edu.ustc.ustcschedule.web;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.JsonReader;
 import android.util.JsonToken;
-import android.widget.Toast;
+
+import androidx.preference.PreferenceManager;
 
 import com.edu.ustc.ustcschedule.SQL.MainDatabaseHelper;
 import com.edu.ustc.ustcschedule.SQL.MySchedule;
@@ -19,17 +22,14 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Login {
     public static String LOGIN_URL = "https://passport.ustc.edu.cn/login?service=https%3A%2F%2Fjw.ustc.edu.cn%2Fucas-sso%2Flogin";
@@ -180,6 +180,13 @@ public class Login {
                 {
                     while (jsonReader.hasNext()&&jsonReader.peek()!= JsonToken.NAME) {
                         jsonReader.skipValue();
+                        name = jsonReader.nextName();
+                        if(name.equals("name")) {
+                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                            @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("name", jsonReader.nextString());
+                            editor.apply();
+                        }
                     }
                     if (!jsonReader.hasNext()) break;
                     name=jsonReader.nextName();
@@ -358,7 +365,6 @@ public class Login {
             MySchedule schedule=ans.get(i).to_schedule();
             schedule.toDatabase(db);
         }
-        //Toast.makeText(context.getApplicationContext(), "课表已导入!", Toast.LENGTH_LONG).show();
 
         return ans;
     }

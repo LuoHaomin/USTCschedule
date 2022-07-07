@@ -3,6 +3,7 @@ package com.edu.ustc.ustcschedule.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 import androidx.annotation.Nullable;
@@ -44,13 +45,15 @@ public class SettingFragment extends PreferenceFragmentCompat {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if (sharedPreferences.getBoolean("@string/profile_check", false)) {
-            if (personal_info != null) {
-                personal_info.setVisible(true);
+        if (sharedPreferences.getString("pwd", "").equals("")) {
+            if (personal_info != null && profile_check != null) {
+                personal_info.setVisible(false);
+                profile_check.setChecked(false);
             }
         } else {
-            if (profile_check != null) {
-                profile_check.setChecked(false);
+            if (profile_check != null && personal_info != null) {
+                profile_check.setChecked(true);
+                personal_info.setVisible(true);
             }
         }
 
@@ -83,7 +86,14 @@ public class SettingFragment extends PreferenceFragmentCompat {
         });
 
         Objects.requireNonNull(auto_update).setOnPreferenceChangeListener((preference, newValue) -> {
-            // TODO 自动更新设置
+            if (auto_update.equals(preference)) {
+                boolean value = (Boolean) (newValue);
+                if (value) {
+                    Toast.makeText(requireContext(), "已开启自动更新",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(requireContext(), "已关闭自动更新",Toast.LENGTH_SHORT).show();
+                }
+            }
             return true;
         });
 
@@ -107,5 +117,17 @@ public class SettingFragment extends PreferenceFragmentCompat {
             startActivity(intent);
             return false;
         });
+    }
+
+    public void onCancelLogIn() {
+
+        Preference personal_info = findPreference(getString(R.string.personal_info));
+        SwitchPreference profile_check = findPreference(getString(R.string.profile_check));
+        if (personal_info != null) {
+            personal_info.setVisible(false);
+        }
+        if (profile_check != null) {
+            profile_check.setChecked(false);
+        }
     }
 }
