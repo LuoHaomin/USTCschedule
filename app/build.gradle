@@ -3,15 +3,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
-    aaptOptions.cruncherEnabled = false
-    aaptOptions.useNewCruncher = false
 
     defaultConfig {
         applicationId "com.edu.ustc.ustcschedule"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0.1"
 
@@ -36,6 +34,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.edu.ustc.ustcschedule'
 }
 
 dependencies {
